@@ -54,6 +54,12 @@ export default function RootLayout({
                 Toolkit
               </Link>
               <Link
+                href="/community"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Community
+              </Link>
+              <Link
                 href="/about"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
