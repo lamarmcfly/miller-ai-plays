@@ -1,0 +1,104 @@
+---
+slug: "shelf-review-notebook"
+title: "Build a Shelf-Ready Notebook in NotebookLM"
+hook: "Your sources, your notes, your questions. All in one place that won't hallucinate."
+oneLiner: "Load your trusted sources into NotebookLM and get grounded, citation-backed shelf review."
+
+audience: ["shelf", "clerkship"]
+year: ["MS3", "MS4"]
+estimatedTime: "15 min to build, then 10-20 min per session"
+difficulty: "intermediate"
+
+tools:
+  - name: "NotebookLM"
+    plan: "free"
+    url: "https://notebooklm.google.com"
+
+video:
+  url: "/videos/shelf-review-notebook.mp4"
+  poster: "/videos/shelf-review-notebook-poster.jpg"
+  durationSeconds: 86
+  captions: "/videos/shelf-review-notebook.vtt"
+
+artifact:
+  type: "notebooklm"
+  name: "Shelf Review Notebook"
+  systemPrompt: |
+    PATTERN 1 - Topic deep dive
+    "Based on my sources, give me a high-yield summary of [topic] for the shelf exam. Include: mechanism, presentation, diagnosis, treatment, and 3 board-favorite associations."
+
+    PATTERN 2 - Differential generation
+    "A patient presents with [chief complaint]. Based on my sources, what's the differential and how do I narrow it down clinically?"
+
+    PATTERN 3 - Compare-and-contrast
+    "Compare [Disease A] vs [Disease B] across pathophysiology, presentation, key labs, and treatment. Use only what's in my sources."
+
+    PATTERN 4 - Practice question generation
+    "Generate 5 NBME-style shelf practice questions on [topic]. Use only content from my sources. Include answer rationales."
+
+    PATTERN 5 - Pre-rounding prep
+    "Tomorrow I'm seeing patients with [condition]. From my sources, give me the 5 things I need to know to look prepared on rounds: presentation, key labs, first-line workup, first-line treatment, and what attendings love to pimp on."
+
+    PATTERN 6 - Gap identification
+    "I just missed this UWorld question: [paste question + your answer + correct answer]. Based on my sources, what concept did I misunderstand?"
+  cloneInstructions: "Go to notebooklm.google.com → Create new notebook → Name it 'Shelf - [Subject]' → Load your sources → Use the prompt patterns above as questions"
+  cloneUrl: null
+
+whenToUse: |
+  Three weeks before a shelf exam: build the notebook and load sources. Daily
+  15-min sessions using the prompt patterns. Also use Pattern 5 the night before
+  rounds, and Pattern 6 after every UWorld block to get source-grounded gap analysis
+  instead of AI hallucinations.
+
+successSignal: |
+  Two weeks in, you're getting grounded, source-backed answers from your own
+  curated material. Your shelf practice scores are climbing, and when you encounter
+  a topic you don't know, your first instinct is to ask the notebook instead of
+  searching the web.
+
+learningNote: "NotebookLM uses retrieval-augmented generation (RAG) - it only answers from your uploaded sources, not from general AI training data. This eliminates hallucination risk and grounds every answer in material you've already vetted, making it uniquely trustworthy for high-stakes exam prep."
+
+starterPrompts:
+  - label: "Topic deep dive"
+    prompt: "Based on my sources, give me a high-yield summary of [TOPIC] for the [SUBJECT] shelf exam. Include: mechanism, presentation, diagnosis, treatment, and 3 board-favorite associations."
+  - label: "Differential builder"
+    prompt: "A patient presents with [CHIEF COMPLAINT]. Based on my sources, what's the differential and how do I narrow it down clinically? I'm an MS3 on my [ROTATION] rotation."
+  - label: "Pre-rounds prep"
+    prompt: "Tomorrow I'm seeing patients with [CONDITION] on my [ROTATION] clerkship. From my sources, give me the 5 things I need to know to look prepared on rounds: presentation, key labs, first-line workup, first-line treatment, and what attendings love to pimp on."
+
+tags: ["notebooklm", "shelf", "clerkship", "source-grounded", "review"]
+relatedPlays: ["error-engine", "lecture-compressor", "osce-encounter-sim"]
+
+author: "Lamar Martin"
+publishedAt: "2026-06-01"
+updatedAt: "2026-06-01"
+version: "1.0"
+---
+
+## How to set it up
+
+This Play has more setup than the others, but you only do it once per shelf.
+
+### Step 1 - Open NotebookLM
+Go to **notebooklm.google.com** and sign in with your Google account.
+
+### Step 2 - Create the notebook
+Click **+ Create new notebook** and name it `Shelf - [Subject]` (e.g., `Shelf - Internal Medicine`).
+
+### Step 3 - Load sources
+NotebookLM accepts up to 50 sources per notebook. Curate carefully - quality over quantity.
+
+**Strong sources:** your own notes, OnlineMedEd transcripts, high-yield review docs, clerkship handbooks, past shelf practice explanations you've curated.
+
+**Do NOT load:** copyrighted Qbank content (NBME, UWorld), random web pages, personal patient notes.
+
+### Step 4 - Start asking questions
+Use the six prompt patterns from the Prompt section above. Every answer cites which source it came from.
+
+## Common pitfalls
+
+- **Don't load 50 random web pages.** NotebookLM's quality is bounded by your sources. Load 10 great sources, not 50 mediocre ones.
+- **Don't upload copyrighted Qbank content.** NBME, UWorld, AMBOSS - their terms prohibit redistribution. Use your OWN notes from those resources instead.
+- **Don't share notebooks with patient information.** FERPA + HIPAA. Even de-identified patient stories in your notes should be scrubbed before loading.
+- **Don't treat citations as ground truth.** NotebookLM cites which source it pulled from, but it doesn't verify the source itself is correct. If your sources have errors, the notebook will repeat them.
+- **Build one notebook per shelf, not one mega-notebook.** Cross-subject notebooks dilute the focus.

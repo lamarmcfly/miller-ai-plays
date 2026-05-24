@@ -1,0 +1,87 @@
+---
+slug: "error-engine"
+title: "Turn Wrong Qbank Questions Into a Study Plan"
+hook: "Don't just review your wrongs. Diagnose them."
+oneLiner: "Paste a missed question, get back the error category, the root concept, and your next step."
+
+audience: ["step1", "step2", "shelf"]
+year: ["MS2", "MS3", "MS4"]
+estimatedTime: "5 min per Qbank block"
+difficulty: "beginner"
+
+tools:
+  - name: "Any LLM"
+    plan: "free"
+    url: "https://claude.ai"  # or chatgpt.com, copilot.microsoft.com
+
+video:
+  url: "/videos/error-engine.mp4"
+  poster: "/videos/error-engine-poster.jpg"
+  durationSeconds: 78
+  captions: "/videos/error-engine.vtt"
+
+artifact:
+  type: "prompt"
+  name: "Error Engine"
+  systemPrompt: |
+    You are an Error Analysis Coach trained in the Error Tracking Protocol (ETP). Your job is to help a medical student turn missed Qbank questions into targeted learning, not regret.
+
+    For each error the student submits, do exactly three things:
+
+    1. CATEGORIZE THE ERROR. Identify whether the miss was a:
+       - Knowledge gap (didn't know the fact/concept)
+       - Reasoning error (had the knowledge, applied it wrong)
+       - Test-taking error (misread stem, anchored, ran out of time, second-guessed)
+       - Mixed (name the dominant)
+       Then name the specific subtype in one phrase - e.g., "knowledge gap - mechanism of class III antiarrhythmics" or "reasoning error - anchored on chest pain before reading the pulmonary exam."
+
+    2. SURFACE THE ROOT CONCEPT. State the underlying principle in 1-2 sentences. Not the answer to this question - the principle that, if owned, protects against this whole family of misses.
+
+    3. PRESCRIBE ONE NEXT STEP. Exactly one concrete action. Not "review cardiology" - "work through the mechanism-action-toxicity grid for class I-IV antiarrhythmics, 15 min, then 10 targeted UWorld questions tagged antiarrhythmics."
+
+    Rules:
+    - Be direct. The student wants a clear diagnosis, not reassurance.
+    - Don't re-explain the question. The explanation is already in their hands. Your job is the meta-analysis.
+    - If they paste multiple errors at once, look for the pattern across them and name it at the end.
+    - If a question's wrongness is ambiguous, ask one clarifying question before categorizing.
+
+    Format: three labeled sections, clean, no preamble.
+  cloneInstructions: "Open any AI chat tool (Claude, ChatGPT, Copilot, etc.). Paste this prompt into the chat, or use it as custom/system instructions if your tool supports that."
+  cloneUrl: null
+
+whenToUse: |
+  After every UWorld or NBME practice block - especially when you keep missing
+  questions in the same topic and can't tell whether it's a knowledge gap or a
+  reasoning error. Per block, paste 5-10 of your wrongs with the question stem,
+  your answer, the correct answer, and a brief note on your reasoning.
+
+successSignal: |
+  Within two weeks of consistent use, you can name your top three error patterns
+  without thinking. You'll start catching yourself making them in real time during
+  practice - that's when the meta-awareness is paying off.
+
+learningNote: "This Play uses metacognitive error analysis - identifying why you got something wrong, not just what the right answer was. Research shows that categorizing errors improves subsequent performance by 25-40% compared to simply reviewing correct answers (Metcalfe, 2017)."
+
+starterPrompts:
+  - label: "Quick single error"
+    prompt: "I missed this UWorld question. Here's the stem: [PASTE STEM]. I picked [YOUR ANSWER], correct was [CORRECT]. My reasoning: [WHY YOU PICKED IT]. Categorize my error and give me one next step."
+  - label: "Batch of wrongs"
+    prompt: "Here are my 5 wrong answers from today's UWorld block. For each, I'll give the topic, my answer, correct answer, and my reasoning. Find the pattern across them. [PASTE ALL 5]"
+  - label: "Quick pattern check"
+    prompt: "Over the last week, most of my wrong answers have been in [TOPIC AREA]. Am I dealing with a knowledge gap or a reasoning problem? Here are 3 examples: [PASTE 3 EXAMPLES]"
+
+tags: ["qbank", "remediation", "metacognition", "step-1", "step-2"]
+relatedPlays: ["lecture-compressor", "concept-coach", "shelf-review-notebook"]
+
+author: "Lamar Martin"
+publishedAt: "2026-06-01"
+updatedAt: "2026-06-01"
+version: "1.0"
+---
+
+## Common pitfalls
+
+- **Don't paste the full explanation back to the AI.** It will just summarize what you already read. Paste your reasoning, your answer, and the correct answer. Let it diagnose, not re-teach.
+- **If everything comes back as "knowledge gap," you're under-feeding it.** Show your work in the prompt. Why did you pick what you picked? That's the input it needs to spot reasoning errors.
+- **This Play won't fix systemic study problems.** If you're missing 60%+ of a Qbank, the issue is upstream of error analysis. Talk to AES about a broader study plan.
+- **Don't skip the "one next step" prescription.** Reading the breakdown without acting is the most common failure mode. The Play is the analysis; your follow-through is the workout.

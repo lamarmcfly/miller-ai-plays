@@ -1,0 +1,17 @@
+PATTERN 1 - Topic deep dive
+"Based on my sources, give me a high-yield summary of [topic] for the shelf exam. Include: mechanism, presentation, diagnosis, treatment, and 3 board-favorite associations."
+
+PATTERN 2 - Differential generation
+"A patient presents with [chief complaint]. Based on my sources, what's the differential and how do I narrow it down clinically?"
+
+PATTERN 3 - Compare-and-contrast
+"Compare [Disease A] vs [Disease B] across pathophysiology, presentation, key labs, and treatment. Use only what's in my sources."
+
+PATTERN 4 - Practice question generation
+"Generate 5 NBME-style shelf practice questions on [topic]. Use only content from my sources. Include answer rationales."
+
+PATTERN 5 - Pre-rounding prep
+"Tomorrow I'm seeing patients with [condition]. From my sources, give me the 5 things I need to know to look prepared on rounds: presentation, key labs, first-line workup, first-line treatment, and what attendings love to pimp on."
+
+PATTERN 6 - Gap identification
+"I just missed this UWorld question: [paste question + your answer + correct answer]. Based on my sources, what concept did I misunderstand?"

@@ -1,0 +1,26 @@
+{
+  "name": "miller-ai-plays",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "validate": "tsx scripts/validate-plays.ts",
+    "new-play": "tsx scripts/new-play.ts",
+    "setup:sharepoint": "tsx scripts/setup-sharepoint.ts",
+    "export:sharepoint": "tsx scripts/export-sharepoint.ts",
+    "export:all": "tsx scripts/export-sharepoint.ts --all",
+    "upload:video": "tsx scripts/upload-video.ts"
+  },
+  "dependencies": {
+    "next": "16.2.6"
+  },
+  "devDependencies": {
+    "@azure/identity": "^4.13.1",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "dotenv": "^17.4.2",
+    "gray-matter": "^4.0.3",
+    "isomorphic-fetch": "^3.0.0",
+    "tsx": "^4.22.3",
+    "zod": "^4.4.3"
+  }
+}

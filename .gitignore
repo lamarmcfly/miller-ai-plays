@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js
+.next/
+out/
+
+# Vercel
+.vercel/
+
+# Environment
+.env
+.env.local
+.env.production.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+~$*
+
+# IDE
+.vscode/
+.idea/
+
+# Build
+*.tsbuildinfo
+
+# Videos (use external hosting for large files)
+public/videos/*.mp4
+!public/videos/.gitkeep
+
+# Legacy files (locked by other processes)
+sharepoint-page-template-build.txt
+
+.vercel

@@ -1,0 +1,9 @@
+I'm an [MS1/MS2/MS3/MS4] medical student at the University of Miami Miller School of Medicine. I'm currently [taking COURSE / on my ROTATION clerkship / preparing for STEP 1/STEP 2 CK/SHELF EXAM]. I just finished a lecture on [TOPIC].
+
+Help me study by doing three things:
+
+1. Give me the 5 most testable facts from this topic - the things most likely to appear on [my course exam / boards / the shelf].
+2. Write 3 practice questions in USMLE style (one-best-answer, 5 options each) and put the answers at the bottom.
+3. Tell me the one concept from this topic that students most commonly get wrong, and explain why they get it wrong.
+
+Be direct. No filler. Format it so I can review it on my phone.

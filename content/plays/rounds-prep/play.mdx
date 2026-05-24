@@ -1,0 +1,83 @@
+---
+slug: "rounds-prep"
+title: "5-Minute Rounds Prep - Know What They'll Ask"
+hook: "Know what they're going to ask before they ask it."
+oneLiner: "Tell it your rotation and today's patient conditions. Get back the 5 questions your attending will most likely ask - with answers."
+
+audience: ["clerkship"]
+year: ["MS3", "MS4"]
+estimatedTime: "5 min before rounds"
+difficulty: "beginner"
+
+tools:
+  - name: "Any LLM"
+    plan: "free"
+    url: "https://claude.ai"  # or chatgpt.com, copilot.microsoft.com
+
+video:
+  url: "/videos/rounds questioning-prep.mp4"
+  poster: "/videos/rounds questioning-prep-poster.jpg"
+  durationSeconds: 72
+  captions: "/videos/rounds questioning-prep.vtt"
+
+artifact:
+  type: "prompt"
+  name: "Rounds Prep"
+  systemPrompt: |
+    You are a rounds preparation coach for a medical student on a clerkship rotation. The student will tell you their rotation and today's patient conditions. Your job is to predict what the attending will ask ("pimp") and arm the student with concise, confident answers.
+
+    For each condition the student lists, provide:
+
+    1. TOP 5 PIMPING QUESTIONS - the questions attendings most commonly ask medical students about this condition, ordered by likelihood. Include:
+       - The question as the attending would phrase it (conversational, sometimes Socratic)
+       - A concise, confident answer (2-3 sentences max - attendings reward brevity)
+       - One "show-off" fact that goes beyond the expected answer (the kind of detail that makes an attending say "good, I didn't expect you to know that")
+
+    2. THE ONE THING YOU MUST NOT GET WRONG - the single fact or concept about this condition that, if you miss it, makes you look unprepared. This is the baseline - everything above it is bonus.
+
+    Rules:
+    - Tailor questions to the rotation. Surgery attendings pimp on anatomy and indications. IM attendings pimp on pathophysiology and management. Peds attendings pimp on developmental milestones and dosing. OB/GYN attendings pimp on timing and contraindications.
+    - Keep answers concise enough to say out loud in 15 seconds. If your answer would take 30+ seconds to deliver, it's too long.
+    - Focus on what's clinically relevant to the patient on the list, not textbook generalities.
+    - If the student lists multiple conditions, handle each one separately with clear headers.
+
+    Format: condition-by-condition, numbered questions with answers. No preamble.
+  cloneInstructions: "Open any AI chat tool (Claude, ChatGPT, Copilot, etc.). Paste this prompt into the chat, or use it as custom/system instructions if your tool supports that."
+  cloneUrl: null
+
+whenToUse: |
+  Every morning before rounds. Open the Project, type in your rotation and today's
+  patient list conditions. Read the output while walking to the hospital or in the
+  team room. This is a daily habit Play - the more consistently you use it, the
+  more prepared you'll feel and the better your clinical evaluations will be.
+
+successSignal: |
+  Within a week, you're answering rounds questioning questions before classmates can. Your
+  attending notices. Your clinical evaluation comments mention "well-prepared"
+  or "demonstrates strong fund of knowledge." That confidence compounds.
+
+learningNote: "Anticipating questions activates your retrieval pathways before the test (rounds). This is a form of pre-testing - research shows that even attempting to answer a question before you know the answer improves subsequent learning and retention by 20-30% (Richland et al., 2009)."
+
+starterPrompts:
+  - label: "Morning rounds prep"
+    prompt: "I'm an [MS3/MS4] on my [INTERNAL MEDICINE/SURGERY/PEDS/OB-GYN/PSYCH] rotation. Today's patients have: [CONDITION 1], [CONDITION 2], [CONDITION 3]. What will my attending pimp me on for each? Give me the top 5 questions with answers."
+  - label: "Single patient deep dive"
+    prompt: "I'm presenting a patient with [CONDITION] on my [ROTATION] clerkship tomorrow. My attending is tough. Give me every question they might ask, from basic to show-off level."
+  - label: "Post-call prep"
+    prompt: "I'm post-call on [ROTATION] and I admitted a patient with [CONDITION] overnight. The attending will round on this patient first. What are they going to ask me and what should I absolutely know?"
+
+tags: ["clerkship", "rounds", "rounds-prep", "clinical-knowledge", "daily-habit"]
+relatedPlays: ["clinical-note", "osce-encounter-sim", "concept-coach"]
+
+author: "Lamar Martin"
+publishedAt: "2026-06-01"
+updatedAt: "2026-06-01"
+version: "1.0"
+---
+
+## Common pitfalls
+
+- **Don't memorize the answers word-for-word.** Attendings can tell when you're reciting vs. understanding. Read the answers, understand the reasoning, then explain it in your own words on rounds.
+- **Don't skip the "show-off" facts.** These are optional but they differentiate you. One well-placed fact per patient is enough - don't overdo it.
+- **Update your patient list daily.** Yesterday's conditions are yesterday's prep. New patients need new prep.
+- **Don't use this as a substitute for reading.** Pimping prep is a 5-minute sprint. It doesn't replace deep understanding from Pathoma, Boards & Beyond, or UpToDate. It surfaces what to know *right now* for *these patients*.

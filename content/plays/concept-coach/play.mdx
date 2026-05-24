@@ -1,0 +1,83 @@
+---
+slug: "concept-coach"
+title: "Make a Concept Stick with a Socratic Tutor"
+hook: "If you can't teach it, you don't know it. This Play finds out which one you are."
+oneLiner: "Name a concept you're stuck on. Get Socratic questions until you reason through it yourself."
+
+audience: ["coursework", "step1", "step2", "shelf"]
+year: ["MS1", "MS2", "MS3", "MS4"]
+estimatedTime: "10-15 min per concept"
+difficulty: "intermediate"
+
+tools:
+  - name: "Any LLM"
+    plan: "free"
+    url: "https://claude.ai"  # or chatgpt.com, copilot.microsoft.com
+
+video:
+  url: "/videos/concept-coach.mp4"
+  poster: "/videos/concept-coach-poster.jpg"
+  durationSeconds: 88
+  captions: "/videos/concept-coach.vtt"
+
+artifact:
+  type: "prompt"
+  name: "Concept Coach"
+  systemPrompt: |
+    You are a Socratic tutor for a medical student. You do not give explanations on demand. You build understanding through questions.
+
+    When the student names a concept they're struggling with:
+
+    1. Start by asking what they already know about it. One specific question.
+    2. From their answer, identify the gap - what they're missing, where their model breaks.
+    3. Ask the next question that targets the gap. Make it clinical and concrete - a scenario, a patient, a mechanism - not abstract.
+    4. Build incrementally. One question at a time. After each answer, correct gently or push deeper.
+    5. Only after they've reasoned through it do you state the clean principle at the end.
+
+    Hard rules:
+    - Never lecture. If you find yourself writing more than 3 sentences without asking a question, stop.
+    - If they say "just explain it," push back once: "Try first - what do you think happens when X?" If they push back again, explain, but make them predict the next step.
+    - Use clinical vignettes whenever possible. Med students learn through cases.
+    - One concept per question. Keep it tight.
+
+    End every session by asking them to teach the concept back in 3 sentences. If they can't, the session isn't done.
+  cloneInstructions: "Open any AI chat tool (Claude, ChatGPT, Copilot, etc.). Paste this prompt into the chat, or use it as custom/system instructions if your tool supports that."
+  cloneUrl: null
+
+whenToUse: |
+  When you've re-read the same chapter three times and the concept still feels
+  slippery. When you can recognize the right answer on multiple choice but can't
+  explain why it's right. When your Anki retention is high but you bomb questions
+  on the same topic. Start with: "I'm struggling with [concept]. Coach me."
+
+successSignal: |
+  You finish a session by teaching the concept back in 3 sentences without
+  hesitation. A week later, you encounter a Qbank question on that concept and
+  your reasoning is immediate - you're not searching memory, you're applying
+  understanding.
+
+learningNote: "Socratic questioning forces you to generate explanations rather than receive them. This 'generation effect' produces stronger, more durable memory traces than passive reading - even when your initial answer is wrong (Richland et al., 2009)."
+
+starterPrompts:
+  - label: "Concept I can't explain"
+    prompt: "I'm an [MS1/MS2/MS3/MS4] studying for [STEP 1/SHELF/COURSEWORK]. I keep getting questions about [CONCEPT] wrong. I can recognize the right answer but I can't explain why it's right. Coach me through it with questions - don't just explain it."
+  - label: "Mechanism I keep mixing up"
+    prompt: "I'm an [MS2] preparing for [STEP 1]. I keep confusing [CONCEPT A] and [CONCEPT B]. Walk me through the difference using clinical scenarios. Ask me questions until I can distinguish them myself."
+  - label: "Clinical reasoning drill"
+    prompt: "I'm an [MS3] on my [ROTATION] clerkship. I understand [CONCEPT] in theory but can't apply it clinically. Give me a patient scenario and ask me to reason through it step by step."
+
+tags: ["socratic", "active-learning", "conceptual", "step-1", "step-2"]
+relatedPlays: ["error-engine", "lecture-compressor", "osce-encounter-sim"]
+
+author: "Lamar Martin"
+publishedAt: "2026-06-01"
+updatedAt: "2026-06-01"
+version: "1.0"
+---
+
+## Common pitfalls
+
+- **Don't try to drill 5 concepts in one chat.** One concept per session. Multi-concept sessions dilute the Socratic loop.
+- **Resist the urge to ask "just explain it."** The friction IS the point. If you bypass the questioning, you've turned the Play back into a basic search engine.
+- **Don't drill concepts you've never been exposed to.** Socratic learning requires a starting point. Pre-read the topic in First Aid or Boards & Beyond first, then come here to deepen.
+- **If the questions feel too easy or too hard, say so.** The Play adapts based on your responses. "That's too basic, go deeper" or "Slow down, I need a simpler entry point" both work.

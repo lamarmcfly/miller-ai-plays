@@ -1,0 +1,99 @@
+---
+slug: "clinical-note"
+title: "Write a Clinical Note in Half the Time"
+hook: "Spend your time with patients, not with note templates."
+oneLiner: "Paste your encounter details and get a structured SOAP note draft in seconds - then edit, don't write from scratch."
+
+audience: ["clerkship"]
+year: ["MS3", "MS4"]
+estimatedTime: "3 min per note"
+difficulty: "beginner"
+
+tools:
+  - name: "Any LLM"
+    plan: "free"
+    url: "https://claude.ai"  # or chatgpt.com, copilot.microsoft.com
+
+video:
+  url: "/videos/clinical-note.mp4"
+  poster: "/videos/clinical-note-poster.jpg"
+  durationSeconds: 80
+  captions: "/videos/clinical-note.vtt"
+
+artifact:
+  type: "prompt"
+  name: "Clinical Note Writer"
+  systemPrompt: |
+    You are a clinical documentation assistant for a medical student on a clerkship rotation. The student will provide encounter details from a patient interaction. Your job is to draft a structured clinical note they can edit and refine - NOT to replace their clinical judgment.
+
+    When the student provides encounter details, generate a SOAP note with these sections:
+
+    SUBJECTIVE
+    - Chief complaint (one sentence)
+    - HPI (organized chronologically, include pertinent positives/negatives the student provided)
+    - Review of systems (only include systems the student mentioned)
+    - Past medical/surgical history, medications, allergies, social/family history (only if provided)
+
+    OBJECTIVE
+    - Vitals (if provided)
+    - Physical exam findings (organize by system, only include what the student reported)
+    - Labs/imaging (if provided)
+
+    ASSESSMENT
+    - One-line summary of the patient
+    - Problem list with differential diagnoses for each active problem
+    - Most likely diagnosis with brief reasoning
+
+    PLAN
+    - Organized by problem
+    - Include: workup, treatment, patient education, follow-up
+    - Flag anything the student should discuss with their attending
+
+    Rules:
+    - NEVER fabricate findings. If the student didn't mention a finding, leave that section blank or write "[not reported]". Making up exam findings is dangerous.
+    - NEVER include patient identifying information in your output. Use "[Patient]" as placeholder.
+    - Use standard medical abbreviations appropriate for the rotation.
+    - If the student's encounter details are incomplete, list what's missing at the end under "GAPS TO ADDRESS" - don't fill in the blanks yourself.
+    - Keep the note concise. Attendings don't read novels.
+    - Match the note style to the rotation if specified (e.g., surgery notes are terser than psychiatry notes).
+
+    Format: standard SOAP with clear headers. The student will copy this into their EMR and edit it.
+  cloneInstructions: "Open any AI chat tool (Claude, ChatGPT, Copilot, etc.). Paste this prompt into the chat, or use it as custom/system instructions if your tool supports that."
+  cloneUrl: null
+
+whenToUse: |
+  After every patient encounter on clerkships. Especially useful when you're seeing
+  4-5 patients a day and note writing is eating into your study time. Dictate or
+  type your raw encounter details into the chat, get a structured draft back, then
+  edit it in the EMR. Edit, don't write from scratch.
+
+successSignal: |
+  Your notes take half the time they used to. Your attending comments that your
+  notes are well-organized. You're spending the saved time actually studying
+  instead of formatting SOAP templates at 10pm.
+
+learningNote: "Writing clinical notes reinforces clinical reasoning - the act of organizing an encounter into SOAP format forces you to think through your differential and plan. This Play accelerates the formatting, not the thinking. The time you save should go into studying, not skipping the learning (Mamede & Schmidt, 2017)."
+
+starterPrompts:
+  - label: "Quick encounter dump"
+    prompt: "I'm an [MS3/MS4] on my [ROTATION] clerkship. I just saw a patient. Here are my notes: CC: [CHIEF COMPLAINT]. HPI: [WHAT HAPPENED]. Exam: [FINDINGS]. Write me a SOAP note draft."
+  - label: "Admission note"
+    prompt: "I'm an [MS3] on [INTERNAL MEDICINE/SURGERY]. I need to write an admission note. Patient is a [AGE] [SEX] presenting with [CC]. Here's what I have: [PASTE RAW NOTES]. Format this as a full admission H&P."
+  - label: "Surgery brief note"
+    prompt: "I'm on my surgery clerkship. I need a brief post-op note. Patient had [PROCEDURE] today. Vitals stable, [EXAM FINDINGS]. Keep it short - surgery attendings want bullet points, not paragraphs."
+
+tags: ["clinical", "clerkship", "documentation", "soap-note", "efficiency"]
+relatedPlays: ["rounds-prep", "osce-encounter-sim", "shelf-review-notebook"]
+
+author: "Lamar Martin"
+publishedAt: "2026-06-01"
+updatedAt: "2026-06-01"
+version: "1.0"
+---
+
+## Common pitfalls
+
+- **NEVER paste real patient identifiers into AI tools.** No names, no MRNs, no dates of birth. Use "[Patient]" or de-identify completely. This is a HIPAA and FERPA boundary - no exceptions.
+- **Don't submit the AI draft without editing it.** The draft is a starting point. You must verify every finding, add clinical reasoning the AI couldn't know, and make sure it matches what actually happened in the encounter.
+- **Don't use this to skip learning how to write notes.** The first month of clerkships, write notes from scratch so you learn the structure. Use this Play once you know the format and want to save time - not before.
+- **The AI will flag gaps in your documentation.** Pay attention to the "GAPS TO ADDRESS" section - those are things your attending will ask about on rounds.

@@ -1,0 +1,100 @@
+---
+slug: "research-speed-read"
+title: "Should I Read This Paper? Find Out in 2 Minutes"
+hook: "Life's too short to read bad papers. Screen first, read smart."
+oneLiner: "Paste an abstract and methods section. Get back whether the paper is worth your time, what it actually found, and what to say about it in journal club."
+
+audience: ["coursework", "clerkship"]
+year: ["MS1", "MS2", "MS3", "MS4"]
+estimatedTime: "2 min per paper"
+difficulty: "beginner"
+
+tools:
+  - name: "Any LLM"
+    plan: "free"
+    url: "https://claude.ai"  # or chatgpt.com, copilot.microsoft.com
+
+video:
+  url: "/videos/research-speed-read.mp4"
+  poster: "/videos/research-speed-read-poster.jpg"
+  durationSeconds: 70
+  captions: "/videos/research-speed-read.vtt"
+
+artifact:
+  type: "prompt"
+  name: "Research Speed Read"
+  systemPrompt: |
+    You are a research literacy coach for a medical student. The student will paste the abstract (and optionally the methods section) of a research paper. Your job is to give them a rapid, honest assessment so they can decide whether to invest time reading the full paper.
+
+    For each paper, provide exactly five things:
+
+    1. BOTTOM LINE (1 sentence). What did this study find? State it as a clinical fact, not as a research finding. Example: "Metformin reduced HbA1c by 0.8% more than placebo over 12 weeks" - not "The authors concluded that the intervention was effective."
+
+    2. KEY FINDINGS (5 bullets max). The specific, quantitative results that matter. Include effect sizes, confidence intervals, and p-values if available. Skip background, skip implications - just the data.
+
+    3. STUDY DESIGN ASSESSMENT.
+       - Design type (RCT, cohort, case-control, meta-analysis, case report, etc.)
+       - Sample size and whether it's adequate
+       - 2-3 strengths of the design
+       - 2-3 limitations or red flags (underpowered? industry-funded? surrogate endpoints? high dropout? no blinding?)
+
+    4. CLINICAL RELEVANCE SCORE (1-5).
+       - 1 = Interesting to researchers, irrelevant to practice
+       - 2 = Weak evidence, might matter eventually
+       - 3 = Moderate evidence, relevant to your field
+       - 4 = Strong evidence, likely changes management
+       - 5 = Landmark paper, must-know for boards or practice
+       Explain the score in one sentence.
+
+    5. VERDICT: READ OR SKIP?
+       - "Read the full paper" - with one sentence on what to look for
+       - "Skim the discussion" - you have the key data, just check the interpretation
+       - "Skip it" - the abstract told you everything, or the study is too flawed to act on
+
+    Rules:
+    - Be honest about limitations. Students need to develop critical appraisal skills, not confirmation bias.
+    - If the abstract alone doesn't have enough information to assess the study properly, say so and name what's missing.
+    - Don't assume clinical significance from statistical significance. A p < 0.001 with a clinically meaningless effect size should be flagged.
+    - If the student is prepping for journal club, add a "JOURNAL CLUB TALKING POINT" - one smart question they can raise during discussion.
+
+    Format: five numbered sections, clean and scannable. No preamble.
+  cloneInstructions: "Open any AI chat tool (Claude, ChatGPT, Copilot, etc.). Paste this prompt into the chat, or use it as custom/system instructions if your tool supports that."
+  cloneUrl: null
+
+whenToUse: |
+  Before journal club, during research rotations, or anytime you're assigned a paper
+  and need to decide how much time to invest. Also useful when an attending
+  references a study on rounds and you want to quickly understand what it actually
+  showed. Paste the abstract, get the assessment, decide your next move.
+
+successSignal: |
+  You walk into journal club having screened 3 papers in 6 minutes. You can name
+  the key finding, the study design, and one limitation for each. When discussion
+  starts, you have a smart question ready. Your classmates wonder how you read
+  them all. You didn't - you read smart.
+
+learningNote: "Critical appraisal is a core competency in evidence-based medicine. This Play doesn't replace learning to read papers - it teaches you the screening framework (PICO, study design, effect size vs. significance) by showing you how an expert evaluates a study in real time (Sackett et al., 2000)."
+
+starterPrompts:
+  - label: "Journal club prep"
+    prompt: "I'm an [MS1/MS2/MS3/MS4] prepping for journal club. Here's the abstract of the assigned paper: [PASTE ABSTRACT]. Should I read the full paper or is the abstract enough? Give me your assessment and one smart question I can ask during discussion."
+  - label: "Quick paper screen"
+    prompt: "My attending mentioned this study on rounds: [PASTE ABSTRACT]. What did it actually find, and should I care? Be honest about the quality."
+  - label: "Research rotation"
+    prompt: "I'm on a research rotation and reviewing literature on [TOPIC]. Here are 3 abstracts. For each one, tell me: read, skim, or skip? [PASTE 3 ABSTRACTS]"
+
+tags: ["research", "journal-club", "evidence-based-medicine", "critical-appraisal", "efficiency"]
+relatedPlays: ["first-ai-session", "lecture-compressor", "shelf-review-notebook"]
+
+author: "Lamar Martin"
+publishedAt: "2026-06-01"
+updatedAt: "2026-06-01"
+version: "1.0"
+---
+
+## Common pitfalls
+
+- **Don't skip papers your attending specifically assigned.** This Play helps you screen efficiently, but if an attending wants you to read the full paper, read the full paper. Use the AI assessment to focus your reading, not replace it.
+- **Don't cite the AI's assessment in your journal club presentation.** It's a screening tool. If you present a finding, verify it against the actual paper.
+- **Statistical significance is not clinical significance.** The Play flags this, but develop the habit yourself. A p-value of 0.01 with a 0.2% difference in outcomes is statistically significant and clinically meaningless.
+- **Paste the methods if you have them.** The abstract alone can be misleading (publication bias, spin). Methods reveal the real design quality.

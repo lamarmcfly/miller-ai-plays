@@ -1,0 +1,91 @@
+---
+slug: "lecture-compressor"
+title: "Lecture Notes → Anki Cards in 5 Minutes"
+hook: "Stop transcribing. Start spacing."
+oneLiner: "Paste a lecture, get a high-yield digest and 15-25 board-style Anki cards ready to import."
+
+audience: ["step1", "step2", "shelf", "coursework"]
+year: ["MS1", "MS2", "MS3"]
+estimatedTime: "5 min per lecture"
+difficulty: "beginner"
+
+tools:
+  - name: "Any LLM"
+    plan: "free"
+    url: "https://claude.ai"  # or chatgpt.com, copilot.microsoft.com
+
+video:
+  url: "/videos/lecture-compressor.mp4"
+  poster: "/videos/lecture-compressor-poster.jpg"
+  durationSeconds: 82
+  captions: "/videos/lecture-compressor.vtt"
+
+artifact:
+  type: "prompt"
+  name: "Lecture Compressor"
+  systemPrompt: |
+    You are a high-yield study material generator for a medical student. The student will paste lecture content, notes, or a transcript. You produce two outputs in order:
+
+    OUTPUT 1 - HIGH-YIELD DIGEST
+    Bulleted summary capturing only what is testable. Maximum 12 bullets. Organize by:
+    - Mechanism / pathophysiology
+    - Clinical presentation
+    - Diagnosis (key findings, gold standards)
+    - Treatment (first-line, key exceptions)
+    - High-yield associations (boards-favorite buzzwords, classic triads)
+
+    Skip background, history, tangents, the professor's anecdotes. Multiple topics? Separate with headers.
+
+    OUTPUT 2 - ANKI CARDS
+    15-25 cards in clean front/back format, ready to paste straight into Anki:
+
+    Front: [question or cloze]
+    Back: [answer]
+
+    Card rules:
+    - One concept per card. Two things on the back? Split it.
+    - Favor mechanism and reasoning cards over pure memorization where possible.
+    - Use cloze deletion ({{c1::answer}}) for lists, drug classes, classifications.
+    - Mix card types: recall, recognition, application, compare/contrast.
+    - Board-style framing: "A patient presents with X..." for clinical cards.
+
+    No preamble, no commentary. Just the two outputs.
+  cloneInstructions: "Open any AI chat tool (Claude, ChatGPT, Copilot, etc.). Paste this prompt into the chat, or use it as custom/system instructions if your tool supports that."
+  cloneUrl: null
+
+whenToUse: |
+  The same day as the lecture, while the context is still fresh. The Play is fast
+  because it relies on you noticing if it missed something - and you can only
+  notice that within ~24 hours of the original lecture. Paste in slides, transcripts,
+  or your own typed notes.
+
+successSignal: |
+  Within two weeks, your Anki deck has grown by 50-80 cards per week from lectures
+  alone, AND you're consistently getting >85% retention on first review. If retention
+  is low, your cards are too dense - feed the Play smaller chunks per session.
+
+learningNote: "This Play combines two evidence-backed techniques: active recall (generating answers from memory) and spaced repetition (reviewing at increasing intervals). Together they produce 200-300% better long-term retention than re-reading notes (Karpicke & Blunt, 2011)."
+
+starterPrompts:
+  - label: "Quick lecture digest"
+    prompt: "Here are my notes from today's lecture on [TOPIC]. Give me a 12-bullet high-yield summary of only what's testable, organized by mechanism, presentation, diagnosis, and treatment. [PASTE NOTES]"
+  - label: "Just the Anki cards"
+    prompt: "Generate 15 Anki cards from this lecture content. Use cloze deletions ({{c1::answer}}) for lists. Mix recall, recognition, and application cards. Board-style framing. [PASTE CONTENT]"
+  - label: "Dense topic breakdown"
+    prompt: "This lecture covered multiple topics. Break it into sections, then give me a high-yield digest AND 5 Anki cards per section. [PASTE SLIDES/NOTES]"
+
+tags: ["anki", "spaced-repetition", "lecture", "step-1", "coursework"]
+relatedPlays: ["error-engine", "concept-coach", "shelf-review-notebook"]
+
+author: "Lamar Martin"
+publishedAt: "2026-06-01"
+updatedAt: "2026-06-01"
+version: "1.0"
+---
+
+## Common pitfalls
+
+- **Don't paste an entire 2-hour lecture transcript at once.** Break it into the 3-5 major topics and run them separately. You'll get better cards and the digest stays scannable.
+- **Verify before you import.** AI-generated cards can hallucinate doses, mechanisms, or associations. Spot-check 10% of cards against a trusted source (First Aid, UpToDate, Sketchy) before importing.
+- **Cloze deletions need formatting.** The `{{c1::answer}}` syntax matters in Anki. If the AI gives you malformed cloze syntax, fix it before pasting.
+- **This is not a substitute for active recall.** Generating cards is the easy part. Reviewing them every day is what builds memory. The Play saves you time on creation - don't spend that saved time scrolling.

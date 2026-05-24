@@ -1,0 +1,45 @@
+name: New Play Proposal
+description: Propose a new AI workflow Play for the library
+labels: ["play-proposal"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Play title
+      description: Short, action-oriented title
+      placeholder: "e.g., Turn Research Papers Into Clinical Summaries"
+    validations:
+      required: true
+  - type: dropdown
+    id: tool
+    attributes:
+      label: AI tool
+      options:
+        - Claude (free)
+        - Claude (Pro)
+        - NotebookLM
+        - Copilot
+        - Other
+    validations:
+      required: true
+  - type: checkboxes
+    id: audience
+    attributes:
+      label: Target audience
+      options:
+        - label: MS1
+        - label: MS2
+        - label: MS3
+        - label: MS4
+  - type: textarea
+    id: description
+    attributes:
+      label: What problem does this Play solve?
+      description: Name the specific workflow and when a student would use it
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Draft prompt (if you have one)
+      description: Paste the system prompt or describe what it should do
