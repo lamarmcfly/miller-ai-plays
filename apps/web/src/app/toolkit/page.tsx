@@ -86,7 +86,7 @@ export default function ToolkitPage() {
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">AI tools you can use</h2>
         <p className="text-sm text-muted-foreground">
-          All Plays in this library work with any of these tools. Pick whichever
+          All Workflows in this library work with any of these tools. Pick whichever
           you prefer.
         </p>
         <div className="grid gap-4 sm:grid-cols-2">

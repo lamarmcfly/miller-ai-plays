@@ -3,6 +3,7 @@ import { getAllPlays } from "@/lib/plays";
 import { PlayGrid } from "@/components/PlayGrid";
 import { QuickStart } from "@/components/QuickStart";
 import { PlaysForRightNow } from "@/components/PlaysForRightNow";
+import { YouAskedWeBuilt } from "@/components/YouAskedWeBuilt";
 
 export default function HomePage() {
   const plays = getAllPlays();
@@ -53,9 +54,11 @@ export default function HomePage() {
         <QuickStart />
         <PlaysForRightNow />
 
+        <YouAskedWeBuilt />
+
         <section className="space-y-6">
           <div className="space-y-1">
-            <h2 className="text-2xl font-bold tracking-tight">All Plays</h2>
+            <h2 className="text-2xl font-bold tracking-tight">All Workflows</h2>
             <p className="text-sm text-muted-foreground">
               Browse the full library. Filter by year, audience, or search by
               keyword.

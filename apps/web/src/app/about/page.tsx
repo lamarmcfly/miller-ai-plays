@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Miller AI Plays is an Academic Enrichment Services initiative at the University of Miami Miller School of Medicine.",
+    "Miller AI Workflows is an Academic Enrichment Services initiative at the University of Miami Miller School of Medicine.",
 };
 
 export default function AboutPage() {
@@ -13,7 +13,7 @@ export default function AboutPage() {
       <header className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight">About</h1>
         <p className="text-lg text-muted-foreground">
-          Miller AI Plays is an Academic Enrichment Services initiative at the
+          Miller AI Workflows is an Academic Enrichment Services initiative at the
           University of Miami Miller School of Medicine.
         </p>
       </header>
@@ -29,7 +29,7 @@ export default function AboutPage() {
           minutes if the value is obvious.
         </p>
         <p className="text-muted-foreground leading-relaxed">
-          Miller AI Plays delivers bite-sized AI workflows (&ldquo;Plays&rdquo;)
+          Miller AI Workflows delivers bite-sized AI workflows (&ldquo;Plays&rdquo;)
           that meet students where they are: mobile, distracted, time-poor. Each
           Play pairs a 60-90 second demo with a copy-paste prompt and a clonable
           artifact.
@@ -43,7 +43,7 @@ export default function AboutPage() {
             {
               step: "1",
               title: "Watch",
-              desc: "60-90 second demo shows the Play in action",
+              desc: "60-90 second demo shows the Workflow in action",
             },
             {
               step: "2",
@@ -71,10 +71,10 @@ export default function AboutPage() {
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">Who runs this</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Miller AI Plays was created by{" "}
+          Miller AI Workflows was created by{" "}
           <span className="font-medium text-foreground">Lamar Martin</span>,
           Academic Enrichment Services. The Play library is operated by the
-          Miller AI Plays Council, a team of 3-5 medical students who author,
+          Miller AI Workflows Council, a team of 3-5 medical students who author,
           review, and maintain Plays.
         </p>
       </section>

@@ -143,7 +143,7 @@ export function CommunitySubmitForm() {
         </button>
 
         <p className="text-xs text-muted-foreground">
-          Submissions are reviewed by the Miller AI Plays Council before
+          Submissions are reviewed by the Miller AI Workflows Council before
           publishing. By submitting, you confirm this describes a real use case
           and contains no patient identifying information or copyrighted content.
         </p>

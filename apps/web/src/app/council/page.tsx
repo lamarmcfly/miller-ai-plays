@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 export const metadata: Metadata = {
   title: "Council",
   description:
-    "The Miller AI Plays Council operates the Play library. Learn about the team and how to apply.",
+    "The Miller AI Workflows Council operates the Workflow library. Learn about the team and how to apply.",
 };
 
 export default function CouncilPage() {
@@ -13,8 +13,8 @@ export default function CouncilPage() {
       <header className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight">The Council</h1>
         <p className="text-lg text-muted-foreground">
-          The Miller AI Plays Council is a team of 3-5 medical students who
-          author, review, and maintain the Play library.
+          The Miller AI Workflows Council is a team of 3-5 medical students who
+          author, review, and maintain the Workflow library.
         </p>
       </header>
 
@@ -25,7 +25,7 @@ export default function CouncilPage() {
         <ul className="space-y-2 text-muted-foreground">
           <li className="flex gap-2">
             <span className="text-[#F47321] font-bold">1.</span>
-            Authors new Plays based on student demand and emerging AI tools
+            Authors new Workflows based on student demand and emerging AI tools
           </li>
           <li className="flex gap-2">
             <span className="text-[#F47321] font-bold">2.</span>
@@ -33,7 +33,7 @@ export default function CouncilPage() {
           </li>
           <li className="flex gap-2">
             <span className="text-[#F47321] font-bold">3.</span>
-            Maintains existing Plays - updates, retires, or rewrites as tools
+            Maintains existing Workflows - updates, retires, or rewrites as tools
             change
           </li>
           <li className="flex gap-2">

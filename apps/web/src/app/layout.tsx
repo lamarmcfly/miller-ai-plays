@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Miller AI Plays",
-    template: "%s | Miller AI Plays",
+    default: "Miller AI Workflows",
+    template: "%s | Miller AI Workflows",
   },
   description:
     "AI workflows for medical students. 90 seconds. No fluff. A peer-curated library from Academic Enrichment Services at UM Miller School of Medicine.",
@@ -49,7 +49,7 @@ export default function RootLayout({
               </div>
               <div className="flex flex-col">
                 <span className="text-base font-bold tracking-tight text-[#00543C] leading-none">
-                  Miller AI Plays
+                  Miller AI Workflows
                 </span>
                 <span className="text-[10px] text-muted-foreground leading-tight hidden sm:block">
                   Academic Enrichment Services
@@ -77,7 +77,7 @@ export default function RootLayout({
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <p className="text-white font-semibold text-sm">
-                  Miller AI Plays
+                  Miller AI Workflows
                 </p>
                 <p className="text-green-200/70 text-xs mt-0.5">
                   Academic Enrichment Services

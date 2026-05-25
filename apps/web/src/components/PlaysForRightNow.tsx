@@ -4,7 +4,6 @@ import Link from "next/link";
 
 const scenarios = [
   {
-    icon: "\uD83D\uDCA5",
     label: "I bombed a UWorld block",
     color: "border-red-200 bg-red-50/50",
     plays: [
@@ -13,7 +12,6 @@ const scenarios = [
     ],
   },
   {
-    icon: "\uD83D\uDCC5",
     label: "I have a shelf in 2 weeks",
     color: "border-amber-200 bg-amber-50/50",
     plays: [
@@ -22,7 +20,6 @@ const scenarios = [
     ],
   },
   {
-    icon: "\uD83C\uDFE5",
     label: "I'm starting a new clerkship",
     color: "border-blue-200 bg-blue-50/50",
     plays: [
@@ -31,7 +28,6 @@ const scenarios = [
     ],
   },
   {
-    icon: "\uD83C\uDF93",
     label: "I just sat through a lecture",
     color: "border-green-200 bg-green-50/50",
     plays: [
@@ -57,7 +53,6 @@ export function PlaysForRightNow() {
             className={`rounded-xl border p-4 space-y-3 ${s.color}`}
           >
             <p className="text-sm font-semibold leading-snug">
-              <span className="mr-1.5 text-base">{s.icon}</span>
               {s.label}
             </p>
             <div className="flex flex-col gap-1.5">

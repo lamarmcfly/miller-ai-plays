@@ -100,7 +100,7 @@ export function PlayGrid({ plays }: { plays: Play[] }) {
 
       {filtered.length === 0 ? (
         <p className="text-center text-muted-foreground py-12">
-          No plays match your filters.
+          No workflows match your filters.
         </p>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

@@ -20,7 +20,7 @@ export default function CommunityPage() {
         <h1 className="text-3xl font-bold tracking-tight">Community Board</h1>
         <p className="text-lg text-muted-foreground">
           Prompts, workflows, and tips shared by Miller students. Everything
-          here is a suggestion from a fellow student, not an official Play.
+          here is a suggestion from a fellow student, not an official Workflow.
           Reviewed by the Council for safety.
         </p>
       </header>
@@ -34,7 +34,7 @@ export default function CommunityPage() {
       <div className="rounded-lg border border-dashed border-border bg-muted/20 p-4 text-center text-xs text-muted-foreground">
         <p>
           Community submissions are personal use cases shared by students. They
-          are not official Miller AI Plays and have not been tested to the same
+          are not official Miller AI Workflows and have not been tested to the same
           standard. Always verify AI output against trusted sources.
         </p>
       </div>

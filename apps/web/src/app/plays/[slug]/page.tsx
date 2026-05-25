@@ -198,10 +198,10 @@ export default async function PlayPage({
 
       <Separator />
 
-      {/* Section 10 - Related Plays */}
+      {/* Section 10 - Related Workflows */}
       {play.relatedPlays.length > 0 && (
         <section className="space-y-3">
-          <h2 className="text-xl font-semibold">Related Plays</h2>
+          <h2 className="text-xl font-semibold">Related Workflows</h2>
           <div className="flex flex-wrap gap-2">
             {play.relatedPlays.map((slug) => (
               <Link key={slug} href={`/plays/${slug}`}>
@@ -223,7 +223,7 @@ export default async function PlayPage({
           Authored by {play.author}. Version {play.version}.
         </p>
         <p>
-          Part of Miller AI Plays, an Academic Enrichment Services initiative.
+          Part of Miller AI Workflows, an Academic Enrichment Services initiative.
         </p>
         <p className="italic">
           Not an official University of Miami publication.
