@@ -43,7 +43,7 @@ export function StudyProblems() {
           <Link
             key={item.href}
             href={item.href}
-            className="rounded-xl border border-border p-4 hover:shadow-md hover:border-brand/30 transition-all h-full space-y-2 block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="rounded-xl border border-border p-4 hover:bg-marker/30 hover:border-brand transition-all h-full space-y-2 block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             <p className="text-sm text-muted-foreground italic">&ldquo;{item.problem}&rdquo;</p>
             <p className="text-sm font-semibold text-brand">Try: {item.solution} &rarr;</p>

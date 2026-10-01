@@ -62,7 +62,7 @@ export default function Phase2Page() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 space-y-10">
       <header className="space-y-3">
-        <Badge className="bg-amber-100 text-amber-800">Phase 2</Badge>
+        <Badge className="bg-muted text-brand">Phase 2</Badge>
         <h1 className="text-3xl font-bold tracking-tight">
           Clerkships + Step Prep
         </h1>
@@ -86,7 +86,7 @@ export default function Phase2Page() {
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {rotations.map((r) => (
             <Link key={r.slug} href={`/phase/2/${r.slug}`}>
-              <div className="rounded-xl border border-border p-4 hover:shadow-md hover:border-brand/30 transition-all cursor-pointer text-center space-y-1">
+              <div className="rounded-xl border border-border p-4 hover:bg-marker/30 hover:border-brand transition-all cursor-pointer text-center space-y-1">
                 <p className="font-semibold text-sm">{r.label}</p>
               </div>
             </Link>
@@ -101,12 +101,12 @@ export default function Phase2Page() {
         <div className="space-y-3">
           {corePlaybooks.map((play) => (
             <Link key={play.slug} href={`/plays/${play.slug}`}>
-              <div className="rounded-xl border border-border p-5 hover:shadow-md hover:border-brand/30 transition-all cursor-pointer space-y-1">
+              <div className="rounded-xl border border-border p-5 hover:bg-marker/30 hover:border-brand transition-all cursor-pointer space-y-1">
                 <div className="flex items-center justify-between">
                   <h3 className="font-semibold">{play.title}</h3>
                   <Badge
                     variant="secondary"
-                    className="text-[10px] bg-highlight/10 text-highlight"
+                    className="text-[10px] bg-marker text-brand"
                   >
                     {play.tag}
                   </Badge>
@@ -128,7 +128,7 @@ export default function Phase2Page() {
         ]}
       />
 
-      <section className="rounded-xl border-l-4 border-highlight bg-teal-50 p-5 space-y-2">
+      <section className="rounded-xl border-l-4 border-brand bg-muted p-5 space-y-2">
         <h3 className="font-semibold">Dedicated study: Step prep rhythm</h3>
         <p className="text-sm text-muted-foreground">
           During dedicated study, your daily rhythm should include Error Engine

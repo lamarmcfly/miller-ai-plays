@@ -7,7 +7,7 @@ import { promptCategories, promptLibrary } from "@/lib/prompt-library";
 import { phases, type PhaseId } from "@/lib/question-spec";
 
 const chipClass =
-  "rounded-full border border-border bg-white px-3 py-1 text-xs font-medium transition-colors hover:border-brand/40 hover:bg-brand/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer aria-pressed:border-brand aria-pressed:bg-brand aria-pressed:text-white";
+  "border border-border bg-card px-3 py-1 text-xs font-medium transition-colors hover:border-brand hover:bg-marker/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer aria-pressed:border-brand aria-pressed:bg-marker";
 
 export function PromptLibrary() {
   const [phase, setPhase] = useState<PhaseId | "all">("all");
@@ -36,7 +36,7 @@ export function PromptLibrary() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="e.g., schedule, flashcards, ethics"
-            className="w-full max-w-sm rounded-md border border-border bg-white px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ring"
+            className="w-full max-w-sm rounded-md border border-border bg-card px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ring"
           />
         </div>
         <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Filter by phase">

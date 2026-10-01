@@ -29,7 +29,7 @@ export const categoryLabels: Record<string, string> = {
 };
 
 export const categoryColors: Record<string, string> = {
-  prompt: "bg-purple-100 text-purple-800",
-  question: "bg-blue-100 text-blue-800",
-  "workflow-tip": "bg-amber-100 text-amber-800",
+  prompt: "bg-muted text-brand",
+  question: "bg-muted text-brand",
+  "workflow-tip": "bg-muted text-brand",
 };

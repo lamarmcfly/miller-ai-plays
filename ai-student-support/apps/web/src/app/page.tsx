@@ -12,43 +12,77 @@ export default function HomePage() {
   return (
     <div className="space-y-12">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-brand via-brand-light to-brand-dark text-white">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:py-20 space-y-6">
-          <div className="space-y-3 max-w-2xl">
-            <p className="text-indigo-200/90 text-sm font-medium tracking-wide uppercase">
+      <section className="border-b border-brand">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:py-20 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="space-y-6">
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
               For medical students at any school
             </p>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl leading-[1.1]">
-              AI workflows for
+            <h1 className="text-5xl sm:text-6xl font-medium leading-[1.02]">
+              Practice questions
               <br />
-              medical students
+              that read like the{" "}
+              <span className="italic bg-marker px-1.5 -mx-1">real exam.</span>
             </h1>
-            <p className="text-lg text-indigo-100/90 leading-relaxed">
-              90 seconds to learn. 5 minutes to use. Specific, repeatable
-              workflows and custom practice questions built for the way you
-              actually study.
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+              Pick your exam, your phase, and the topic you keep missing. Get a
+              prompt that makes any AI tool write original, exam-realistic
+              questions. Plus short, copy-paste study workflows you can learn in
+              90 seconds.
+            </p>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
+              <Link
+                href="/question-builder"
+                className="inline-flex items-center bg-brand text-white hover:bg-brand-light px-5 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              >
+                Build practice questions
+              </Link>
+              <Link
+                href="/plays/first-ai-session"
+                className="text-sm font-medium underline decoration-marker decoration-4 underline-offset-[6px] hover:bg-marker/50"
+              >
+                or start your first AI session
+              </Link>
+            </div>
+            <p className="font-mono text-xs text-muted-foreground pt-2">
+              {plays.length} Plays &middot; any AI tool &middot; free &middot; no account
             </p>
           </div>
-          <div className="flex flex-wrap gap-3 pt-2">
-            <Link
-              href="/question-builder"
-              className="inline-flex items-center rounded-lg bg-white text-brand hover:bg-indigo-50 px-5 py-2.5 text-sm font-semibold transition-colors"
-            >
-              Build practice questions
-            </Link>
-            <Link
-              href="/plays/first-ai-session"
-              className="inline-flex items-center rounded-lg bg-white/10 hover:bg-white/20 text-white px-5 py-2.5 text-sm font-medium transition-colors border border-white/20"
-            >
-              Start your first AI session
-            </Link>
-          </div>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-1 pt-4 text-sm text-indigo-100/80">
-            <span>{plays.length} Plays</span>
-            <span>Free tools only</span>
-            <span>Works with any AI tool</span>
-            <span>Any school, any phase</span>
-          </div>
+
+          <figure aria-label="Sample practice question" className="space-y-3">
+            <div className="border border-brand bg-card p-6 sm:p-7 space-y-4">
+              <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                <span>Question 1 of 10</span>
+                <span>Phase 2 &middot; foundational</span>
+              </div>
+              <p className="text-[15px] leading-relaxed">
+                A 24-year-old woman presents with 3 days of dysuria and urinary frequency. She has no fever or flank
+                pain. Temperature is 37.1&deg;C (98.8&deg;F). Urinalysis is positive for leukocyte esterase and
+                nitrites. Which of the following is the most likely causal organism?
+              </p>
+              <ol className="space-y-1.5 text-[15px]">
+                {[
+                  ["A", "Enterococcus faecalis"],
+                  ["B", "Escherichia coli"],
+                  ["C", "Klebsiella pneumoniae"],
+                  ["D", "Proteus mirabilis"],
+                  ["E", "Staphylococcus saprophyticus"],
+                ].map(([k, v]) => (
+                  <li
+                    key={k}
+                    className={`flex gap-3 px-2 py-1 -mx-2 ${k === "B" ? "bg-marker" : ""}`}
+                  >
+                    <span className="font-mono text-muted-foreground w-4">{k}</span>
+                    <span>{v}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <figcaption className="text-xs text-muted-foreground">
+              Illustrative sample. The Question Builder asks for stems like this: no named diagnosis, one clear lead-in,
+              five homogeneous options, and a reason each wrong answer tempts.
+            </figcaption>
+          </figure>
         </div>
       </section>
 

@@ -54,7 +54,7 @@ export function QuickStart() {
             <Link
               key={p.href}
               href={p.href}
-              className="rounded-xl border border-border p-4 hover:shadow-md hover:border-brand/30 transition-all text-center"
+              className="rounded-xl border border-border p-4 hover:bg-marker/30 hover:border-brand transition-all text-center"
             >
               <p className="font-semibold text-sm text-brand">{p.label}</p>
               <p className="text-xs text-muted-foreground mt-0.5">{p.desc}</p>
@@ -77,7 +77,7 @@ export function QuickStart() {
               onClick={() => setSelected(selected === i ? null : i)}
               className={`text-left rounded-xl border p-5 transition-all cursor-pointer ${
                 selected === i
-                  ? "border-brand bg-brand/5 shadow-sm ring-1 ring-brand/20"
+                  ? "border-brand bg-muted shadow-sm ring-1 ring-brand/20"
                   : "border-border hover:border-brand/30 hover:bg-muted/30"
               }`}
             >
@@ -90,7 +90,7 @@ export function QuickStart() {
         </div>
 
         {selected !== null && (
-          <div className="rounded-xl border border-brand/20 bg-brand/5 p-5 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="rounded-xl border border-border bg-muted p-5 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
             <p className="text-sm font-semibold text-brand">
               Recommended for you:
             </p>
@@ -99,12 +99,12 @@ export function QuickStart() {
                 <Link
                   key={play.slug}
                   href={`/plays/${play.slug}`}
-                  className="flex items-center justify-between gap-3 rounded-lg bg-white border border-border p-3 hover:shadow-md hover:border-brand/30 transition-all"
+                  className="flex items-center justify-between gap-3 rounded-lg bg-card border border-border p-3 hover:bg-marker/30 hover:border-brand transition-all"
                 >
                   <span className="text-sm font-medium">{play.title}</span>
                   <Badge
                     variant="secondary"
-                    className="shrink-0 text-[10px] bg-highlight/10 text-highlight border-0"
+                    className="shrink-0 text-[10px] bg-marker text-brand border-0"
                   >
                     {play.tag}
                   </Badge>

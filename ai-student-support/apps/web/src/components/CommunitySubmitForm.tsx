@@ -38,7 +38,7 @@ export function CommunitySubmitForm() {
             <select
               name="cohort"
               required
-              className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm"
+              className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm"
             >
               <option value="">Select...</option>
               <option value="MS1">MS1</option>
@@ -52,7 +52,7 @@ export function CommunitySubmitForm() {
             <select
               name="category"
               required
-              className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm"
+              className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm"
             >
               <option value="">Select...</option>
               <option value="prompt">I&apos;m sharing a prompt</option>
@@ -101,7 +101,7 @@ export function CommunitySubmitForm() {
           <select
             name="tool"
             required
-            className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm"
+            className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm"
           >
             <option value="">Select...</option>
             <option value="any-llm">Any LLM (Claude, ChatGPT, Copilot, etc.)</option>

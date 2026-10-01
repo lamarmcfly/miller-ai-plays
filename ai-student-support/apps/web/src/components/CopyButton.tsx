@@ -49,7 +49,7 @@ export function CopyButton({
       variant={state === "copied" ? "secondary" : "default"}
       className={
         state === "idle"
-          ? `bg-highlight hover:bg-highlight-dark text-white ${className ?? ""}`
+          ? `bg-brand hover:bg-brand-light text-white ${className ?? ""}`
           : className
       }
     >

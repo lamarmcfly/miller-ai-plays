@@ -28,7 +28,7 @@ export function PhasePractice({
           <Link
             key={l.href}
             href={l.href}
-            className="rounded-xl border border-border p-4 hover:shadow-md hover:border-brand/30 transition-all space-y-1 block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="rounded-xl border border-border p-4 hover:bg-marker/30 hover:border-brand transition-all space-y-1 block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             <p className="font-semibold text-sm text-brand">{l.label} &rarr;</p>
             <p className="text-xs text-muted-foreground">{l.blurb}</p>

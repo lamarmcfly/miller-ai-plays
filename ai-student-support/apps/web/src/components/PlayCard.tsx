@@ -5,7 +5,7 @@ import { difficultyColors, type Play } from "@/lib/schema";
 export function PlayCard({ play }: { play: Play }) {
   return (
     <Link href={`/plays/${play.slug}`} className="group block h-full">
-      <div className="h-full rounded-xl border border-border bg-card p-5 space-y-3 transition-all group-hover:shadow-lg group-hover:border-brand/30 group-hover:-translate-y-0.5">
+      <div className="h-full rounded-xl border border-border bg-card p-5 space-y-3 transition-all group-hover:bg-marker/30 group-hover:border-brand">
         <div className="space-y-1.5">
           <div className="flex items-start justify-between gap-2">
             <h3 className="text-base font-semibold leading-snug group-hover:text-brand transition-colors">

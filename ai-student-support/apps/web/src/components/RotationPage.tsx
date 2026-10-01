@@ -57,7 +57,7 @@ export function RotationPage({
         <div className="space-y-3">
           {plays.map((play) => (
             <Link key={play.slug} href={`/plays/${play.slug}`}>
-              <div className="rounded-xl border border-border p-5 hover:shadow-md hover:border-brand/30 transition-all cursor-pointer space-y-1">
+              <div className="rounded-xl border border-border p-5 hover:bg-marker/30 hover:border-brand transition-all cursor-pointer space-y-1">
                 <h3 className="font-semibold">{play.title}</h3>
                 <p className="text-sm text-muted-foreground">{play.why}</p>
               </div>
@@ -66,7 +66,7 @@ export function RotationPage({
         </div>
       </section>
 
-      <section className="rounded-xl border-l-4 border-highlight bg-teal-50 p-5 space-y-2">
+      <section className="rounded-xl border-l-4 border-brand bg-muted p-5 space-y-2">
         <h2 className="text-lg font-semibold">Practice questions for {name}</h2>
         <p className="text-sm text-muted-foreground">
           Build a custom shelf-style question set for this rotation: choose the topic, difficulty, and how you want
@@ -95,7 +95,7 @@ export function RotationPage({
       </section>
 
       {rhythm && (
-        <section className="rounded-xl border-l-4 border-brand bg-indigo-50 p-5 space-y-2">
+        <section className="rounded-xl border-l-4 border-brand bg-muted p-5 space-y-2">
           <h2 className="font-semibold">{rhythm.title}</h2>
           <ul className="text-sm text-muted-foreground space-y-1.5">
             {rhythm.items.map((i) => (

@@ -161,7 +161,7 @@ export default function ToolkitPage() {
         <h2 className="text-xl font-semibold">
           What NOT to put into AI tools
         </h2>
-        <div className="rounded-lg border-l-4 border-red-400 bg-red-50 p-4 space-y-2">
+        <div className="rounded-lg border-l-4 border-flag bg-muted p-4 space-y-2">
           <ul className="text-sm text-muted-foreground space-y-2">
             <li>
               <strong>No patient identifying information.</strong> No names,

@@ -46,7 +46,7 @@ export default function Phase3Page() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 space-y-10">
       <header className="space-y-3">
-        <Badge className="bg-purple-100 text-purple-800">Phase 3</Badge>
+        <Badge className="bg-muted text-brand">Phase 3</Badge>
         <h1 className="text-3xl font-bold tracking-tight">
           Specialties + Advanced Clinical
         </h1>
@@ -66,12 +66,12 @@ export default function Phase3Page() {
         <div className="space-y-3">
           {corePlaybooks.map((play) => (
             <Link key={play.slug} href={`/plays/${play.slug}`}>
-              <div className="rounded-xl border border-border p-5 hover:shadow-md hover:border-brand/30 transition-all cursor-pointer space-y-1">
+              <div className="rounded-xl border border-border p-5 hover:bg-marker/30 hover:border-brand transition-all cursor-pointer space-y-1">
                 <div className="flex items-center justify-between">
                   <h3 className="font-semibold">{play.title}</h3>
                   <Badge
                     variant="secondary"
-                    className="text-[10px] bg-highlight/10 text-highlight"
+                    className="text-[10px] bg-marker text-brand"
                   >
                     {play.tag}
                   </Badge>
@@ -93,7 +93,7 @@ export default function Phase3Page() {
         ]}
       />
 
-      <section className="rounded-xl border-l-4 border-purple-400 bg-purple-50 p-5 space-y-2">
+      <section className="rounded-xl border-l-4 border-flag bg-muted p-5 space-y-2">
         <h3 className="font-semibold">Phase 3 pro tips</h3>
         <ul className="text-sm text-muted-foreground space-y-1.5">
           <li>Adapt Rounds Prep prompts to your specialty&apos;s question style</li>

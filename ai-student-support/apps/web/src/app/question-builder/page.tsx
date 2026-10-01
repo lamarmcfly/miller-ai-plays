@@ -103,7 +103,7 @@ export default function QuestionBuilderPage() {
           </ul>
         </div>
 
-        <div className="rounded-xl border-l-4 border-red-400 bg-red-50 p-5 space-y-3">
+        <div className="rounded-xl border-l-4 border-flag bg-muted p-5 space-y-3">
           <h2 className="text-lg font-semibold">Use it responsibly</h2>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>

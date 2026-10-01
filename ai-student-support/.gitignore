@@ -32,7 +32,6 @@ public/videos/*.mp4
 !public/videos/.gitkeep
 
 # Legacy files (locked by other processes)
-sharepoint-page-template-build.txt
 
 .vercel
 

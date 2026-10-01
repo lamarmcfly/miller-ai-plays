@@ -11,7 +11,7 @@ interface Item {
 const scenarios: { label: string; color: string; plays: Item[] }[] = [
   {
     label: "I need practice questions on a specific topic",
-    color: "border-indigo-200 bg-indigo-50/50",
+    color: "border-border bg-muted",
     plays: [
       { href: "/question-builder", title: "Question Builder" },
       { slug: "custom-practice-questions", title: "Custom Practice Questions" },
@@ -19,7 +19,7 @@ const scenarios: { label: string; color: string; plays: Item[] }[] = [
   },
   {
     label: "I bombed a UWorld block",
-    color: "border-red-200 bg-red-50/50",
+    color: "border-border bg-muted",
     plays: [
       { slug: "error-engine", title: "Error Engine" },
       { slug: "deficit-tracker", title: "Deficit Tracker" },
@@ -27,7 +27,7 @@ const scenarios: { label: string; color: string; plays: Item[] }[] = [
   },
   {
     label: "I have a shelf in 2 weeks",
-    color: "border-amber-200 bg-amber-50/50",
+    color: "border-border bg-muted",
     plays: [
       { slug: "shelf-review-notebook", title: "Shelf Review Notebook" },
       { slug: "lecture-compressor", title: "Lecture Compressor" },
@@ -35,7 +35,7 @@ const scenarios: { label: string; color: string; plays: Item[] }[] = [
   },
   {
     label: "I'm starting a new clerkship",
-    color: "border-blue-200 bg-blue-50/50",
+    color: "border-border bg-muted",
     plays: [
       { slug: "osce-encounter-sim", title: "OSCE Encounter Sim" },
       { slug: "rounds-prep", title: "Rounds Prep" },
@@ -43,7 +43,7 @@ const scenarios: { label: string; color: string; plays: Item[] }[] = [
   },
   {
     label: "I'm forgetting what I studied",
-    color: "border-teal-200 bg-teal-50/50",
+    color: "border-border bg-muted",
     plays: [
       { href: "/question-builder?exam=flashcards", title: "Flashcards from my notes" },
       { href: "/prompts", title: "Spaced-review calendar" },
@@ -51,7 +51,7 @@ const scenarios: { label: string; color: string; plays: Item[] }[] = [
   },
   {
     label: "I just sat through a lecture",
-    color: "border-indigo-200 bg-indigo-50/50",
+    color: "border-border bg-muted",
     plays: [
       { slug: "lecture-compressor", title: "Lecture Compressor" },
       { slug: "first-ai-session", title: "First AI Session" },

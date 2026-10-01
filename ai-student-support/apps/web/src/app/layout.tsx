@@ -1,12 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Newsreader, Instrument_Sans, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { SiteNav } from "@/components/SiteNav";
 import { navLinks } from "@/lib/nav";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const display = Newsreader({
+  variable: "--font-display-face",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+});
+
+const body = Instrument_Sans({
+  variable: "--font-body-face",
   subsets: ["latin"],
 });
 
@@ -37,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${display.variable} ${body.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <a
@@ -46,7 +52,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <header className="border-b border-border/60 bg-white/95 backdrop-blur-sm sticky top-0 z-50">
+        <header className="border-b border-brand bg-background sticky top-0 z-50">
           <SiteNav />
         </header>
 
@@ -54,32 +60,34 @@ export default function RootLayout({
           {children}
         </main>
 
-        <footer className="border-t border-border/60 bg-indigo-950 mt-auto">
-          <div className="mx-auto max-w-6xl px-4 py-10 space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <footer className="bg-brand text-stone-300 mt-auto">
+          <div className="mx-auto max-w-6xl px-4 py-10 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <div>
-                <p className="text-white font-semibold text-sm">Miller AI Plays</p>
-                <p className="text-indigo-200/80 text-xs mt-0.5">
+                <p className="font-[family-name:var(--font-display)] text-2xl text-white leading-none">
+                  Miller AI Plays
+                </p>
+                <p className="text-xs mt-2 text-stone-400">
                   A free study resource for medical students at any school
                 </p>
               </div>
-              <nav aria-label="Footer" className="flex flex-wrap gap-4 text-xs">
+              <nav aria-label="Footer" className="flex flex-wrap gap-x-5 gap-y-1 text-sm">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-indigo-200/80 hover:text-white transition-colors"
+                    className="text-stone-300 hover:text-marker underline-offset-4 hover:underline"
                   >
                     {link.label}
                   </Link>
                 ))}
               </nav>
             </div>
-            <div className="border-t border-indigo-200/20 pt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-indigo-200/70">
+            <div className="border-t border-stone-700 pt-4 flex flex-col sm:flex-row sm:justify-between gap-2 text-xs text-stone-400">
               <p>
-                Created by <span className="text-indigo-100">Lamar Martin</span>
+                Created by <span className="text-stone-200">Lamar Martin</span>
               </p>
-              <p className="italic">
+              <p className="max-w-xl sm:text-right">
                 Independent project. Not affiliated with any medical school, exam provider, or AI company. For study
                 only; not medical advice.
               </p>

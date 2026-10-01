@@ -19,10 +19,10 @@ export function TagFilter({
             type="button"
             aria-pressed={on}
             onClick={() => onToggle(tag)}
-            className={`inline-flex h-7 items-center rounded-full border px-3 text-xs font-medium transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${
+            className={`inline-flex h-7 items-center rounded-sm border px-3 text-xs font-medium transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${
               on
                 ? "border-brand bg-brand text-white hover:bg-brand-dark"
-                : "border-border bg-white hover:bg-muted"
+                : "border-border bg-card hover:bg-muted"
             }`}
           >
             {tag}

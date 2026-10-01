@@ -89,7 +89,7 @@ export function FillablePrompt({
                         rows={3}
                         value={values[f] ?? ""}
                         onChange={(e) => setValues((v) => ({ ...v, [f]: e.target.value }))}
-                        className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ring"
+                        className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ring"
                       />
                     ) : (
                       <input
@@ -97,7 +97,7 @@ export function FillablePrompt({
                         type="text"
                         value={values[f] ?? ""}
                         onChange={(e) => setValues((v) => ({ ...v, [f]: e.target.value }))}
-                        className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ring"
+                        className="w-full rounded-md border border-border bg-card px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ring"
                       />
                     )}
                   </div>

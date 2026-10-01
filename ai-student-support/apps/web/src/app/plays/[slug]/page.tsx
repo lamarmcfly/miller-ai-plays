@@ -142,13 +142,13 @@ export default async function PlayPage({
 
       {/* Learning note - why this works */}
       {play.learningNote && (
-        <section className="rounded-lg bg-blue-50 border border-blue-100 p-4 flex gap-3">
-          <span className="text-blue-500 text-lg shrink-0">&#9432;</span>
+        <section className="rounded-lg bg-muted border border-border p-4 flex gap-3">
+          <span className="text-highlight text-lg shrink-0">&#9432;</span>
           <div>
-            <p className="text-xs font-semibold text-blue-700 uppercase tracking-wide mb-1">
+            <p className="text-xs font-semibold text-brand uppercase tracking-wide mb-1">
               Why this works
             </p>
-            <p className="text-sm text-blue-900/80 leading-relaxed">
+            <p className="text-sm text-foreground leading-relaxed">
               {play.learningNote}
             </p>
           </div>
@@ -189,7 +189,7 @@ export default async function PlayPage({
       <Separator />
 
       {/* Section 7 - When to use this */}
-      <section className="rounded-lg border-l-4 border-highlight bg-teal-50 p-4 space-y-2">
+      <section className="rounded-lg border-l-4 border-brand bg-muted p-4 space-y-2">
         <h2 className="text-xl font-semibold">When to use this</h2>
         <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
           {play.whenToUse}
@@ -197,7 +197,7 @@ export default async function PlayPage({
       </section>
 
       {/* Section 8 - Success signal */}
-      <section className="rounded-lg border-l-4 border-brand bg-indigo-50 p-4 space-y-2">
+      <section className="rounded-lg border-l-4 border-brand bg-muted p-4 space-y-2">
         <h2 className="text-xl font-semibold">Success signal</h2>
         <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
           {play.successSignal}

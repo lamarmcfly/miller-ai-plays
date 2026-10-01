@@ -33,13 +33,13 @@ import {
 const STORAGE_KEY = "miller-ai-plays:question-builder:v1";
 
 const fieldClass =
-  "w-full rounded-md border border-border bg-white px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ring";
+  "w-full rounded-md border border-border bg-card px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ring";
 
 const cardClass =
-  "flex cursor-pointer flex-col gap-0.5 rounded-lg border border-border bg-white p-3 text-sm transition-colors hover:border-brand/40 has-checked:border-brand has-checked:bg-brand/5 has-checked:ring-1 has-checked:ring-brand/30 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-ring";
+  "flex cursor-pointer flex-col gap-0.5 border border-border bg-card p-3 text-sm transition-colors hover:border-brand has-checked:border-brand has-checked:bg-marker/40 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-ring";
 
 const chipClass =
-  "rounded-full border border-border bg-white px-3 py-1 text-xs font-medium transition-colors hover:border-brand/40 hover:bg-brand/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer aria-pressed:border-brand aria-pressed:bg-brand/10 aria-pressed:text-brand";
+  "border border-border bg-card px-3 py-1 text-xs font-medium transition-colors hover:border-brand hover:bg-marker/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer aria-pressed:border-brand aria-pressed:bg-marker";
 
 /* ---------------------------- state persistence ---------------------------- */
 
@@ -116,13 +116,10 @@ function Step({
   return (
     <fieldset className="space-y-3 min-w-0">
       <legend className="flex items-baseline gap-2 pb-1">
-        <span
-          aria-hidden="true"
-          className="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-brand text-xs font-bold text-white"
-        >
-          {n}
+        <span aria-hidden="true" className="font-mono text-sm text-muted-foreground">
+          {String(n).padStart(2, "0")}
         </span>
-        <span className="text-base font-semibold">{title}</span>
+        <span className="font-[family-name:var(--font-display)] text-xl font-semibold">{title}</span>
       </legend>
       {hint && <p className="text-xs text-muted-foreground -mt-1">{hint}</p>}
       {children}
@@ -515,7 +512,7 @@ export function QuestionBuilder() {
         )}
 
         {/* Advanced */}
-        <details className="rounded-xl border border-border bg-muted/20 p-4 group">
+        <details className="border border-border bg-muted/40 p-4 group">
           <summary className="cursor-pointer text-sm font-semibold rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
             Advanced: personalize further
           </summary>
@@ -601,7 +598,7 @@ export function QuestionBuilder() {
       {/* Output */}
       <aside
         aria-labelledby="your-prompt-heading"
-        className="lg:sticky lg:top-20 space-y-3 rounded-xl border border-brand/20 bg-brand/5 p-4 min-w-0"
+        className="lg:sticky lg:top-20 space-y-3 border border-brand bg-card p-4 min-w-0"
       >
         <div className="flex items-center justify-between gap-3">
           <h2 id="your-prompt-heading" className="text-base font-semibold">
@@ -615,7 +612,7 @@ export function QuestionBuilder() {
         <pre
           tabIndex={0}
           aria-label="Generated prompt"
-          className="max-h-[26rem] overflow-auto whitespace-pre-wrap rounded-lg border border-border bg-white p-3 font-mono text-xs leading-relaxed focus-visible:outline-2 focus-visible:outline-ring"
+          className="max-h-[26rem] overflow-auto whitespace-pre-wrap rounded-lg border border-border bg-card p-3 font-mono text-xs leading-relaxed focus-visible:outline-2 focus-visible:outline-ring"
         >
           {prompt}
         </pre>
@@ -628,7 +625,7 @@ export function QuestionBuilder() {
                 href={`https://claude.ai/new?q=${encoded}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-9 items-center rounded-lg border border-border bg-white px-3 text-sm font-medium hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                className="inline-flex h-9 items-center rounded-lg border border-border bg-card px-3 text-sm font-medium hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
                 Open in Claude
               </a>
@@ -636,7 +633,7 @@ export function QuestionBuilder() {
                 href={`https://chatgpt.com/?q=${encoded}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-9 items-center rounded-lg border border-border bg-white px-3 text-sm font-medium hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                className="inline-flex h-9 items-center rounded-lg border border-border bg-card px-3 text-sm font-medium hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
                 Open in ChatGPT
               </a>

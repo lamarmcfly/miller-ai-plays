@@ -78,7 +78,7 @@ export function CommunityPostCard({
           )}
           <Badge
             variant="outline"
-            className="text-xs bg-indigo-50 text-indigo-700 border-indigo-200"
+            className="text-xs bg-muted text-brand border-border"
           >
             Safety reviewed
           </Badge>

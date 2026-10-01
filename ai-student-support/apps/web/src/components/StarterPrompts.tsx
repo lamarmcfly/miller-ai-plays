@@ -30,7 +30,7 @@ export function StarterPrompts({ prompts }: { prompts: StarterPrompt[] }) {
       </button>
 
       {open && (
-        <div className="space-y-3 pl-4 border-l-2 border-highlight/20">
+        <div className="space-y-3 pl-4 border-l-2 border-border">
           <p className="text-xs text-muted-foreground">
             Simpler prompts you can paste straight into a chat. Fill in the
             blanks below, or just copy and replace the [BRACKETS] yourself.

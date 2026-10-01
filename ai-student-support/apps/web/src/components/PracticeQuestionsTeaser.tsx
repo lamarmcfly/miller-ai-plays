@@ -38,7 +38,7 @@ export function PracticeQuestionsTeaser() {
           <Link
             key={c.phase}
             href={c.href}
-            className="group rounded-xl border border-border bg-card p-5 space-y-2 hover:shadow-md hover:border-brand/30 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="group rounded-xl border border-border bg-card p-5 space-y-2 hover:bg-marker/30 hover:border-brand transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             <p className="text-[11px] font-semibold uppercase tracking-wide text-highlight">{c.phase}</p>
             <h3 className="font-semibold leading-snug group-hover:text-brand transition-colors">{c.title}</h3>

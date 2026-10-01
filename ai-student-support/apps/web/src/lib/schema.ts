@@ -79,7 +79,7 @@ export const audienceLabels: Record<string, string> = {
 };
 
 export const difficultyColors: Record<string, string> = {
-  beginner: "bg-green-100 text-green-800",
-  intermediate: "bg-amber-100 text-amber-800",
-  advanced: "bg-red-100 text-red-800",
+  beginner: "bg-muted text-brand",
+  intermediate: "bg-marker/60 text-brand",
+  advanced: "bg-marker text-brand",
 };
