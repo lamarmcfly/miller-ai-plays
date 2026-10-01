@@ -46,8 +46,11 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-  --color-miller-green: #00543C;
-  --color-miller-orange: #F47321;
+  --color-brand: #4338ca;
+  --color-brand-dark: #3730a3;
+  --color-brand-light: #4f46e5;
+  --color-highlight: #0f766e;
+  --color-highlight-dark: #115e59;
 }
 
 :root {
@@ -57,10 +60,10 @@
   --card-foreground: oklch(0.17 0.02 260);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.17 0.02 260);
-  --primary: oklch(0.32 0.06 160);
+  --primary: oklch(0.43 0.2 277);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.96 0.005 160);
-  --secondary-foreground: oklch(0.25 0.04 160);
+  --secondary: oklch(0.96 0.01 277);
+  --secondary-foreground: oklch(0.3 0.1 277);
   --muted: oklch(0.965 0.003 110);
   --muted-foreground: oklch(0.5 0.01 260);
   --accent: oklch(0.965 0.005 60);
@@ -68,16 +71,16 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.91 0.005 110);
   --input: oklch(0.91 0.005 110);
-  --ring: oklch(0.45 0.06 160);
+  --ring: oklch(0.5 0.17 277);
   --chart-1: oklch(0.65 0.15 40);
-  --chart-2: oklch(0.45 0.1 160);
+  --chart-2: oklch(0.5 0.12 190);
   --chart-3: oklch(0.55 0.05 260);
   --chart-4: oklch(0.7 0.1 80);
   --chart-5: oklch(0.5 0.15 320);
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.32 0.06 160);
+  --sidebar-primary: oklch(0.43 0.2 277);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
@@ -94,5 +97,24 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+/* Respect users who ask for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
 }

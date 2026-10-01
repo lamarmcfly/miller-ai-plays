@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { PhasePractice } from "@/components/PhasePractice";
 
 export const metadata: Metadata = {
   title: "Phase 1 - Classroom Foundations",
   description:
-    "AI workflows for Phase 1 students at Miller. Build study habits that compound from day one.",
+    "AI workflows and practice questions for pre-clerkship students: lectures, course exams, anatomy practicals, and Step 1 or Level 1 prep.",
 };
 
 const corePlaybooks = [
@@ -45,7 +46,8 @@ export default function Phase1Page() {
           Classroom Foundations
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          Phase 1 is about building the study systems that carry you through the
+          Phase 1 (also called pre-clerkship, foundations, or the first two
+          years) is about building the study systems that carry you through the
           rest of medical school. These Plays help you turn lectures into lasting
           knowledge, build Anki decks efficiently, and develop the kind of
           conceptual understanding that survives board exams.
@@ -55,16 +57,16 @@ export default function Phase1Page() {
       <Separator />
 
       <section className="space-y-4">
-        <h2 className="text-xl font-bold">Your Phase 1 workflows</h2>
+        <h2 className="text-xl font-bold">Your Phase 1 Plays</h2>
         <div className="space-y-3">
           {corePlaybooks.map((play) => (
             <Link key={play.slug} href={`/plays/${play.slug}`}>
-              <div className="rounded-xl border border-border p-5 hover:shadow-md hover:border-[#00543C]/30 transition-all cursor-pointer space-y-1">
+              <div className="rounded-xl border border-border p-5 hover:shadow-md hover:border-brand/30 transition-all cursor-pointer space-y-1">
                 <div className="flex items-center justify-between">
                   <h3 className="font-semibold">{play.title}</h3>
                   <Badge
                     variant="secondary"
-                    className="text-[10px] bg-[#F47321]/10 text-[#F47321]"
+                    className="text-[10px] bg-highlight/10 text-highlight"
                   >
                     {play.tag}
                   </Badge>
@@ -76,12 +78,23 @@ export default function Phase1Page() {
         </div>
       </section>
 
-      <section className="rounded-xl border-l-4 border-[#00543C] bg-green-50 p-5 space-y-2">
+      <PhasePractice
+        intro="Course exams reward understanding of what was taught; licensing exams reward applying it in a vignette. Build both."
+        links={[
+          { label: "Quiz from my lecture notes", blurb: "Source-grounded questions from your own material", href: "/question-builder?preset=course-notes" },
+          { label: "Step 1 / Level 1 pharmacology", blurb: "Mechanism and adverse-effect vignettes", href: "/question-builder?preset=step1-pharm" },
+          { label: "Anatomy practical stations", blurb: "Identify, then clinical follow-ups", href: "/question-builder?preset=anatomy-practical" },
+          { label: "Flashcards from my notes", blurb: "Cloze cards ready for Anki", href: "/question-builder?exam=flashcards" },
+        ]}
+      />
+
+      <section className="rounded-xl border-l-4 border-brand bg-indigo-50 p-5 space-y-2">
         <h3 className="font-semibold">Phase 1 study rhythm</h3>
         <ul className="text-sm text-muted-foreground space-y-1.5">
           <li>After every lecture: run Lecture Compressor (5 min)</li>
-          <li>When a concept won't stick: open Concept Coach (10 min)</li>
+          <li>When a concept won&apos;t stick: open Concept Coach (10 min)</li>
           <li>Before journal club: run Research Speed Read (2 min per paper)</li>
+          <li>Weekly: take a 10-question quiz on the week&apos;s material (Question Builder)</li>
           <li>Weekly: review your Anki deck growth and retention stats</li>
         </ul>
       </section>
@@ -89,7 +102,7 @@ export default function Phase1Page() {
       <div className="flex gap-3">
         <Link
           href="/phase/2"
-          className="text-sm text-[#F47321] hover:underline font-medium"
+          className="text-sm text-highlight hover:underline font-medium"
         >
           Phase 2: Clerkships &rarr;
         </Link>

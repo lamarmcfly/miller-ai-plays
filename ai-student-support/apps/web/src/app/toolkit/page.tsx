@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator";
 export const metadata: Metadata = {
   title: "AI Toolkit",
   description:
-    "Every AI tool Miller medical students can use for free, plus how they fit your existing study stack.",
+    "Free AI tools for medical students, plus how they fit your existing study stack.",
 };
 
 const tools = [
@@ -28,9 +28,9 @@ const tools = [
   {
     name: "Microsoft Copilot",
     provider: "Microsoft",
-    plan: "Free via UM license",
+    plan: "Free tier",
     url: "https://copilot.microsoft.com",
-    bestFor: "Microsoft 365 integration, document summarization, Teams integration",
+    bestFor: "Microsoft 365 integration and document summarization. Some schools provide a managed version; check yours.",
   },
   {
     name: "NotebookLM",
@@ -42,6 +42,12 @@ const tools = [
 ];
 
 const studyStackIntegrations = [
+  {
+    tool: "Lecture notes / slides",
+    arrow: "Question Builder",
+    description:
+      "Paste your own notes and get exam-style questions written only from what your course taught",
+  },
   {
     tool: "UWorld",
     arrow: "Error Engine + Deficit Tracker",
@@ -77,8 +83,8 @@ export default function ToolkitPage() {
       <header className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight">AI Toolkit</h1>
         <p className="text-lg text-muted-foreground">
-          Every AI tool you can use for free as a Miller medical student - plus
-          how they connect to the study tools you already use.
+          Free AI tools you can use for studying, plus how they connect to the
+          study tools you already use.
         </p>
       </header>
 
@@ -86,7 +92,7 @@ export default function ToolkitPage() {
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">AI tools you can use</h2>
         <p className="text-sm text-muted-foreground">
-          All Workflows in this library work with any of these tools. Pick whichever
+          Every Play in this library work with any of these tools. Pick whichever
           you prefer.
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
@@ -107,7 +113,7 @@ export default function ToolkitPage() {
                   href={t.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-[#F47321] hover:underline font-medium"
+                  className="text-sm text-highlight hover:underline font-medium"
                 >
                   Open {t.name} &rarr;
                 </a>
@@ -125,7 +131,7 @@ export default function ToolkitPage() {
           How AI fits your existing study stack
         </h2>
         <p className="text-sm text-muted-foreground">
-          You're already using these tools. Here's how AI Plays make them
+          You&apos;re already using these tools. Here&apos;s how AI Plays make them
           better.
         </p>
         <div className="space-y-3">
@@ -138,7 +144,7 @@ export default function ToolkitPage() {
                 <p className="font-semibold text-sm">{s.tool}</p>
               </div>
               <div className="text-sm text-muted-foreground">
-                <span className="font-medium text-[#00543C]">
+                <span className="font-medium text-brand">
                   &rarr; {s.arrow}
                 </span>
                 <p className="mt-1">{s.description}</p>
@@ -183,17 +189,14 @@ export default function ToolkitPage() {
 
       <Separator />
 
-      {/* AES contact */}
+      {/* Policy + help */}
       <section className="rounded-lg border border-border bg-muted/30 p-6 text-center space-y-3">
-        <h2 className="text-xl font-semibold">Need individualized help?</h2>
+        <h2 className="text-xl font-semibold">Check your school&apos;s policy</h2>
         <p className="text-sm text-muted-foreground max-w-lg mx-auto">
-          If your practice test scores are plateauing or you need a
-          personalized study strategy, reach out to Academic Enrichment
-          Services for individualized coaching.
-        </p>
-        <p className="text-sm font-medium text-[#00543C]">
-          Academic Enrichment Services - University of Miami Miller School of
-          Medicine
+          Rules on AI use differ by school, course, and exam. When in doubt,
+          ask your course director. If your practice scores are plateauing or
+          you need a personalized study strategy, your school&apos;s learning
+          specialist or academic support office can help.
         </p>
       </section>
 
@@ -201,7 +204,7 @@ export default function ToolkitPage() {
       <div className="text-center pt-4">
         <Link
           href="/"
-          className="text-sm text-[#F47321] hover:underline font-medium"
+          className="text-sm text-highlight hover:underline font-medium"
         >
           &larr; Browse all Plays
         </Link>

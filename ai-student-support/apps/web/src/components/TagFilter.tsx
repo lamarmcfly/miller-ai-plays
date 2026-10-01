@@ -1,7 +1,5 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
-
 export function TagFilter({
   options,
   selected,
@@ -13,20 +11,24 @@ export function TagFilter({
 }) {
   return (
     <div className="flex flex-wrap gap-2">
-      {options.map((tag) => (
-        <Badge
-          key={tag}
-          variant={selected.has(tag) ? "default" : "outline"}
-          className={`cursor-pointer transition-colors ${
-            selected.has(tag)
-              ? "bg-[#00543C] hover:bg-[#003d2c] text-white"
-              : "hover:bg-muted"
-          }`}
-          onClick={() => onToggle(tag)}
-        >
-          {tag}
-        </Badge>
-      ))}
+      {options.map((tag) => {
+        const on = selected.has(tag);
+        return (
+          <button
+            key={tag}
+            type="button"
+            aria-pressed={on}
+            onClick={() => onToggle(tag)}
+            className={`inline-flex h-7 items-center rounded-full border px-3 text-xs font-medium transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${
+              on
+                ? "border-brand bg-brand text-white hover:bg-brand-dark"
+                : "border-border bg-white hover:bg-muted"
+            }`}
+          >
+            {tag}
+          </button>
+        );
+      })}
     </div>
   );
 }

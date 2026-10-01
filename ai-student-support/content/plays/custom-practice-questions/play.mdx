@@ -1,0 +1,105 @@
+---
+slug: "custom-practice-questions"
+title: "Custom Practice Questions for Your Exam and Phase"
+hook: "Questions written like the real thing, aimed at what you actually need."
+oneLiner: "Tell the AI your exam, phase, topic, and weak spots; get original, exam-realistic questions with feedback that adapts to you."
+
+audience: ["coursework", "step1", "step2", "step3", "comlex", "shelf", "osce"]
+year: ["MS1", "MS2", "MS3", "MS4"]
+estimatedTime: "2 min to set up, 15-30 min per session"
+difficulty: "beginner"
+
+tools:
+  - name: "Any LLM"
+    plan: "free"
+    url: "https://claude.ai"  # or chatgpt.com, copilot.microsoft.com
+
+video:
+  url: "/videos/custom-practice-questions.mp4"
+  poster: "/videos/custom-practice-questions-poster.jpg"
+  durationSeconds: 85
+  captions: "/videos/custom-practice-questions.vtt"
+
+artifact:
+  type: "prompt"
+  name: "Custom Practice Questions"
+  systemPrompt: |
+    You are an experienced medical educator and professional exam item writer. Write original, exam-realistic practice questions for a medical student, then coach them on the results.
+
+    BEFORE WRITING, ask me ONE message of setup questions (skip any I already answered):
+    1. Which exam or purpose is this for (course exam, USMLE Step 1/2 CK/3, COMLEX Level 1/2, shelf subject, OSCE, oral exam, flashcards, other)?
+    2. Which phase am I in (pre-clerkship, clerkship, or advanced clinical)?
+    3. Subject, topic, or learning objectives? (Or I will paste my own notes: use only those.)
+    4. How many questions, and how hard (foundational, applied, challenging)?
+    5. Do I want questions one at a time, or a full set with answers hidden or at the end?
+    6. Any weak spots to emphasize?
+
+    REALISM STANDARDS
+    - Original questions only. Never reproduce or closely paraphrase a real exam or commercial question-bank item.
+    - Clinical vignettes: age and sex, setting, chief complaint with time course, pertinent history, vitals with units, focused exam, and key labs or imaging. Do not name the diagnosis. Avoid giveaway buzzwords.
+    - The question must be answerable before reading the options. End with one clear lead-in.
+    - Single best answer with 5 homogeneous options (4 if I ask), similar length, in logical or alphabetical order. No "all/none of the above." Each wrong option should be tempting because of one specific misconception.
+    - Match difficulty to my phase: Phase 1 = mechanism and one concept at a time; Phase 2 = diagnosis, next best step, and management; Phase 3 = multi-step reasoning with ambiguity and close distractors.
+    - Exam style: Step 1/Level 1 = basic science in a vignette (mechanism, pathology, pharmacology); Step 2 CK/Level 2 = diagnosis and management; Step 3 = follow-up, prevention, and risk-benefit; shelf = clerkship-specific vignettes; OSCE = a full simulated-patient station with a checklist; oral exam = escalating one-at-a-time questions.
+    - Keep all patients fictional. Make vitals, labs, and timelines consistent.
+
+    FEEDBACK
+    After each answer: why the right answer is right, why each wrong option is tempting but wrong, and a one-sentence takeaway. Name a guideline or reference I can check (names only; never invent citations or links).
+
+    ADAPT AND DEBRIEF
+    Adjust difficulty after two correct or two missed answers. At the end, give a table of question, topic, right/wrong, and error type (knowledge gap, reasoning error, or test-taking error), then my top 2 concepts to review and 3 new questions on my weakest one.
+
+    HONESTY
+    If you are not confident in a fact, guideline threshold, or dose, say so and mark it VERIFY instead of guessing.
+  cloneInstructions: "Fastest: use the Question Builder page, pick your exam, phase, and topic, and copy the generated prompt. Or paste this prompt into a new chat in any AI tool (or into its custom instructions) and answer its setup questions."
+  cloneUrl: null
+
+whenToUse: |
+  Whenever you want practice that is tailored: after a lecture block, in the
+  weeks before a shelf or licensing exam, when a topic keeps tripping you up,
+  or when you want questions built only from your own notes. Use it between
+  Qbank blocks to drill weak spots, and before an OSCE or oral exam to rehearse.
+
+successSignal: |
+  Within a week you have a repeatable routine: you pick the exam, phase, and
+  topic, get a set that feels like the real format, answer first, and then
+  turn every miss into a follow-up set. You catch at least one AI mistake by
+  checking against a trusted source, which means you are using it safely.
+
+learningNote: "Retrieval practice (testing yourself) beats re-reading for long-term retention. Answering before you see the explanation, and then revisiting what you missed, is what makes the difference, so this Play asks you to commit to an answer first."
+
+starterPrompts:
+  - label: "Quick shelf set"
+    prompt: "Write 10 original NBME-style single-best-answer questions for the [CLERKSHIP] shelf on [TOPIC]. Applied difficulty, 5 options. Ask one at a time and wait for my answer. After each, explain why the right answer is right and why each wrong option is tempting. End with a summary of my error types."
+  - label: "Step 1 mechanism questions"
+    prompt: "Write 8 original USMLE Step 1-style vignettes on [TOPIC] that ask about mechanism or pathophysiology rather than just the diagnosis. Do not name the diagnosis in the stem. One at a time; wait for my answer; then explain the reasoning and the misconception behind each distractor."
+  - label: "Questions from my notes"
+    prompt: "Using ONLY the notes below, write 8 exam-style questions of type [FORMAT]. If the notes do not support a question, say so. One at a time, wait for my answer.\n\n<<<NOTES\n[PASTE YOUR NOTES]\nNOTES>>>"
+
+tags: ["practice-questions", "question-writing", "step-1", "step-2", "shelf", "comlex", "custom"]
+relatedPlays: ["error-engine", "deficit-tracker", "shelf-review-notebook"]
+
+author: "Lamar Martin"
+publishedAt: "2026-10-01"
+updatedAt: "2026-10-01"
+version: "1.0"
+---
+
+## How to get realistic questions
+
+The quality of AI-written questions depends almost entirely on what you tell it. Specify these and the output improves a lot:
+
+- **Exam and style.** Step 1 asks for mechanisms; Step 2 CK asks for the next best step; shelf exams are clerkship-specific; OSCEs need a whole case, not a multiple-choice item.
+- **Your phase.** A pre-clerkship student needs one concept at a time. A clerkship student needs diagnosis and management. An advanced student needs ambiguity and close distractors.
+- **Difficulty.** Ask for foundational, applied, or challenging, and say what each means (the Question Builder does this for you).
+- **Format.** One at a time with feedback, or a full set with the answers hidden.
+- **Your source.** Paste your notes and say "use only these" to get questions that match your course.
+
+## Common pitfalls
+
+- **Do not trust every fact.** AI can write a convincing question with a wrong premise. If something surprises you, check a trusted source before you memorize it.
+- **Answer before you look.** Reading the answer first turns practice into passive review. Commit to an answer, then read the feedback.
+- **Do not paste real exam or question-bank content.** Ask for original questions instead. Licensed content should not be pasted into AI tools.
+- **No patient information.** Use fictional or fully de-identified cases only.
+- **Vague requests produce vague questions.** "Give me questions on cardiology" returns trivia. Name the exam, the phase, the subtopic, and the difficulty.
+- **Feed the misses back in.** The best sessions end with "write new questions on what I missed," not with moving on.

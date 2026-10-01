@@ -7,7 +7,7 @@ export const communityPostSchema = z.object({
   authorDisplayName: z.string(),
   category: z.enum(["prompt", "question", "workflow-tip"]),
   examContext: z.array(
-    z.enum(["step1", "step2", "shelf", "osce", "clerkship", "coursework"])
+    z.enum(["step1", "step2", "step3", "comlex", "shelf", "osce", "clerkship", "coursework"])
   ),
   toolUsed: z.string(),
   title: z.string().min(1),

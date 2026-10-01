@@ -1,18 +1,33 @@
 "use client";
 
+// Set NEXT_PUBLIC_COMMUNITY_FORM_URL to your form endpoint (e.g., a Tally or
+// Google Form link). Until then, the form is replaced by a short notice.
+const FORM_URL = process.env.NEXT_PUBLIC_COMMUNITY_FORM_URL;
+
 export function CommunitySubmitForm() {
+  if (!FORM_URL) {
+    return (
+      <section className="rounded-xl border border-dashed border-border bg-muted/30 p-6 space-y-1">
+        <h2 className="text-lg font-semibold">Share your AI workflow</h2>
+        <p className="text-sm text-muted-foreground">
+          Community submissions are not open yet. Check back soon.
+        </p>
+      </section>
+    );
+  }
+
   return (
     <section className="rounded-xl border border-border bg-muted/30 p-6 space-y-4">
       <div className="space-y-1">
         <h2 className="text-lg font-semibold">Share your AI workflow</h2>
         <p className="text-sm text-muted-foreground">
-          Used AI in a way that helped you study? Share it with your classmates.
-          The Council reviews all submissions for safety before publishing.
+          Used AI in a way that helped you study? Share it with other students.
+          Maintainers review all submissions for safety before publishing.
         </p>
       </div>
 
       <form
-        action="https://tally.so/r/YOUR_FORM_ID"
+        action={FORM_URL}
         method="GET"
         target="_blank"
         className="space-y-4"
@@ -40,9 +55,9 @@ export function CommunitySubmitForm() {
               className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm"
             >
               <option value="">Select...</option>
-              <option value="prompt">I'm sharing a prompt</option>
+              <option value="prompt">I&apos;m sharing a prompt</option>
               <option value="question">I have a question</option>
-              <option value="workflow-tip">I'm sharing a workflow tip</option>
+              <option value="workflow-tip">I&apos;m sharing a workflow tip</option>
             </select>
           </div>
         </div>
@@ -52,7 +67,7 @@ export function CommunitySubmitForm() {
             What exam or course is this for? *
           </label>
           <div className="flex flex-wrap gap-2">
-            {["Step 1", "Step 2 CK", "Shelf", "OSCE", "Clerkship", "Coursework"].map(
+            {["Step 1", "Step 2 CK", "Step 3", "COMLEX", "Shelf", "OSCE", "Clerkship", "Coursework"].map(
               (ctx) => (
                 <label key={ctx} className="flex items-center gap-1.5 text-sm">
                   <input
@@ -137,14 +152,13 @@ export function CommunitySubmitForm() {
 
         <button
           type="submit"
-          className="rounded-md bg-[#00543C] hover:bg-[#003d2c] text-white px-6 py-2 text-sm font-medium transition-colors"
+          className="rounded-md bg-brand hover:bg-brand-dark text-white px-6 py-2 text-sm font-medium transition-colors"
         >
           Submit for review
         </button>
 
         <p className="text-xs text-muted-foreground">
-          Submissions are reviewed by the Miller AI Workflows Council before
-          publishing. By submitting, you confirm this describes a real use case
+          Submissions are reviewed by the maintainers before publishing. By submitting, you confirm this describes a real use case
           and contains no patient identifying information or copyrighted content.
         </p>
       </form>

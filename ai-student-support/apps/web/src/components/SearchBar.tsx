@@ -12,7 +12,8 @@ export function SearchBar({
   return (
     <Input
       type="search"
-      placeholder="Search plays..."
+      placeholder="Search Plays..."
+      aria-label="Search Plays"
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className="max-w-sm"

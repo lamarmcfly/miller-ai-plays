@@ -5,11 +5,11 @@
     "dev": "pnpm --filter web dev",
     "build": "pnpm --filter web build",
     "validate": "tsx scripts/validate-plays.ts",
-    "new-play": "tsx scripts/new-play.ts",
     "setup:sharepoint": "tsx scripts/setup-sharepoint.ts",
     "export:sharepoint": "tsx scripts/export-sharepoint.ts",
     "export:all": "tsx scripts/export-sharepoint.ts --all",
-    "upload:video": "tsx scripts/upload-video.ts"
+    "upload:video": "tsx scripts/upload-video.ts",
+    "check:questions": "tsx scripts/check-question-spec.ts"
   },
   "dependencies": {
     "next": "16.2.6"

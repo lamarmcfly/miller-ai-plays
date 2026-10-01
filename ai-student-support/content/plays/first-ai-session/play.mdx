@@ -24,7 +24,7 @@ artifact:
   type: "prompt"
   name: "First AI Study Session"
   systemPrompt: |
-    I'm an [MS1/MS2/MS3/MS4] medical student at the University of Miami Miller School of Medicine. I'm currently [taking COURSE / on my ROTATION clerkship / preparing for STEP 1/STEP 2 CK/SHELF EXAM]. I just finished a lecture on [TOPIC].
+    I'm a [MS1/MS2/MS3/MS4] medical student. I'm currently [taking COURSE / on my ROTATION clerkship / preparing for STEP 1/STEP 2 CK/SHELF EXAM]. I just finished a lecture on [TOPIC].
 
     Help me study by doing three things:
 
@@ -53,7 +53,7 @@ learningNote: "This Play uses retrieval practice - the most evidence-backed stud
 
 starterPrompts:
   - label: "After a lecture"
-    prompt: "I'm an [MS1/MS2] taking [COURSE NAME] at Miller. I just finished a lecture on [TOPIC]. Give me the 5 most testable facts for my course exam, 3 USMLE-style practice questions with answers, and the one concept students most commonly get wrong."
+    prompt: "I'm an [MS1/MS2] taking [COURSE NAME]. I just finished a lecture on [TOPIC]. Give me the 5 most testable facts for my course exam, 3 USMLE-style practice questions with answers, and the one concept students most commonly get wrong."
   - label: "Before a quiz"
     prompt: "I'm an [MS1/MS2] and I have a quiz tomorrow on [TOPIC] in my [COURSE NAME] class. Give me a rapid-fire review: 10 high-yield facts I need to know, formatted as a numbered list I can scan on my phone in 5 minutes."
   - label: "Reviewing a chapter"

@@ -2,7 +2,21 @@
 
 import Link from "next/link";
 
-const scenarios = [
+interface Item {
+  title: string;
+  slug?: string;
+  href?: string;
+}
+
+const scenarios: { label: string; color: string; plays: Item[] }[] = [
+  {
+    label: "I need practice questions on a specific topic",
+    color: "border-indigo-200 bg-indigo-50/50",
+    plays: [
+      { href: "/question-builder", title: "Question Builder" },
+      { slug: "custom-practice-questions", title: "Custom Practice Questions" },
+    ],
+  },
   {
     label: "I bombed a UWorld block",
     color: "border-red-200 bg-red-50/50",
@@ -28,8 +42,16 @@ const scenarios = [
     ],
   },
   {
+    label: "I'm forgetting what I studied",
+    color: "border-teal-200 bg-teal-50/50",
+    plays: [
+      { href: "/question-builder?exam=flashcards", title: "Flashcards from my notes" },
+      { href: "/prompts", title: "Spaced-review calendar" },
+    ],
+  },
+  {
     label: "I just sat through a lecture",
-    color: "border-green-200 bg-green-50/50",
+    color: "border-indigo-200 bg-indigo-50/50",
     plays: [
       { slug: "lecture-compressor", title: "Lecture Compressor" },
       { slug: "first-ai-session", title: "First AI Session" },
@@ -43,10 +65,10 @@ export function PlaysForRightNow() {
       <div className="space-y-1">
         <h2 className="text-xl font-bold tracking-tight">Plays for right now</h2>
         <p className="text-sm text-muted-foreground">
-          Pick what matches your situation. We'll point you to the right workflow.
+          Pick what matches your situation and we&apos;ll point you to the right Play.
         </p>
       </div>
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {scenarios.map((s) => (
           <div
             key={s.label}
@@ -58,9 +80,9 @@ export function PlaysForRightNow() {
             <div className="flex flex-col gap-1.5">
               {s.plays.map((p) => (
                 <Link
-                  key={p.slug}
-                  href={`/plays/${p.slug}`}
-                  className="text-xs font-medium text-[#00543C] hover:text-[#F47321] transition-colors"
+                  key={p.href ?? p.slug}
+                  href={p.href ?? `/plays/${p.slug}`}
+                  className="text-xs font-medium text-brand hover:text-highlight transition-colors"
                 >
                   {p.title} &rarr;
                 </Link>
