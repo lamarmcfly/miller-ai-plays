@@ -67,7 +67,7 @@ starterPrompts:
     prompt: "Tomorrow I'm seeing patients with [CONDITION] on my [ROTATION] clerkship. From my sources, give me the 5 things I need to know to look prepared on rounds: presentation, key labs, first-line workup, first-line treatment, and what attendings love to pimp on."
 
 tags: ["notebooklm", "shelf", "clerkship", "source-grounded", "review"]
-relatedPlays: ["error-engine", "lecture-compressor", "osce-encounter-sim"]
+relatedPlays: ["error-engine", "lecture-compressor", "osce-encounter-sim", "custom-practice-questions"]
 
 author: "Lamar Martin"
 publishedAt: "2026-06-01"
@@ -99,6 +99,6 @@ Use the six prompt patterns from the Prompt section above. Every answer cites wh
 
 - **Don't load 50 random web pages.** NotebookLM's quality is bounded by your sources. Load 10 great sources, not 50 mediocre ones.
 - **Don't upload copyrighted Qbank content.** NBME, UWorld, AMBOSS - their terms prohibit redistribution. Use your OWN notes from those resources instead.
-- **Don't share notebooks with patient information.** FERPA + HIPAA. Even de-identified patient stories in your notes should be scrubbed before loading.
+- **Don't share notebooks with patient information.** Patient-privacy law (such as HIPAA in the US) applies. Even de-identified patient stories in your notes should be scrubbed before loading.
 - **Don't treat citations as ground truth.** NotebookLM cites which source it pulled from, but it doesn't verify the source itself is correct. If your sources have errors, the notebook will repeat them.
 - **Build one notebook per shelf, not one mega-notebook.** Cross-subject notebooks dilute the focus.

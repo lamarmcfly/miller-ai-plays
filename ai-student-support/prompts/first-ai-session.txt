@@ -1,4 +1,4 @@
-I'm an [MS1/MS2/MS3/MS4] medical student at the University of Miami Miller School of Medicine. I'm currently [taking COURSE / on my ROTATION clerkship / preparing for STEP 1/STEP 2 CK/SHELF EXAM]. I just finished a lecture on [TOPIC].
+I'm a [MS1/MS2/MS3/MS4] medical student. I'm currently [taking COURSE / on my ROTATION clerkship / preparing for STEP 1/STEP 2 CK/SHELF EXAM]. I just finished a lecture on [TOPIC].
 
 Help me study by doing three things:
 

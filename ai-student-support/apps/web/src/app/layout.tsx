@@ -1,10 +1,18 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Newsreader, Instrument_Sans, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import { SiteNav } from "@/components/SiteNav";
+import { navLinks } from "@/lib/nav";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const display = Newsreader({
+  variable: "--font-display-face",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+});
+
+const body = Instrument_Sans({
+  variable: "--font-body-face",
   subsets: ["latin"],
 });
 
@@ -15,20 +23,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Miller AI Workflows",
-    template: "%s | Miller AI Workflows",
+    default: "Miller AI Plays",
+    template: "%s | Miller AI Plays",
   },
   description:
-    "AI workflows for medical students. 90 seconds. No fluff. A peer-curated library from Academic Enrichment Services at UM Miller School of Medicine.",
+    "AI study workflows and custom practice-question prompts for medical students at any school. 90 seconds to learn, 5 minutes to use.",
 };
 
-const navLinks = [
-  { href: "/", label: "Browse" },
-  { href: "/toolkit", label: "Toolkit" },
-  { href: "/community", label: "Community" },
-  { href: "/about", label: "About" },
-  { href: "/council", label: "Council" },
-];
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({
   children,
@@ -38,71 +43,53 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${display.variable} ${body.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <header className="border-b border-border/60 bg-white/95 backdrop-blur-sm sticky top-0 z-50">
-          <nav className="mx-auto max-w-5xl flex items-center justify-between px-4 py-3">
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-8 h-8 rounded-lg bg-[#00543C] flex items-center justify-center">
-                <span className="text-white text-sm font-bold">AI</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-base font-bold tracking-tight text-[#00543C] leading-none">
-                  Miller AI Workflows
-                </span>
-                <span className="text-[10px] text-muted-foreground leading-tight hidden sm:block">
-                  Academic Enrichment Services
-                </span>
-              </div>
-            </Link>
-            <div className="flex items-center gap-1 sm:gap-5 text-sm">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors px-2 py-1 rounded-md hover:bg-muted/50"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </nav>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-md focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
+        >
+          Skip to content
+        </a>
+        <header className="border-b border-brand bg-background sticky top-0 z-50">
+          <SiteNav />
         </header>
 
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">
+          {children}
+        </main>
 
-        <footer className="border-t border-border/60 bg-[#00543C] mt-auto">
-          <div className="mx-auto max-w-5xl px-4 py-10 space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <footer className="bg-brand text-stone-300 mt-auto">
+          <div className="mx-auto max-w-6xl px-4 py-10 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <div>
-                <p className="text-white font-semibold text-sm">
-                  Miller AI Workflows
+                <p className="font-[family-name:var(--font-display)] text-2xl text-white leading-none">
+                  Miller AI Plays
                 </p>
-                <p className="text-green-200/70 text-xs mt-0.5">
-                  Academic Enrichment Services
+                <p className="text-xs mt-2 text-stone-400">
+                  A free study resource for medical students at any school
                 </p>
               </div>
-              <div className="flex flex-wrap gap-4 text-xs">
+              <nav aria-label="Footer" className="flex flex-wrap gap-x-5 gap-y-1 text-sm">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-green-200/70 hover:text-white transition-colors"
+                    className="text-stone-300 hover:text-marker underline-offset-4 hover:underline"
                   >
                     {link.label}
                   </Link>
                 ))}
-              </div>
+              </nav>
             </div>
-            <div className="border-t border-green-200/20 pt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-green-200/60">
+            <div className="border-t border-stone-700 pt-4 flex flex-col sm:flex-row sm:justify-between gap-2 text-xs text-stone-400">
               <p>
-                Created by{" "}
-                <span className="text-green-200/90">Lamar Martin</span>,
-                University of Miami Miller School of Medicine
+                Created by <span className="text-stone-200">Lamar Martin</span>
               </p>
-              <p className="italic">
-                Not an official University of Miami publication.
+              <p className="max-w-xl sm:text-right">
+                Independent project. Not affiliated with any medical school, exam provider, or AI company. For study
+                only; not medical advice.
               </p>
             </div>
           </div>

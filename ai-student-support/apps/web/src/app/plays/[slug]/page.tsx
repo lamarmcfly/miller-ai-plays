@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
@@ -7,6 +8,34 @@ import { PromptBlock } from "@/components/PromptBlock";
 import { StarterPrompts } from "@/components/StarterPrompts";
 import { getAllSlugs, getPlayBySlug } from "@/lib/plays";
 import { audienceLabels, difficultyColors } from "@/lib/schema";
+
+const bodyComponents = {
+  h2: (props: React.ComponentProps<"h2">) => (
+    <h2 className="text-xl font-semibold mt-6 mb-2 first:mt-0" {...props} />
+  ),
+  h3: (props: React.ComponentProps<"h3">) => (
+    <h3 className="text-base font-semibold mt-4 mb-1" {...props} />
+  ),
+  p: (props: React.ComponentProps<"p">) => (
+    <p className="text-sm text-muted-foreground leading-relaxed my-2" {...props} />
+  ),
+  ul: (props: React.ComponentProps<"ul">) => (
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground my-2" {...props} />
+  ),
+  ol: (props: React.ComponentProps<"ol">) => (
+    <ol className="list-decimal pl-5 space-y-2 text-sm text-muted-foreground my-2" {...props} />
+  ),
+  li: (props: React.ComponentProps<"li">) => <li className="leading-relaxed" {...props} />,
+  strong: (props: React.ComponentProps<"strong">) => (
+    <strong className="font-semibold text-foreground" {...props} />
+  ),
+  a: (props: React.ComponentProps<"a">) => (
+    <a className="text-highlight hover:underline" rel="noopener noreferrer" {...props} />
+  ),
+  code: (props: React.ComponentProps<"code">) => (
+    <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs" {...props} />
+  ),
+};
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -87,7 +116,7 @@ export default async function PlayPage({
                   href={t.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium text-[#F47321] hover:underline"
+                  className="font-medium text-highlight hover:underline"
                 >
                   {t.name} ({t.plan})
                 </a>
@@ -113,13 +142,13 @@ export default async function PlayPage({
 
       {/* Learning note - why this works */}
       {play.learningNote && (
-        <section className="rounded-lg bg-blue-50 border border-blue-100 p-4 flex gap-3">
-          <span className="text-blue-500 text-lg shrink-0">&#9432;</span>
+        <section className="rounded-lg bg-muted border border-border p-4 flex gap-3">
+          <span className="text-highlight text-lg shrink-0">&#9432;</span>
           <div>
-            <p className="text-xs font-semibold text-blue-700 uppercase tracking-wide mb-1">
+            <p className="text-xs font-semibold text-brand uppercase tracking-wide mb-1">
               Why this works
             </p>
-            <p className="text-sm text-blue-900/80 leading-relaxed">
+            <p className="text-sm text-foreground leading-relaxed">
               {play.learningNote}
             </p>
           </div>
@@ -138,7 +167,7 @@ export default async function PlayPage({
 
       {/* Section 5 - How to set it up */}
       <section className="space-y-2">
-        <h2 className="text-xl font-semibold">How to set it up</h2>
+        <h2 className="text-xl font-semibold">Quick setup</h2>
         <div className="rounded-lg bg-muted/30 p-4 text-sm space-y-1">
           <p className="font-medium">Clone instructions:</p>
           <p className="text-muted-foreground">
@@ -160,7 +189,7 @@ export default async function PlayPage({
       <Separator />
 
       {/* Section 7 - When to use this */}
-      <section className="rounded-lg border-l-4 border-[#F47321] bg-orange-50 p-4 space-y-2">
+      <section className="rounded-lg border-l-4 border-brand bg-muted p-4 space-y-2">
         <h2 className="text-xl font-semibold">When to use this</h2>
         <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
           {play.whenToUse}
@@ -168,7 +197,7 @@ export default async function PlayPage({
       </section>
 
       {/* Section 8 - Success signal */}
-      <section className="rounded-lg border-l-4 border-[#00543C] bg-green-50 p-4 space-y-2">
+      <section className="rounded-lg border-l-4 border-brand bg-muted p-4 space-y-2">
         <h2 className="text-xl font-semibold">Success signal</h2>
         <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
           {play.successSignal}
@@ -177,31 +206,23 @@ export default async function PlayPage({
 
       <Separator />
 
-      {/* Section 9 - Common pitfalls (from MDX body) */}
-      {play.content && (
-        <section className="prose prose-sm max-w-none">
-          <div
-            dangerouslySetInnerHTML={{
-              __html: play.content
-                .replace(/^## Common pitfalls\n/m, "")
-                .split("\n")
-                .map((line) => {
-                  if (line.startsWith("- **"))
-                    return `<li>${line.slice(2)}</li>`;
-                  return line;
-                })
-                .join("\n"),
-            }}
+      {/* Section 9 - Details and pitfalls (Markdown body) */}
+      {play.content.trim() && (
+        <section className="space-y-2">
+          <MDXRemote
+            source={play.content}
+            options={{ mdxOptions: { format: "md" } }}
+            components={bodyComponents}
           />
         </section>
       )}
 
       <Separator />
 
-      {/* Section 10 - Related Workflows */}
+      {/* Section 10 - Related Plays */}
       {play.relatedPlays.length > 0 && (
         <section className="space-y-3">
-          <h2 className="text-xl font-semibold">Related Workflows</h2>
+          <h2 className="text-xl font-semibold">Related Plays</h2>
           <div className="flex flex-wrap gap-2">
             {play.relatedPlays.map((slug) => (
               <Link key={slug} href={`/plays/${slug}`}>
@@ -217,16 +238,23 @@ export default async function PlayPage({
         </section>
       )}
 
-      {/* Section 12 - Footer */}
+      {/* Custom practice questions CTA */}
+      <section className="rounded-lg border border-border bg-muted/30 p-4 text-sm text-muted-foreground">
+        Want practice questions tailored to your exam and weak spots? Use the{" "}
+        <Link href="/question-builder" className="text-highlight hover:underline font-medium">
+          Question Builder
+        </Link>
+        .
+      </section>
+
+      {/* Footer */}
       <footer className="text-xs text-muted-foreground space-y-1 pt-4 border-t border-border">
         <p>
-          Authored by {play.author}. Version {play.version}.
+          Authored by {play.author}. Version {play.version}. Updated {play.updatedAt}.
         </p>
         <p>
-          Part of Miller AI Workflows, an Academic Enrichment Services initiative.
-        </p>
-        <p className="italic">
-          Not an official University of Miami publication.
+          AI output can be wrong. Verify important facts, never enter patient
+          identifiers, and follow your school&apos;s AI policy.
         </p>
       </footer>
     </article>

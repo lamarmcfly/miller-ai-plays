@@ -14,7 +14,7 @@ export const videoSchema = z.object({
 });
 
 export const artifactSchema = z.object({
-  type: z.enum(["claude-project", "notebooklm", "copilot-agent", "prompt"]),
+  type: z.enum(["claude-project", "notebooklm", "copilot-agent", "prompt", "web-tool"]),
   name: z.string(),
   systemPrompt: z.string(),
   cloneInstructions: z.string(),
@@ -38,7 +38,7 @@ export const playSchema = z.object({
   oneLiner: z.string().min(1),
 
   audience: z.array(
-    z.enum(["step1", "step2", "shelf", "osce", "clerkship", "coursework"])
+    z.enum(["step1", "step2", "step3", "comlex", "shelf", "osce", "clerkship", "coursework"])
   ),
   year: z.array(z.enum(["MS1", "MS2", "MS3", "MS4"])),
   estimatedTime: z.string(),
@@ -70,6 +70,8 @@ export type Play = z.infer<typeof playSchema>;
 export const audienceLabels: Record<string, string> = {
   step1: "Step 1",
   step2: "Step 2 CK",
+  step3: "Step 3",
+  comlex: "COMLEX-USA",
   shelf: "Shelf",
   osce: "OSCE",
   clerkship: "Clerkship",
@@ -77,7 +79,7 @@ export const audienceLabels: Record<string, string> = {
 };
 
 export const difficultyColors: Record<string, string> = {
-  beginner: "bg-green-100 text-green-800",
-  intermediate: "bg-amber-100 text-amber-800",
-  advanced: "bg-red-100 text-red-800",
+  beginner: "bg-muted text-brand",
+  intermediate: "bg-marker/60 text-brand",
+  advanced: "bg-marker text-brand",
 };

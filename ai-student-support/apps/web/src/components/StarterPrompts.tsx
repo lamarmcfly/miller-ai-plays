@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CopyButton } from "./CopyButton";
+import { FillablePrompt } from "./FillablePrompt";
 
 interface StarterPrompt {
   label: string;
@@ -14,10 +14,13 @@ export function StarterPrompts({ prompts }: { prompts: StarterPrompt[] }) {
   return (
     <section className="space-y-3">
       <button
+        type="button"
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 text-sm font-medium text-[#F47321] hover:text-[#d9641b] transition-colors cursor-pointer"
+        aria-expanded={open}
+        className="flex items-center gap-2 text-sm font-medium text-highlight hover:text-highlight-dark transition-colors cursor-pointer rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
       >
         <span
+          aria-hidden="true"
           className="transition-transform inline-block"
           style={{ transform: open ? "rotate(90deg)" : "rotate(0deg)" }}
         >
@@ -27,24 +30,13 @@ export function StarterPrompts({ prompts }: { prompts: StarterPrompt[] }) {
       </button>
 
       {open && (
-        <div className="space-y-3 pl-4 border-l-2 border-[#F47321]/20">
+        <div className="space-y-3 pl-4 border-l-2 border-border">
           <p className="text-xs text-muted-foreground">
-            These are simpler prompts you can paste directly into a chat - no
-            Project setup needed. Just replace the [BRACKETS] with your info.
+            Simpler prompts you can paste straight into a chat. Fill in the
+            blanks below, or just copy and replace the [BRACKETS] yourself.
           </p>
-          {prompts.map((sp, i) => (
-            <div
-              key={i}
-              className="rounded-lg border border-border bg-white p-4 space-y-2"
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">{sp.label}</span>
-                <CopyButton text={sp.prompt} label="Copy" />
-              </div>
-              <pre className="text-xs text-muted-foreground whitespace-pre-wrap font-mono leading-relaxed">
-                {sp.prompt}
-              </pre>
-            </div>
+          {prompts.map((sp) => (
+            <FillablePrompt key={sp.label} label={sp.label} prompt={sp.prompt} defaultOpen />
           ))}
         </div>
       )}

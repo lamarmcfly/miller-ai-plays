@@ -4,8 +4,8 @@ on:
   pull_request:
     paths:
       - "content/plays/**"
-      - "apps/web/src/lib/schema.ts"
-      - "scripts/validate-plays.ts"
+      - "apps/web/src/lib/**"
+      - "scripts/**"
   push:
     branches: [main]
     paths:
@@ -25,3 +25,4 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm validate
+      - run: pnpm check:questions

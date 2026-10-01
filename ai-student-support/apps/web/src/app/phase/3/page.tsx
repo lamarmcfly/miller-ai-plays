@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { PhasePractice } from "@/components/PhasePractice";
 
 export const metadata: Metadata = {
   title: "Phase 3 - Specialties + Advanced Clinical",
-  description: "AI workflows for Phase 3 students at Miller. Specialty rotations, research, and career prep.",
+  description: "AI workflows and practice questions for advanced clinical students: electives, sub-internships, research, Step 3 readiness, and residency prep.",
 };
 
 const corePlaybooks = [
@@ -45,13 +46,14 @@ export default function Phase3Page() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 space-y-10">
       <header className="space-y-3">
-        <Badge className="bg-purple-100 text-purple-800">Phase 3</Badge>
+        <Badge className="bg-muted text-brand">Phase 3</Badge>
         <h1 className="text-3xl font-bold tracking-tight">
           Specialties + Advanced Clinical
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          Phase 3 is about going deeper. You're in specialty rotations, doing
-          research, and preparing for residency. The Plays you use shift from
+          Phase 3 (advanced clinical, also called post-clerkship or the final
+          year) is about going deeper. You&apos;re in electives and
+          sub-internships, doing research, and preparing for residency. The Plays you use shift from
           broad shelf prep to targeted specialty knowledge, efficient
           documentation, and research productivity.
         </p>
@@ -60,16 +62,16 @@ export default function Phase3Page() {
       <Separator />
 
       <section className="space-y-4">
-        <h2 className="text-xl font-bold">Your Phase 3 workflows</h2>
+        <h2 className="text-xl font-bold">Your Phase 3 Plays</h2>
         <div className="space-y-3">
           {corePlaybooks.map((play) => (
             <Link key={play.slug} href={`/plays/${play.slug}`}>
-              <div className="rounded-xl border border-border p-5 hover:shadow-md hover:border-[#00543C]/30 transition-all cursor-pointer space-y-1">
+              <div className="rounded-xl border border-border p-5 hover:bg-marker/30 hover:border-brand transition-all cursor-pointer space-y-1">
                 <div className="flex items-center justify-between">
                   <h3 className="font-semibold">{play.title}</h3>
                   <Badge
                     variant="secondary"
-                    className="text-[10px] bg-[#F47321]/10 text-[#F47321]"
+                    className="text-[10px] bg-marker text-brand"
                   >
                     {play.tag}
                   </Badge>
@@ -81,10 +83,20 @@ export default function Phase3Page() {
         </div>
       </section>
 
-      <section className="rounded-xl border-l-4 border-purple-400 bg-purple-50 p-5 space-y-2">
+      <PhasePractice
+        intro="Questions at this level should include ambiguity, comorbidities, and follow-up decisions, not just a single classic presentation."
+        links={[
+          { label: "Step 3 sequential cases", blurb: "Multi-step management with new data at each step", href: "/question-builder?preset=step3-sequential" },
+          { label: "Challenging mixed block", blurb: "Close distractors, atypical presentations", href: "/question-builder?exam=step2ck&phase=3" },
+          { label: "Oral exam practice", blurb: "Sub-internship and interview-style questions", href: "/question-builder?exam=oral&phase=3" },
+          { label: "OSCE for advanced encounters", blurb: "Counseling, handoffs, difficult conversations", href: "/question-builder?exam=osce&phase=3" },
+        ]}
+      />
+
+      <section className="rounded-xl border-l-4 border-flag bg-muted p-5 space-y-2">
         <h3 className="font-semibold">Phase 3 pro tips</h3>
         <ul className="text-sm text-muted-foreground space-y-1.5">
-          <li>Adapt Rounds Prep prompts to your specialty's question style</li>
+          <li>Adapt Rounds Prep prompts to your specialty&apos;s question style</li>
           <li>Use Research Speed Read before every journal club and research meeting</li>
           <li>Share your specialty-specific prompts on the Community Board</li>
           <li>If you develop a workflow that works, submit it as a new Workflow proposal</li>

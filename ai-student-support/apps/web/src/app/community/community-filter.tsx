@@ -38,7 +38,7 @@ export function CommunityFilter({
               variant={activeCategory === cat.key ? "default" : "outline"}
               className={
                 activeCategory === cat.key
-                  ? "bg-[#00543C] hover:bg-[#003d2c] text-white"
+                  ? "bg-brand hover:bg-brand-dark text-white"
                   : "hover:bg-muted"
               }
             >

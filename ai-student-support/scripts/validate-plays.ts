@@ -18,7 +18,7 @@ const videoSchema = z.object({
 });
 
 const artifactSchema = z.object({
-  type: z.enum(["claude-project", "notebooklm", "copilot-agent", "prompt"]),
+  type: z.enum(["claude-project", "notebooklm", "copilot-agent", "prompt", "web-tool"]),
   name: z.string(),
   systemPrompt: z.string(),
   cloneInstructions: z.string(),
@@ -31,7 +31,7 @@ const playSchema = z.object({
   hook: z.string().min(1),
   oneLiner: z.string().min(1),
   audience: z.array(
-    z.enum(["step1", "step2", "shelf", "osce", "clerkship", "coursework"])
+    z.enum(["step1", "step2", "step3", "comlex", "shelf", "osce", "clerkship", "coursework"])
   ),
   year: z.array(z.enum(["MS1", "MS2", "MS3", "MS4"])),
   estimatedTime: z.string(),
