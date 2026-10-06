@@ -8,6 +8,11 @@ export const REPO_URL = "https://github.com/lamarmcfly/miller-ai-plays";
 // GitHub rejects very long query strings; stay well under the limit.
 const MAX_URL_LENGTH = 7000;
 
+/** Pre-filled "new issue" link on the project repo. */
+export function newIssueUrl(title: string, body: string, labels: string): string {
+  return `${REPO_URL}/issues/new?${new URLSearchParams({ title, body, labels }).toString()}`;
+}
+
 export type Submission = {
   cohort: string;
   category: string;
@@ -51,12 +56,7 @@ export type IssueLink = { url: string; bodyCopied: boolean; fullBody: string };
 export function buildIssueLink(s: Submission): IssueLink {
   const fullBody = buildSubmissionBody(s);
   const title = `[Community] ${s.title.trim()}`;
-  const make = (body: string) =>
-    `${REPO_URL}/issues/new?${new URLSearchParams({
-      title,
-      body,
-      labels: "community-submission",
-    }).toString()}`;
+  const make = (body: string) => newIssueUrl(title, body, "community-submission");
 
   const url = make(fullBody);
   if (url.length <= MAX_URL_LENGTH) return { url, bodyCopied: false, fullBody };

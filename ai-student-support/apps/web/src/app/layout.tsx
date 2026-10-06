@@ -2,7 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Newsreader, Instrument_Sans, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { SiteNav } from "@/components/SiteNav";
+import { Analytics } from "@vercel/analytics/next";
 import { navLinks } from "@/lib/nav";
+import { goals } from "@/lib/start-path";
+import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const display = Newsreader({
@@ -22,17 +25,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Med AI Plays",
-    template: "%s | Med AI Plays",
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "AI study workflows and custom practice-question prompts for medical students at any school. 90 seconds to learn, 5 minutes to use.",
+  description: SITE_TAGLINE,
+  applicationName: SITE_NAME,
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description: SITE_TAGLINE,
+  },
+  twitter: { card: "summary_large_image", title: SITE_NAME, description: SITE_TAGLINE },
+  appleWebApp: { capable: true, title: SITE_NAME, statusBarStyle: "default" },
+  icons: { apple: "/apple-touch-icon.png" },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#1c1b19",
 };
 
 export default function RootLayout({
@@ -52,7 +66,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <header className="border-b border-brand bg-background sticky top-0 z-50">
+        <header className="border-b border-brand bg-background sticky top-0 z-50 print:hidden">
           <SiteNav />
         </header>
 
@@ -60,7 +74,7 @@ export default function RootLayout({
           {children}
         </main>
 
-        <footer className="bg-brand text-stone-300 mt-auto">
+        <footer className="bg-brand text-stone-300 mt-auto print:hidden">
           <div className="mx-auto max-w-6xl px-4 py-10 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <div>
@@ -83,6 +97,14 @@ export default function RootLayout({
                 ))}
               </nav>
             </div>
+            <nav aria-label="Study guides by exam" className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-stone-400">
+              <span className="text-stone-500">By exam:</span>
+              {goals.map((g) => (
+                <Link key={g.id} href={`/exams/${g.id}`} className="hover:text-marker underline-offset-4 hover:underline">
+                  {g.label}
+                </Link>
+              ))}
+            </nav>
             <div className="border-t border-stone-700 pt-4 flex flex-col sm:flex-row sm:justify-between gap-2 text-xs text-stone-400">
               <p>
                 Created by <span className="text-stone-200">Lamar Martin</span>
@@ -90,6 +112,7 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+        <Analytics />
       </body>
     </html>
   );

@@ -26,7 +26,7 @@ export function SiteNav() {
           </span>
         </Link>
 
-        <ul className="hidden md:flex items-center gap-1 text-sm">
+        <ul className="hidden lg:flex items-center gap-1 text-sm">
           {navLinks.map((link) => {
             const active = isActive(pathname, link.href);
             return (
@@ -49,7 +49,7 @@ export function SiteNav() {
 
         <button
           type="button"
-          className="md:hidden border border-brand px-3 py-1.5 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
+          className="lg:hidden border border-brand px-3 py-1.5 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpenFor(open ? null : pathname)}
@@ -59,7 +59,7 @@ export function SiteNav() {
       </div>
 
       {open && (
-        <ul id="mobile-menu" className="md:hidden mt-3 grid gap-1 border-t border-border/60 pt-3 text-sm">
+        <ul id="mobile-menu" className="lg:hidden mt-3 grid gap-1 border-t border-border/60 pt-3 text-sm">
           {navLinks.map((link) => {
             const active = isActive(pathname, link.href);
             return (

@@ -8,6 +8,8 @@ import { PromptBlock } from "@/components/PromptBlock";
 import { StarterPrompts } from "@/components/StarterPrompts";
 import { getAllSlugs, getPlayBySlug } from "@/lib/plays";
 import { audienceLabels, difficultyColors } from "@/lib/schema";
+import { ShareButton } from "@/components/ShareButton";
+import { newIssueUrl } from "@/lib/community-submit";
 
 const bodyComponents = {
   h2: (props: React.ComponentProps<"h2">) => (
@@ -52,6 +54,7 @@ export async function generateMetadata({
   return {
     title: play.title,
     description: play.oneLiner,
+    openGraph: { title: play.title, description: play.oneLiner, type: "article" },
   };
 }
 
@@ -237,6 +240,31 @@ export default async function PlayPage({
           </div>
         </section>
       )}
+
+      {/* Share + feedback */}
+      <section className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border pt-4 text-sm">
+        <ShareButton
+          title={play.title}
+          text={`${play.title} (Med AI Plays):`}
+          path={`/plays/${play.slug}`}
+          label="Share this Play"
+        />
+        <a
+          href={newIssueUrl(
+            `[Play feedback] ${play.title}`,
+            `About the Play "${play.title}" (${play.slug}, v${play.version}):\n\n**What didn't work, or what would make it better?**\n\n`,
+            "play-feedback"
+          )}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-highlight hover:underline font-medium"
+        >
+          This didn&apos;t work for me
+        </a>
+        <Link href="/community" className="text-highlight hover:underline font-medium">
+          Share your version
+        </Link>
+      </section>
 
       {/* Custom practice questions CTA */}
       <section className="rounded-lg border border-border bg-muted/30 p-4 text-sm text-muted-foreground">

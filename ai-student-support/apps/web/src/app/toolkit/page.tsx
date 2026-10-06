@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { toolJobs, toolLabels, toolTips } from "@/lib/tool-chooser";
 
 export const metadata: Metadata = {
   title: "AI Toolkit",
@@ -121,6 +122,45 @@ export default function ToolkitPage() {
             </Card>
           ))}
         </div>
+      </section>
+
+      <Separator />
+
+      {/* Tool chooser */}
+      <section className="space-y-4">
+        <h2 className="text-xl font-semibold">Which tool for which job?</h2>
+        <p className="text-sm text-muted-foreground">
+          Not sure which to open? Match the job you&apos;re doing to the tool that fits it best.
+        </p>
+        <div className="space-y-3">
+          {toolJobs.map((j) => (
+            <div key={j.id} className="rounded-lg border border-border p-4 space-y-1">
+              <p className="font-semibold text-sm">{j.job}</p>
+              <p className="text-sm">
+                <a
+                  href={toolLabels[j.tool].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-highlight font-medium hover:underline"
+                >
+                  {toolLabels[j.tool].name}
+                </a>{" "}
+                <span className="text-muted-foreground">({toolLabels[j.tool].examples})</span>
+              </p>
+              <p className="text-sm text-muted-foreground">{j.why}</p>
+              {j.playSlug && (
+                <Link href={`/plays/${j.playSlug}`} className="text-sm text-highlight hover:underline font-medium">
+                  Try the matching Play &rarr;
+                </Link>
+              )}
+            </div>
+          ))}
+        </div>
+        <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1.5">
+          {toolTips.map((t) => (
+            <li key={t}>{t}</li>
+          ))}
+        </ul>
       </section>
 
       <Separator />

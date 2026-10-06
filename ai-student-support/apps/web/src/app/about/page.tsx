@@ -82,6 +82,16 @@ export default function AboutPage() {
       </section>
 
       <section className="space-y-4">
+        <h2 className="text-xl font-semibold">Privacy</h2>
+        <p className="text-muted-foreground leading-relaxed">
+          No accounts and no cookies. What you type into the Question Builder and prompt templates stays in your
+          browser. We count page views with privacy-friendly analytics so we know which Plays help, and we never
+          collect your name or email. The only text that leaves your device is what you choose to send through the
+          Community form or a feedback link.
+        </p>
+      </section>
+
+      <section className="space-y-4">
         <h2 className="text-xl font-semibold">Who makes this</h2>
         <p className="text-muted-foreground leading-relaxed">
           Med AI Plays was created by{" "}

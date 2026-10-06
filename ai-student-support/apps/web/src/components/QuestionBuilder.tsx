@@ -90,6 +90,8 @@ function fromUrl(search: string): QuestionConfig | null {
   const examParam = q.get("exam");
   let cfg: QuestionConfig | null = presetId ? configFromPreset(presetId) : null;
   if (!cfg && isExam(examParam)) cfg = applyExam(defaultConfig(examParam), examParam);
+  // A bare ?subject= link (from search) starts from the default exam.
+  if (!cfg && getSubject(q.get("subject") ?? "")) cfg = defaultConfig("shelf");
   if (!cfg) return null;
   const next: Partial<QuestionConfig> = { ...cfg };
   const subject = q.get("subject");
