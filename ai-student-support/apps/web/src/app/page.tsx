@@ -19,15 +19,16 @@ export default function HomePage() {
               For medical students at any school
             </p>
             <h1 className="text-5xl sm:text-6xl font-medium leading-[1.02]">
-              Think you&apos;re using AI?
+              AI can do{" "}
+              <span className="italic bg-marker px-1.5 -mx-1">far more</span>
               <br />
-              <span className="italic bg-marker px-1.5 -mx-1">Barely touching the surface?</span>
+              for your studying than you think.
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-              Most medical students are. Answer three questions and get a clear
-              path to use AI the way advanced users do, whatever your starting
-              point. Short, copy-paste study workflows plus practice questions
-              built for your exam. Any AI tool, free.
+              Answer three questions and get a clear path from your first prompt
+              to advanced use, whatever your level. Short, copy-paste study
+              workflows plus practice questions built for your exam. Any AI
+              tool, free.
             </p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
               <Link
