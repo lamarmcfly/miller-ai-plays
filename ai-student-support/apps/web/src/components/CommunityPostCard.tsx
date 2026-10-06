@@ -7,6 +7,7 @@ import {
   type CommunityPost,
 } from "@/lib/community-schema";
 import { CopyButton } from "./CopyButton";
+import { PostActions } from "./PostActions";
 
 export function CommunityPostCard({
   post,
@@ -31,6 +32,17 @@ export function CommunityPostCard({
           <span>{post.authorDisplayName}</span>
           <span>-</span>
           <span>{post.submittedAt}</span>
+          {post.promotedToPlay && (
+            <>
+              <span>-</span>
+              <Link
+                href={`/plays/${post.promotedToPlay}`}
+                className="font-medium text-brand underline decoration-marker decoration-4 underline-offset-4"
+              >
+                Became an official Play
+              </Link>
+            </>
+          )}
           {post.relatedPlay && (
             <>
               <span>-</span>
@@ -69,6 +81,8 @@ export function CommunityPostCard({
             </span>
           </div>
         )}
+
+        <PostActions id={post.id} title={post.title} />
 
         <div className="flex items-center justify-between pt-1">
           {post.selfRatedUsefulness && (

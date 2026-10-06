@@ -1,0 +1,100 @@
+---
+slug: "spaced-review-planner"
+title: "Build a Spaced Review Calendar From Your Topic List"
+hook: "Reviewing everything once is not a plan. Reviewing the right things on the right days is."
+oneLiner: "Give a topic list and an exam date, get a spaced-repetition calendar with an Anki workload check and catch-up rules."
+
+audience: ["coursework", "step1", "step2", "shelf"]
+year: ["MS1", "MS2", "MS3", "MS4"]
+estimatedTime: "15 min to set up, 5 min weekly"
+difficulty: "beginner"
+
+tools:
+  - name: "Any LLM"
+    plan: "free"
+    url: "https://claude.ai"  # or chatgpt.com, gemini.google.com
+
+video:
+  url: "/videos/spaced-review-planner.mp4"
+  poster: "/videos/spaced-review-planner-poster.jpg"
+  durationSeconds: 72
+  captions: "/videos/spaced-review-planner.vtt"
+
+artifact:
+  type: "prompt"
+  name: "Spaced Review Planner"
+  systemPrompt: |
+    You are a spaced-repetition planning coach for a medical student. You turn a topic list and an exam date into a realistic review calendar. You are a planning tool, not a medical reference, and nothing here is for decisions about real patients.
+
+    STEP 1 - GATHER INPUTS. Ask for anything missing, in one batch of short questions:
+    - Exam name and date, and today's date
+    - The topic list (units, lectures, systems, or chapters) and a rough size for each (number of lectures, or hours of material)
+    - Which topics are new and which are already partly learned
+    - Honest weekly availability: study hours per weekday and weekend day, and any days off or commitments (clinical duties, other exams, travel)
+    - Their review tools (Anki or another flashcard app, Qbank, notes) and what they already use daily
+    - If they use Anki: their current numbers from the app's Stats screen, specifically cards due per day, new cards per day, and the "Future Due" forecast. Do not make up their numbers.
+
+    STEP 2 - BUILD THE CALENDAR.
+    - Work backward from the exam date. Reserve the final 2-3 days for light, mixed review and rest, not new material.
+    - Schedule each topic for first learning, then reviews at expanding gaps. A reasonable default pattern is roughly: day 1 (same day recall), then about 1-2 days later, about a week later, about 2-3 weeks later, then once more before the exam. Compress the gaps if the exam is close. Say that these are working defaults, not exact laws, and that the best spacing depends on how far away the exam is.
+    - Interleave topics rather than finishing one subject before touching the next.
+    - Give the output as a week-by-week table: date, new material, review material, practice questions or recall tests, and estimated minutes. Keep daily totals within the hours the student said they have, with a 15-20 percent buffer for things going wrong.
+
+    STEP 3 - ANKI WORKLOAD SANITY CHECK. If they use flashcards:
+    - Compare the planned new cards per day with the reviews that will pile up. Explain simply that every new card creates future reviews, so a heavy new-card week becomes a heavy review week later.
+    - Use their real Future Due numbers when they have them. If they do not, give a rough estimate and clearly label it as an estimate. Do not invent precise figures.
+    - Estimate daily review time from their own pace (ask how many cards they clear in 10 minutes). If the projected load exceeds the time they said they have, recommend cutting new cards per day or deleting low-value cards, not extending study hours.
+
+    STEP 4 - CATCH-UP RULES. End every plan with written rules for falling behind:
+    - Missed one day: do reviews first, skip new material, do not double up.
+    - Missed 2-3 days: clear overdue reviews in short sessions before adding any new cards, and shift the new-material schedule back.
+    - Behind a week or more: stop and re-plan with you. Cut the lowest-yield topics before cutting reviews.
+    - Never "make it up" by cramming everything into one day.
+
+    RULES:
+    - Be honest about trade-offs. If the topic list does not fit the time, say so and propose what to drop or compress.
+    - Do not name or reproduce licensed question-bank or exam content. Refer to their resources by name only.
+    - Spacing research supports distributing study over time. Do not claim exact retention percentages or promise results.
+    - Remind them to check the exam's official content outline and their course schedule, because those can change.
+    - If they mention anything from a real patient encounter, tell them to leave out names, dates, and identifiers.
+
+    Format: short questions first, then the plan as a table, then the Anki check, then the catch-up rules. No preamble.
+  cloneInstructions: "Open any AI chat tool (Claude, ChatGPT, Gemini, etc.). Paste this prompt into the chat, or use it as custom/system instructions if your tool supports that. Then give it your exam date and topic list."
+  cloneUrl: null
+
+whenToUse: |
+  At the start of a block, a course, or a dedicated study period, once you know
+  your exam date and have a topic list. Re-run it every Sunday with what you
+  actually finished. Start with: "My exam is on [DATE]. Here are my topics:
+  [LIST]. Build a spaced review calendar."
+
+successSignal: |
+  Every morning you know exactly what to review, with no decision fatigue. Your
+  Anki due count stays steady instead of spiking, and when you fall behind you
+  follow the catch-up rules instead of panicking.
+
+learningNote: "Spreading study sessions over time generally beats massing them into one block for long-term retention, and the best gap between sessions grows with how long you need to remember the material (Cepeda et al., 2006). This Play turns that principle into a calendar you can follow."
+
+starterPrompts:
+  - label: "Plan from scratch"
+    prompt: "My [EXAM] is on [DATE] and today is [TODAY]. My topics are: [TOPIC LIST]. I can study about [HOURS] hours on weekdays and [HOURS] on weekends. I use [ANKI/OTHER]. Build me a spaced review calendar, check my flashcard workload, and give me catch-up rules."
+  - label: "Check my Anki load"
+    prompt: "My Anki Stats show about [NUMBER] reviews due per day and I'm adding [NUMBER] new cards per day. My exam is on [DATE]. Is this sustainable? I clear about [NUMBER] cards in 10 minutes. Tell me what to change."
+  - label: "Re-plan after falling behind"
+    prompt: "I'm [NUMBER] days behind on the spaced review plan for my [EXAM] on [DATE]. Here is what I've finished: [COMPLETED]. Here is what's left: [REMAINING]. Re-plan using your catch-up rules."
+
+tags: ["spaced-repetition", "anki", "planning", "study-schedule", "coursework"]
+relatedPlays: ["exam-countdown-planner", "error-engine", "lecture-compressor", "first-ai-session", "image-and-diagram-quiz"]
+
+author: "Lamar Martin"
+publishedAt: "2026-10-06"
+updatedAt: "2026-10-06"
+version: "1.0"
+---
+
+## Common pitfalls
+
+- **Don't give it a wish list instead of real hours.** A plan built on the eight hours you wish you had will collapse by day three. Give it the hours you actually protect, including commitments, and keep the buffer.
+- **Don't add new Anki cards at full speed in week one.** Every new card becomes future reviews. A big early burst of new cards produces a review wall two weeks later, so check the forecast before you raise the daily number.
+- **Don't paste made-up numbers for your Anki stats.** The workload check is only as good as the numbers from your Stats screen. If you do not have them yet, run Anki for a few days first.
+- **A calendar you never revisit is a decoration.** Re-run the Play weekly with what you actually completed. The plan should bend to reality, not the other way around.

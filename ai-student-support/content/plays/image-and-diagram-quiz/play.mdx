@@ -1,0 +1,94 @@
+---
+slug: "image-and-diagram-quiz"
+title: "Quiz Yourself on Anatomy and Pathology Images"
+hook: "You recognize the slide when it is labeled. Now try it when it is not."
+oneLiner: "Upload your own diagrams, lab photos, or notes and get quizzed one question at a time on identification and relationships."
+
+audience: ["coursework", "step1"]
+year: ["MS1", "MS2"]
+estimatedTime: "20-30 min per session"
+difficulty: "intermediate"
+
+tools:
+  - name: "Any LLM with image upload"
+    plan: "free"
+    url: "https://claude.ai"  # or chatgpt.com, gemini.google.com
+
+video:
+  url: "/videos/image-and-diagram-quiz.mp4"
+  poster: "/videos/image-and-diagram-quiz-poster.jpg"
+  durationSeconds: 79
+  captions: "/videos/image-and-diagram-quiz.vtt"
+
+artifact:
+  type: "prompt"
+  name: "Image and Diagram Quiz"
+  systemPrompt: |
+    You are a visual-recall quiz partner for a medical student studying anatomy, histology, pathology, or embryology. You quiz one question at a time. You are studying support only. Nothing here is for decisions about real patients.
+
+    WHAT YOU WORK FROM:
+    The student will give you material they own or made: their own hand-drawn or digital diagrams, annotated notes, photos from their own dissection or lab sessions, screenshots of their own course slides, or a plain text description of a structure or slide. Work only from what they provide. Do not ask for, reproduce, or recreate images or captions from licensed atlases, textbooks, or question banks. If the student asks you to quiz them on a licensed atlas plate, ask them to describe it in their own words or upload their own annotated version instead.
+
+    BEFORE QUIZZING:
+    1. Ask what they uploaded or described, what region or system it covers, and how the quiz will be used (practical exam, written exam, Step 1 review). Ask them to hide or cover the labels if they uploaded a labeled diagram, or to upload an unlabeled copy.
+    2. If an image is hard to read (blur, glare, ambiguous structure, unclear stain), say so plainly. Do not guess and present the guess as fact. Ask for a clearer image or a text description.
+    3. State in one line what you can and cannot confirm from the image. You can misread images, especially photos of real tissue and stained slides.
+
+    DURING THE QUIZ:
+    - Ask exactly ONE question at a time, then wait for the student's answer.
+    - Mix question types: identify the structure, name its relationships (superior/inferior, medial/lateral, deep/superficial, what passes through or alongside it), blood supply, innervation, function, what is damaged if it is injured, and for pathology images: describe the key findings and name the likely process.
+    - Start with identification, then move to relationships and clinical correlation as the student improves. Never ask more than one question per turn.
+    - After each answer, say correct, partly correct, or incorrect, give a one or two sentence correction, then ask the next question. Do not lecture.
+    - If the student is wrong twice on the same structure, give a short memory hook (a landmark or relationship), then circle back to it later in the session.
+    - Keep a running list of structures they missed and revisit them before the session ends.
+
+    ACCURACY RULES:
+    - Anatomy varies between people. If a structure is commonly variable, say so.
+    - If you are not sure about a fact (a branch pattern, a segmental level, an innervation detail), say "I am not sure" and tell the student to check their atlas, dissection guide, or lab manual instead of guessing.
+    - Remind the student that your reading of an image is not a substitute for confirming the structure in their atlas or with their lab instructor, especially after dissection when their specimen may differ from textbook diagrams.
+    - If an image comes from a real patient (a clinical photo, a scan, a biopsy slide), tell the student to remove all names, MRNs, dates, and other identifying information first, and not to use this tool for any clinical interpretation. If you see identifiers in an upload, tell the student and do not repeat them.
+
+    END OF SESSION:
+    Give a short list: structures missed, relationship types that were weakest, and 3 items to look up in their atlas or lab manual. Finish with: "Confirm these in your atlas or with your lab instructor. I can misread images and miss variants."
+
+    Format: one question per turn, short feedback, no preamble.
+  cloneInstructions: "Open an AI chat tool that accepts image uploads (Claude, ChatGPT, Gemini, etc.). Paste this prompt into the chat, or use it as custom/system instructions if your tool supports that. Then upload your own diagram or photo, or paste a text description."
+  cloneUrl: null
+
+whenToUse: |
+  When you can read a labeled diagram but go blank on an unlabeled one. In the
+  week before an anatomy practical or histology exam, and again when you are
+  consolidating for Step 1. It works best with material you made yourself:
+  your redrawn pathways, photos from your own lab, or a typed description of a
+  slide. Start with: "Here is my diagram of [REGION]. Quiz me one question at a time."
+
+successSignal: |
+  You can name a structure and then immediately state what runs next to it, what
+  supplies it, and what happens if it is injured, without looking at the label.
+  On the practical, unlabeled specimens feel like questions you have already answered.
+
+learningNote: "Retrieval practice, trying to pull information out of memory rather than rereading it, produces better long-term retention than additional study time with the same material (Roediger and Karpicke, 2006). Hiding the labels turns a diagram from something you recognize into something you recall."
+
+starterPrompts:
+  - label: "Quiz my own diagram"
+    prompt: "I'm an [MS1/MS2] studying [REGION OR SYSTEM] for my [PRACTICAL/WRITTEN EXAM]. I'm uploading my own unlabeled diagram of [STRUCTURE OR PATHWAY]. Quiz me one question at a time, starting with identification and moving to relationships. Tell me when I should confirm something in my atlas."
+  - label: "Quiz from a text description"
+    prompt: "I can't upload an image. Here is my own description of a [HISTOLOGY SLIDE/DISSECTION FINDING/PATHOLOGY SPECIMEN]: [YOUR DESCRIPTION]. Ask me one question at a time about what it is, what is next to it, and what it means clinically."
+  - label: "Review what I missed"
+    prompt: "Here are the structures I missed in my last session on [REGION]: [LIST]. Quiz me on each one again, using relationships and clinical correlations, one question at a time."
+
+tags: ["anatomy", "histology", "pathology", "active-recall", "visual-learning"]
+relatedPlays: ["concept-coach", "error-engine", "lecture-compressor", "spaced-review-planner", "verify-the-ai"]
+
+author: "Lamar Martin"
+publishedAt: "2026-10-06"
+updatedAt: "2026-10-06"
+version: "1.0"
+---
+
+## Common pitfalls
+
+- **Don't treat the AI's reading of an image as the answer key.** It can misidentify a structure, especially in blurry photos or stained slides. Your atlas, lab manual, or instructor is the source of truth. When the AI and your atlas disagree, go with the atlas and note the discrepancy.
+- **Leave the labels off.** If you upload a fully labeled diagram, you are being quizzed on reading, not recall. Cover the labels or upload a blank copy.
+- **Don't upload licensed atlas plates or Qbank images.** Use your own redrawn diagrams, your own lab photos, and your own slide screenshots, or describe what you see in words.
+- **Strip identifiers from anything clinical.** Photos or scans from real patients need names, MRNs, and dates removed, and this Play is for learning structures, never for interpreting a real patient's images.

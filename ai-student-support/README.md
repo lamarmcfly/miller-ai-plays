@@ -1,14 +1,17 @@
-# Miller AI Plays
+# Med AI Plays
 
 **AI study workflows and custom practice questions for medical students. 90 seconds to learn. 5 minutes to use.**
 
-Miller AI Plays is a free, independent library for medical students at any school. It has three parts:
+Med AI Plays is a free library for medical students at any school. It has these parts:
 
+- **Start Here** (`/start`): three questions (your goal, your AI experience, your biggest struggle) produce a personal, ordered path of Plays, a Question Builder preset for your exam, and the right AI tool for each job. Results are shareable links.
 - **Plays**: short, copy-paste AI workflows (error analysis, lecture-to-Anki, Socratic tutoring, OSCE practice, and more). Each pairs a demo video with a prompt.
 - **Question Builder**: choose your exam, phase, subject, difficulty, and weak spots, and get a prompt that makes any AI tool write original, exam-realistic practice questions.
 - **Prompt Library**: fill-in-the-blank templates for study plans, concept explanations, clinical reasoning, flashcards, and more.
 
-It works with any AI tool (Claude, ChatGPT, Copilot, Gemini, NotebookLM) and has no accounts, no database, and no cookies.
+Also included: a printable one-page **cheat sheet** (`/cheat-sheet`), site-wide **search** (`/search`), per-exam landing pages (`/exams/step1`, `/exams/shelf`, and so on), and an installable mobile site (web app manifest).
+
+It works with any AI tool (Claude, ChatGPT, Copilot, Gemini, NotebookLM) and has no accounts, no database, and no cookies. Page views are counted with Vercel Analytics, which is cookieless and collects no personal data.
 
 ## Practice questions
 
@@ -49,6 +52,7 @@ pnpm install
 pnpm dev               # Next.js dev server
 pnpm validate          # Validate all Play frontmatter against the schema
 pnpm check:questions   # Check the Question Builder's prompt logic
+pnpm check:start       # Check every Start Here answer combination yields a valid path
 pnpm build             # Production build
 ```
 
@@ -60,13 +64,17 @@ Create `content/plays/<slug>/play.mdx` with the frontmatter shown in any existin
 
 | Variable | Purpose |
 |---|---|
-| `NEXT_PUBLIC_COMMUNITY_FORM_URL` | Endpoint (for example a Tally or Google Form link) for the Community Board submission form. If unset, the form is replaced by a "not open yet" notice. |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL for social previews, the sitemap, and robots. Defaults to the Vercel URL; set it when you add a custom domain. |
+| `NEXT_PUBLIC_COMMUNITY_FORM_URL` | Optional. Endpoint (for example a Tally form) that receives Community Board submissions. If unset, the form opens a pre-filled GitHub issue on this repo, so submissions work with no setup. |
+
+## Community submissions
+
+The "Share your AI workflow" form on `/community` is live by default. Each submission arrives as a GitHub issue labeled `community-submission` (or at your own form endpoint if you set the variable above). To publish one, check it for patient identifiers and licensed exam content, then add a file to `content/community/` using the frontmatter in the existing posts. When a post becomes an official Play, set `promotedToPlay` on it. "I tried this" marks are saved per device only; "Tell us how it went" and "This didn't work for me" open pre-filled issues labeled `community-feedback` and `play-feedback`. See `LAUNCH.md` for the outreach plan and weekly maintainer routine.
 
 ## Principles
 
 - Plays are for studying, never for decisions about real patients.
 - No patient identifying information in AI tools, and no licensed exam or question-bank content.
 - AI output can be wrong: every Play and the Question Builder tell students to verify.
-- Independent project; not affiliated with any medical school, exam provider, or AI company.
 
 Created by **Lamar Martin**.

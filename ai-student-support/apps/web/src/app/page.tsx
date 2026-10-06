@@ -32,16 +32,16 @@ export default function HomePage() {
             </p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
               <Link
-                href="/question-builder"
+                href="/start"
                 className="inline-flex items-center bg-brand text-white hover:bg-brand-light px-5 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
-                Build practice questions
+                Find your starting path
               </Link>
               <Link
-                href="/plays/first-ai-session"
+                href="/question-builder"
                 className="text-sm font-medium underline decoration-marker decoration-4 underline-offset-[6px] hover:bg-marker/50"
               >
-                or start your first AI session
+                or build practice questions now
               </Link>
             </div>
             <p className="font-mono text-xs text-muted-foreground pt-2">

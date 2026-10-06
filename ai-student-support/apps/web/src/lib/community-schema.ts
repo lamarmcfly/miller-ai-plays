@@ -16,6 +16,8 @@ export const communityPostSchema = z.object({
   outcomeDescription: z.string().optional(),
   selfRatedUsefulness: z.number().min(1).max(5).optional(),
   relatedPlay: z.string().optional(),
+  // Set when maintainers turn a community post into an official Play.
+  promotedToPlay: z.string().optional(),
   status: z.literal("approved"),
   reviewDate: z.string(),
 });

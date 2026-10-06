@@ -30,7 +30,9 @@ import {
   type RegionId,
 } from "@/lib/question-spec";
 
-const STORAGE_KEY = "miller-ai-plays:question-builder:v1";
+const STORAGE_KEY = "med-ai-plays:question-builder:v1";
+// Saved settings from before the rename; read once so returning students keep them.
+const LEGACY_STORAGE_KEY = "miller-ai-plays:question-builder:v1";
 
 const fieldClass =
   "w-full rounded-md border border-border bg-card px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ring";
@@ -73,7 +75,8 @@ function sanitize(raw: Partial<QuestionConfig>): QuestionConfig {
 
 function loadSaved(): QuestionConfig | null {
   try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
+    const raw =
+      window.localStorage.getItem(STORAGE_KEY) ?? window.localStorage.getItem(LEGACY_STORAGE_KEY);
     if (!raw) return null;
     return sanitize(JSON.parse(raw));
   } catch {
@@ -87,6 +90,8 @@ function fromUrl(search: string): QuestionConfig | null {
   const examParam = q.get("exam");
   let cfg: QuestionConfig | null = presetId ? configFromPreset(presetId) : null;
   if (!cfg && isExam(examParam)) cfg = applyExam(defaultConfig(examParam), examParam);
+  // A bare ?subject= link (from search) starts from the default exam.
+  if (!cfg && getSubject(q.get("subject") ?? "")) cfg = defaultConfig("shelf");
   if (!cfg) return null;
   const next: Partial<QuestionConfig> = { ...cfg };
   const subject = q.get("subject");

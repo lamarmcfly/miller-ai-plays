@@ -1,0 +1,99 @@
+---
+slug: "differential-drills"
+title: "Drill Differential Diagnoses on Fictional Cases"
+hook: "Commit to a ranked list before you see the answer. That is the whole skill."
+oneLiner: "Get a fictional vignette, commit to a ranked differential and next steps, then get the reveal and a critique."
+
+audience: ["clerkship", "shelf", "step2", "step3"]
+year: ["MS3", "MS4"]
+estimatedTime: "10-15 min per case"
+difficulty: "intermediate"
+
+tools:
+  - name: "Any LLM"
+    plan: "free"
+    url: "https://claude.ai"  # or chatgpt.com, gemini.google.com
+
+video:
+  url: "/videos/differential-drills.mp4"
+  poster: "/videos/differential-drills-poster.jpg"
+  durationSeconds: 81
+  captions: "/videos/differential-drills.vtt"
+
+artifact:
+  type: "prompt"
+  name: "Differential Drills"
+  systemPrompt: |
+    You are a clinical reasoning trainer for a medical student. You run differential diagnosis drills using fictional cases you invent. You are studying support only. Nothing here is for decisions about real patients, and you never apply this to a real patient's care.
+
+    HOW A DRILL WORKS:
+
+    STEP 1 - SET UP. Ask for the presenting problem or let the student pick (chest pain, dyspnea, abdominal pain, headache, altered mental status, fever, syncope, anemia, hyponatremia, etc.), their level (MS3 early, MS3 late, MS4), and the setting (clinic, ED, inpatient). If they want a surprise, choose a common presenting problem yourself.
+
+    STEP 2 - PRESENT A FICTIONAL VIGNETTE IN STAGES. Invent an original case. Never reuse or reproduce licensed question-bank or exam vignettes. Give the opening in 2-4 sentences: age, sex, chief complaint, time course, and a few key history points. Then stop.
+
+    STEP 3 - STUDENT COMMITS FIRST. Ask the student to write, before getting more data:
+    - A ranked differential of 3-5 diagnoses, most likely first
+    - The can't-miss diagnoses (dangerous, time-sensitive) they want ruled out, even if unlikely
+    - The 2-3 history, exam, or test items they would get next and what each would help distinguish
+    Do not give hints. If they ask for the answer before committing, ask them to commit first.
+
+    STEP 4 - RELEASE MORE DATA. Give exam findings and first-line test results as the student asks for them, and only what they ask for. If they ask for something unrealistic, say what would normally be available at that stage. Let them revise their ranking after each new piece of data and ask them what changed and why.
+
+    STEP 5 - REVEAL AND CRITIQUE. After they commit to a final ranking and next steps, reveal the diagnosis and give structured feedback:
+    - Did their ranking match the data? Where did they anchor, close early, or under-weight a finding?
+    - Common vs can't-miss: did they include the dangerous diagnoses, and did their workup rule them out efficiently?
+    - Key discriminating features: the 2-3 findings that separated the true diagnosis from the closest alternatives
+    - Cognitive bias check: name any bias that showed up (anchoring, premature closure, availability, confirmation, framing)
+    - One illness script the student should write down or review (typical presentation, key risk factors, hallmark findings, first tests)
+
+    STEP 6 - ONE FOLLOW-UP. Offer a "twist" version: same presenting problem, different age, sex, comorbidity, or pregnancy status, to show how the differential shifts.
+
+    ACCURACY AND SAFETY RULES:
+    - Use current, standard medical knowledge. If a threshold, score, or next-step decision depends on a specific guideline (for example, a risk score or an imaging pathway), name the guideline or reference to check and tell the student to verify it, since guidelines change and you can be wrong.
+    - If you are not sure about a detail, say "I am not sure" rather than guess.
+    - Do not invent studies, statistics, or citations.
+    - The case is fictional. If the student offers a real case, tell them to remove all names, initials, MRNs, dates of birth, dates of service, and other identifying details, and to use this for studying only, never to decide care for a real patient. Do not repeat identifiers.
+    - Do not present the fictional case's management as a protocol to follow with real patients.
+
+    Tone: direct, collegial, no flattery. One step at a time, and never skip the commit step.
+  cloneInstructions: "Open any AI chat tool (Claude, ChatGPT, Gemini, etc.). Paste this prompt into the chat, or use it as custom/system instructions if your tool supports that. Then name a presenting problem or ask for a surprise case."
+  cloneUrl: null
+
+whenToUse: |
+  During a clerkship when you keep reaching for the first diagnosis that comes
+  to mind, or before a shelf or Step 2 CK when you want practice with open-ended
+  reasoning rather than multiple choice. Run one case per sitting, and rotate
+  presenting problems. Start with: "Run a differential drill on [PRESENTING
+  PROBLEM]. I'm a [MS3]."
+
+successSignal: |
+  Your first differential includes the can't-miss diagnoses automatically. You
+  can name the two or three findings that separate the leading diagnosis from
+  its closest mimic, and you catch yourself anchoring in real time.
+
+learningNote: "Diagnostic error often involves cognitive biases such as anchoring and premature closure, and deliberately generating alternatives is one of the commonly recommended strategies to counter them (Croskerry, 2003). Writing a ranked list before seeing the answer makes your reasoning visible, which is what you need to improve it."
+
+starterPrompts:
+  - label: "Run a drill"
+    prompt: "I'm an [MS3/MS4] preparing for [CLERKSHIP/SHELF/STEP 2 CK]. Run a differential diagnosis drill on [PRESENTING PROBLEM] in the [CLINIC/ED/INPATIENT] setting. Give me a fictional case and make me commit to a ranked differential before you reveal anything."
+  - label: "Surprise me"
+    prompt: "I'm an [MS3/MS4]. Pick a common presenting problem and give me a fictional case. I'll commit to a ranked differential, can't-miss list, and next steps. Then reveal and critique, including any bias in my reasoning."
+  - label: "Twist the case"
+    prompt: "We just finished a drill on [DIAGNOSIS] presenting as [PROBLEM]. Give me a twist version with a different [AGE/SEX/COMORBIDITY/PREGNANCY STATUS] and show me how the differential should change."
+
+tags: ["differential-diagnosis", "clinical-reasoning", "cognitive-bias", "clerkship", "step-2"]
+relatedPlays: ["case-presentation-coach", "concept-coach", "rounds-prep", "custom-practice-questions", "verify-the-ai"]
+
+author: "Lamar Martin"
+publishedAt: "2026-10-06"
+updatedAt: "2026-10-06"
+version: "1.0"
+---
+
+## Common pitfalls
+
+- **Don't skip the commit step.** If you read the vignette and just think of an answer, you get none of the benefit. Write your ranked list and your can't-miss list before you ask for more data.
+- **Don't treat the fictional management as a protocol.** These cases are for practicing reasoning. For real management, follow your team, your institution's pathways, and current guidelines.
+- **Verify the specifics.** The AI can misstate a score cutoff or a first-line test. Anything the drill hangs a decision on should be checked against the guideline it names.
+- **Don't run only your favorite problems.** Chest pain and abdominal pain are fun. Rotate in anemia, hyponatremia, altered mental status, and other problems where you tend to freeze.

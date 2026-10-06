@@ -1,11 +1,12 @@
 {
-  "name": "miller-ai-plays",
+  "name": "med-ai-plays",
   "private": true,
   "scripts": {
     "dev": "pnpm --filter web dev",
     "build": "pnpm --filter web build",
     "validate": "tsx scripts/validate-plays.ts",
-    "check:questions": "tsx scripts/check-question-spec.ts"
+    "check:questions": "tsx scripts/check-question-spec.ts",
+    "check:start": "tsx scripts/check-start-path.ts"
   },
   "dependencies": {
     "next": "16.2.6"
