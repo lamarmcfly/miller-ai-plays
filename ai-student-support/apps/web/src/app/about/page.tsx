@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Med AI Plays is a free library of AI study workflows and practice-question prompts for medical students at any school.",
+    "Built so medical students at any level, even those brand new to AI, can use it at a high level. Free AI study workflows and practice-question prompts.",
 };
 
 const steps = [
@@ -20,8 +20,8 @@ export default function AboutPage() {
       <header className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight">About</h1>
         <p className="text-lg text-muted-foreground">
-          Med AI Plays is a free library of AI study workflows and practice-question prompts for medical students at
-          any school.
+          Med AI Plays is built so medical students at any level, even those brand new to AI, can use it at a high
+          level. It is a free library of AI study workflows and practice-question prompts for any school.
         </p>
       </header>
 
@@ -30,13 +30,20 @@ export default function AboutPage() {
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">Why this exists</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Medical students know AI tools exist but lack practical, tested workflows to use them well. Few will read a
-          20-page guide on prompt engineering, but many will adopt a tool they can master in 5 minutes when the value
-          is obvious.
+          I work with medical students every day. Most of them use AI, and when I dig into how, they are barely
+          touching the surface of what it can do. What changes the result is the approach to the prompt, so I find
+          myself coaching that again and again.
         </p>
         <p className="text-muted-foreground leading-relaxed">
-          Med AI Plays delivers bite-sized workflows (&ldquo;Plays&rdquo;) that meet students where they are: on
-          mobile, short on time, and between other things. Each Play pairs a short demo with a copy-paste prompt. The{" "}
+          I built Med AI Plays to put that support in one place. Whatever your level, even if you are brand new to
+          AI, you get the prompts, the structure, and the habits to use it the way an advanced user does. No
+          technical background, no paid plan, no one to sit down with you required.
+        </p>
+        <p className="text-muted-foreground leading-relaxed">
+          Few students will read a 20-page guide on prompt engineering, but many will adopt a workflow they can
+          master in five minutes. So Med AI Plays is bite-sized: short workflows (&ldquo;Plays&rdquo;) that meet you
+          where you are, on mobile and between other things. Each Play is a copy-paste prompt with the steps to use
+          it. The{" "}
           <Link href="/question-builder" className="text-highlight hover:underline">
             Question Builder
           </Link>{" "}

@@ -19,23 +19,23 @@ export default function HomePage() {
               For medical students at any school
             </p>
             <h1 className="text-5xl sm:text-6xl font-medium leading-[1.02]">
-              Practice questions
+              AI can do{" "}
+              <span className="italic bg-marker px-1.5 -mx-1">far more</span>
               <br />
-              that read like the{" "}
-              <span className="italic bg-marker px-1.5 -mx-1">real exam.</span>
+              for your studying than you think.
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-              Pick your exam, your phase, and the topic you keep missing. Get a
-              prompt that makes any AI tool write original, exam-realistic
-              questions. Plus short, copy-paste study workflows you can learn in
-              90 seconds.
+              Answer three questions and get a clear path from your first prompt
+              to advanced use, whatever your level. Short, copy-paste study
+              workflows plus practice questions built for your exam. Any AI
+              tool, free.
             </p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-1">
               <Link
                 href="/start"
                 className="inline-flex items-center bg-brand text-white hover:bg-brand-light px-5 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
-                Find your starting path
+                Start here
               </Link>
               <Link
                 href="/question-builder"
@@ -45,7 +45,7 @@ export default function HomePage() {
               </Link>
             </div>
             <p className="font-mono text-xs text-muted-foreground pt-2">
-              {plays.length} Plays &middot; any AI tool &middot; free &middot; no account
+              {`${plays.length} Plays \u00b7 any AI tool \u00b7 free \u00b7 no account`}
             </p>
           </div>
 
