@@ -22,7 +22,7 @@ export function SiteNav() {
       <div className="flex items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2.5 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
           <span className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight leading-none">
-            Miller AI <span className="bg-marker px-1 -mx-0.5">Plays</span>
+            Med AI <span className="bg-marker px-1 -mx-0.5">Plays</span>
           </span>
         </Link>
 

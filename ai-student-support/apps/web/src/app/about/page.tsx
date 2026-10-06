@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Miller AI Plays is a free, independent library of AI study workflows and practice-question prompts for medical students at any school.",
+    "Med AI Plays is a free library of AI study workflows and practice-question prompts for medical students at any school.",
 };
 
 const steps = [
@@ -20,8 +20,8 @@ export default function AboutPage() {
       <header className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight">About</h1>
         <p className="text-lg text-muted-foreground">
-          Miller AI Plays is a free, independent library of AI study workflows and practice-question prompts for
-          medical students at any school.
+          Med AI Plays is a free library of AI study workflows and practice-question prompts for medical students at
+          any school.
         </p>
       </header>
 
@@ -35,7 +35,7 @@ export default function AboutPage() {
           is obvious.
         </p>
         <p className="text-muted-foreground leading-relaxed">
-          Miller AI Plays delivers bite-sized workflows (&ldquo;Plays&rdquo;) that meet students where they are: on
+          Med AI Plays delivers bite-sized workflows (&ldquo;Plays&rdquo;) that meet students where they are: on
           mobile, short on time, and between other things. Each Play pairs a short demo with a copy-paste prompt. The{" "}
           <Link href="/question-builder" className="text-highlight hover:underline">
             Question Builder
@@ -84,9 +84,8 @@ export default function AboutPage() {
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">Who makes this</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Miller AI Plays was created by{" "}
-          <span className="font-medium text-foreground">Lamar Martin</span>. It is an independent project and is not
-          affiliated with any medical school, exam provider, or AI company. Names of exams and tools are used only to
+          Med AI Plays was created by{" "}
+          <span className="font-medium text-foreground">Lamar Martin</span>. Names of exams and tools are used only to
           describe what a Play is for.
         </p>
       </section>

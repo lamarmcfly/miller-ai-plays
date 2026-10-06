@@ -1,5 +1,5 @@
 {
-  "name": "miller-ai-plays",
+  "name": "med-ai-plays",
   "private": true,
   "scripts": {
     "dev": "pnpm --filter web dev",

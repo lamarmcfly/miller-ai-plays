@@ -23,8 +23,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Miller AI Plays",
-    template: "%s | Miller AI Plays",
+    default: "Med AI Plays",
+    template: "%s | Med AI Plays",
   },
   description:
     "AI study workflows and custom practice-question prompts for medical students at any school. 90 seconds to learn, 5 minutes to use.",
@@ -65,7 +65,7 @@ export default function RootLayout({
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <div>
                 <p className="font-[family-name:var(--font-display)] text-2xl text-white leading-none">
-                  Miller AI Plays
+                  Med AI Plays
                 </p>
                 <p className="text-xs mt-2 text-stone-400">
                   A free study resource for medical students at any school
@@ -86,10 +86,6 @@ export default function RootLayout({
             <div className="border-t border-stone-700 pt-4 flex flex-col sm:flex-row sm:justify-between gap-2 text-xs text-stone-400">
               <p>
                 Created by <span className="text-stone-200">Lamar Martin</span>
-              </p>
-              <p className="max-w-xl sm:text-right">
-                Independent project. Not affiliated with any medical school, exam provider, or AI company. For study
-                only; not medical advice.
               </p>
             </div>
           </div>
