@@ -6,7 +6,8 @@
     "build": "pnpm --filter web build",
     "validate": "tsx scripts/validate-plays.ts",
     "check:questions": "tsx scripts/check-question-spec.ts",
-    "check:start": "tsx scripts/check-start-path.ts"
+    "check:start": "tsx scripts/check-start-path.ts",
+    "check:analytics": "tsx scripts/check-analytics.ts"
   },
   "dependencies": {
     "next": "16.2.6"

@@ -623,7 +623,7 @@ export function QuestionBuilder() {
         </pre>
 
         <div className="flex flex-wrap items-center gap-2">
-          <CopyButton text={prompt} label="Copy prompt" className="h-9 px-4" />
+          <CopyButton text={prompt} exam={cfg.exam} label="Copy prompt" className="h-9 px-4" />
           {canPrefill && (
             <>
               <a
