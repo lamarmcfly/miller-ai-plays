@@ -11,7 +11,7 @@ Med AI Plays is a free library for medical students at any school. It has these 
 
 Also included: a printable one-page **cheat sheet** (`/cheat-sheet`), site-wide **search** (`/search`), per-exam landing pages (`/exams/step1`, `/exams/shelf`, and so on), and an installable mobile site (web app manifest).
 
-It works with any AI tool (Claude, ChatGPT, Copilot, Gemini, NotebookLM) and has no accounts, no database, and no cookies. Page views are counted with Vercel Analytics, which is cookieless and collects no personal data.
+It works with any AI tool (Claude, ChatGPT, Copilot, Gemini, NotebookLM) and has no accounts, no database, and no cookies. Vercel Analytics provides aggregate page-view and interaction reports. Analytics events exclude entered text and student identifiers. See [ANALYTICS.md](ANALYTICS.md) for setup, event definitions, reporting, and limitations.
 
 ## Practice questions
 

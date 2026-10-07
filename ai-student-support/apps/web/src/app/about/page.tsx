@@ -91,10 +91,12 @@ export default function AboutPage() {
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">Privacy</h2>
         <p className="text-muted-foreground leading-relaxed">
-          No accounts and no cookies. What you type into the Question Builder and prompt templates stays in your
-          browser. We count page views with privacy-friendly analytics so we know which Plays help, and we never
-          collect your name or email. The only text that leaves your device is what you choose to send through the
-          Community form or a feedback link.
+          No accounts and no analytics cookies. We use Vercel Analytics for aggregate reports on page views,
+          prompt copies, AI-tool link clicks, study-path completions, and print requests. Reports use public page
+          names and fixed categories such as exam type; we do not send names, email addresses, entered text,
+          study difficulties, or URL query strings as analytics data. We do not track individual participation.
+          Builder settings are saved in your browser. When you open an AI tool with a prompt, submit a community
+          post, or send feedback, the content you choose to send goes to that service.
         </p>
       </section>
 

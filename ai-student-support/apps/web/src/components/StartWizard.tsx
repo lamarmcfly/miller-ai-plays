@@ -14,6 +14,7 @@ import {
   type NeedId,
 } from "@/lib/start-path";
 import { toolJobs, toolLabels } from "@/lib/tool-chooser";
+import { trackUsage } from "@/lib/analytics";
 import { ShareButton } from "@/components/ShareButton";
 
 export type PlayInfo = { slug: string; title: string; oneLiner: string; estimatedTime: string };
@@ -50,6 +51,7 @@ export function StartWizard({ plays }: { plays: PlayInfo[] }) {
 
   function showResult() {
     if (!goal || !xp) return;
+    trackUsage("start_completed", goal);
     window.history.replaceState(null, "", `/start?${encodeAnswers(goal, xp, picked)}`);
     setDone(true);
     window.scrollTo({ top: 0 });

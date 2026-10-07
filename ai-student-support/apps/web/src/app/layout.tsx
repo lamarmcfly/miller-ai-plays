@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Newsreader, Instrument_Sans, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { SiteNav } from "@/components/SiteNav";
-import { Analytics } from "@vercel/analytics/next";
+import { UsageAnalytics } from "@/components/UsageAnalytics";
 import { navLinks } from "@/lib/nav";
 import { goals } from "@/lib/start-path";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
@@ -112,7 +112,7 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
-        <Analytics />
+        <UsageAnalytics />
       </body>
     </html>
   );

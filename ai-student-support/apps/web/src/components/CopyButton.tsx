@@ -1,5 +1,7 @@
 "use client";
 
+import { trackUsage } from "@/lib/analytics";
+import type { ExamId } from "@/lib/question-spec";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -30,15 +32,18 @@ export function CopyButton({
   text,
   label = "Copy Prompt",
   className,
+  exam,
 }: {
   text: string;
   label?: string;
   className?: string;
+  exam?: ExamId;
 }) {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
 
   async function handleCopy() {
     const ok = await copyText(text);
+    if (ok) trackUsage(exam ? "builder_prompt_copied" : "prompt_copied", exam);
     setState(ok ? "copied" : "failed");
     setTimeout(() => setState("idle"), 2000);
   }
