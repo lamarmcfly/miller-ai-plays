@@ -87,8 +87,23 @@ const reasons: Record<string, string> = {
   "residency-application-coach": "Feedback on your own writing and interview practice, never ghostwriting.",
 };
 
-export function reasonFor(slug: string): string {
-  return reasons[slug] ?? "";
+// A Play can be on several paths for different reasons. Where the generic line
+// above would not explain why it matters for this goal, override it here.
+const goalReasons: Partial<Record<GoalId, Record<string, string>>> = {
+  residency: {
+    "verify-the-ai":
+      "AI is often confidently wrong about deadlines, requirements, and what programs want. Check anything it tells you about the application against the official source.",
+    "residency-application-coach":
+      "Use AI as a second reader and mock interviewer for your own draft. It gives feedback and questions, never replacement sentences.",
+    "case-presentation-coach":
+      "Interviews and sub-internships ask you to talk through patients out loud. Rehearse that with a de-identified or fictional case.",
+    "research-speed-read":
+      "Be ready to discuss your research and the papers behind it accurately in interviews.",
+  },
+};
+
+export function reasonFor(slug: string, goal?: GoalId): string {
+  return (goal && goalReasons[goal]?.[slug]) ?? reasons[slug] ?? "";
 }
 
 export function allReferencedSlugs(): string[] {
@@ -152,7 +167,7 @@ export function recommend(goal: GoalId, xp: ExperienceId, picked: NeedId[]): Sta
   if (picked.includes("plan")) toolJobIds.push("schedule");
 
   return {
-    steps: slugs.map((slug) => ({ slug, reason: reasons[slug] ?? "" })),
+    steps: slugs.map((slug) => ({ slug, reason: reasonFor(slug, goal) })),
     builderHref,
     toolJobIds,
   };

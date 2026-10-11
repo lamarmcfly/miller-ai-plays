@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { getAllPlays } from "@/lib/plays";
 import { goals, recommend, type GoalId } from "@/lib/start-path";
 
-const intro: Record<GoalId, { h1: string; body: string }> = {
+const intro: Record<GoalId, { h1: string; body: string; guardrails?: { title: string; items: string[] } }> = {
   coursework: {
     h1: "AI study workflows for medical school course exams",
     body: "Turn lectures into flashcards, get tutoring on concepts that won't stick, and practice with questions written from your own course material.",
@@ -38,8 +38,17 @@ const intro: Record<GoalId, { h1: string; body: string }> = {
     body: "Prepare for rounds, draft notes faster, rehearse presentations, and decide quickly which papers are worth reading.",
   },
   residency: {
-    h1: "AI feedback tools for residency applications",
-    body: "Get honest feedback on your own writing and practice interviews, without handing your voice over to an AI.",
+    h1: "Using AI on your residency application, without losing your voice",
+    body: "Use AI as a second reader for your own drafts and as a mock interviewer. It gives feedback and questions. It never writes the application for you.",
+    guardrails: {
+      title: "Ground rules for AI on your application",
+      items: [
+        "Check first. Your school, each program, and the application service set their own AI-use policies, and you are responsible for following them. If a policy is unclear, ask your dean's office or advisor.",
+        "Write the draft yourself. Bring AI a real first draft, then ask for feedback and questions, not rewrites. Every sentence you submit should be yours.",
+        "Keep patients out of it. No names, initials, MRNs, dates, or identifiable stories in anything you paste.",
+        "Verify what it tells you. AI can be wrong about requirements, deadlines, and norms. Confirm with official sources and a specialty advisor.",
+      ],
+    },
   },
 };
 
@@ -70,6 +79,17 @@ export default async function ExamPage({ params }: { params: Promise<{ goal: str
         <h1 className="text-4xl font-medium leading-tight">{intro[g.id].h1}</h1>
         <p className="text-lg text-muted-foreground">{intro[g.id].body}</p>
       </header>
+
+      {intro[g.id].guardrails && (
+        <section aria-labelledby="guardrails-heading" className="border border-border bg-marker/30 p-4 space-y-2">
+          <h2 id="guardrails-heading" className="font-semibold">{intro[g.id].guardrails!.title}</h2>
+          <ul className="list-disc space-y-1 pl-5 text-sm">
+            {intro[g.id].guardrails!.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <ol className="space-y-3">
         {path.steps
