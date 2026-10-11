@@ -53,8 +53,11 @@ pnpm dev               # Next.js dev server
 pnpm validate          # Validate all Play frontmatter against the schema
 pnpm check:questions   # Check the Question Builder's prompt logic
 pnpm check:start       # Check every Start Here answer combination yields a valid path
+pnpm check:analytics   # Check analytics redaction and allowed categories
 pnpm build             # Production build
 ```
+
+CI runs the four checks on pull requests that touch Plays, `apps/web/src/lib/`, `scripts/`, or dependencies (`.github/workflows/student-site.yml` at the repository root).
 
 ## Adding a Play
 

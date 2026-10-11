@@ -1,0 +1,37 @@
+name: Student site
+
+on:
+  pull_request:
+    paths:
+      - "ai-student-support/content/plays/**"
+      - "ai-student-support/apps/web/src/lib/**"
+      - "ai-student-support/scripts/**"
+      - "ai-student-support/package.json"
+      - "ai-student-support/pnpm-lock.yaml"
+      - ".github/workflows/student-site.yml"
+  push:
+    branches: [main]
+    paths:
+      - "ai-student-support/content/plays/**"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ai-student-support
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: ai-student-support/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm validate
+      - run: pnpm check:questions
+      - run: pnpm check:start
+      - run: pnpm check:analytics
