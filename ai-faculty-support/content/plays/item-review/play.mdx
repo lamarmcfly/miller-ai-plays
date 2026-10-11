@@ -1,0 +1,73 @@
+---
+slug: "item-review"
+title: "Find the Flaws in Exam Questions"
+hook: "Catch cueing, ambiguity and dead distractors before learners do."
+oneLiner: "Paste questions you already have, with keys and optional item statistics; get a keep, revise or replace verdict for each, the specific flaws, and the smallest revision that fixes them."
+
+category: "quality"
+order: 2
+learners: ["pre-clerkship", "clerkship", "residents"]
+estimatedTime: "10 min per 10 questions"
+difficulty: "beginner"
+
+prompt: |
+  You are an experienced item reviewer for medical school examinations. Review the questions I paste for flaws that make them unfair, guessable or ambiguous. Be specific and direct, and keep my content and style wherever you can.
+
+  ASK ME FOR, in one message (skip anything I have already given you):
+  1. The questions with their answer keys. Only questions my institution owns; not licensed question-bank or licensing-exam items.
+  2. The learners, and the objective each question tests, if I know it.
+  3. Optional, after the exam: summary item statistics (percentage correct, discrimination index or point-biserial, and how many chose each option) and how many learners took it. Summary numbers only, never student-level data.
+
+  CHECK EACH QUESTION FOR
+  - Cover-the-options test: can a prepared learner answer from the stem and lead-in alone?
+  - The key: is there one clearly best answer, could an expert defend another option, and is the key correct? Mark VERIFY if you are not sure.
+  - Cues to the answer: grammatical mismatch, the longest or most detailed option being the key, words repeated from stem to key, absolute terms, convergence (the key shares the most elements with the other options), "all of the above" or "none of the above".
+  - Irrelevant difficulty: negatives (NOT, EXCEPT), vague frequency words (often, usually), complex multiple-true-false formats, numeric options out of order, unnecessary length or trivia.
+  - Vignette: complete and internally consistent, units given, diagnosis not named, no giveaway buzzwords.
+  - Distractors: homogeneous and plausible. Flag any that no prepared learner would choose.
+  - Alignment: does it test its objective, and at what cognitive level (recall or application)?
+  - Fairness: stereotypes, demographic details that are not clinically relevant, or language that would disadvantage some learners.
+  - Statistics, if given: interpret them cautiously. Flag very easy or very hard items, low or negative discrimination, options nobody chose, and an option chosen more than the key by stronger examinees, and say what to look at. With fewer than about 30 examinees these numbers are unstable; say so when it applies.
+
+  FOR EACH QUESTION GIVE
+  - Verdict: KEEP, REVISE, or REPLACE.
+  - Each flaw found, in one line.
+  - A revised version with only the changes needed.
+
+  FINISH with patterns across the set (for example "the key is the longest option in 6 of 10") and the three habits that would most improve my next set.
+
+starterPrompts:
+  - label: "Check one question"
+    prompt: "Review this exam question for [LEARNER LEVEL] learners. Can it be answered without the options? Is there exactly one best answer? Are there cues to the key, unnecessary negatives, or implausible distractors? Give a verdict (keep, revise, replace) and a minimally revised version.\n\n[PASTE THE QUESTION AND KEY]"
+  - label: "Make sense of item statistics"
+    prompt: "After our exam ([NUMBER OF EXAMINEES] examinees), this question had [PERCENT CORRECT] correct and a discrimination index of [DISCRIMINATION]. Option choices: [OPTION COUNTS]. What might explain this, what should I look at in the question, and should I consider keying or scoring changes? Be cautious about small numbers.\n\n[PASTE THE QUESTION AND KEY]"
+
+whenToUse: |
+  Before an exam goes out, when you inherit a question pool, and after an exam
+  when item statistics flag questions that behaved oddly. Also on any question set
+  an AI tool wrote, in a fresh chat.
+
+successSignal: |
+  You can name the two or three flaws you used to make most often, your new
+  questions stop showing them, and post-exam statistics flag fewer items.
+
+whyItWorks: "Most flawed items fail in a few predictable ways: cues that let test-wise learners guess, and ambiguity that penalizes learners who know the most. Removing them makes scores reflect knowledge, which is the point of the exam."
+
+tags: ["item-review", "item-writing", "item-analysis", "assessment", "quality"]
+relatedPlays: ["exam-item-writer", "learning-objectives", "check-the-draft"]
+
+author: "Lamar Martin"
+publishedAt: "2026-10-11"
+updatedAt: "2026-10-11"
+version: "1.0"
+---
+
+## Before you paste
+
+- **No student data.** Paste summary statistics only. Never paste names, IDs or individual responses.
+- **Secure items.** If the questions belong to a secure exam pool, use the AI tool your school approves for exam material, or none.
+- **Licensed items.** Don't paste NBME, licensing-exam or question-bank items.
+
+## Using the verdicts
+
+The AI's verdict is a suggestion. Changing the key or dropping an item after an exam is an assessment decision with consequences for learners, so follow your course or school process for it.

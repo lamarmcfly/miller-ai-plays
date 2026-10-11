@@ -1,0 +1,20 @@
+{
+  "name": "faculty-ai-plays",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "lint": "pnpm --filter web lint",
+    "validate": "tsx scripts/validate-plays.ts",
+    "check:start": "tsx scripts/check-start-path.ts",
+    "check:eat": "tsx scripts/check-eat-format.ts"
+  },
+  "dependencies": {
+    "next": "16.2.6"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "tsx": "^4.22.3",
+    "zod": "^4.4.3"
+  }
+}
