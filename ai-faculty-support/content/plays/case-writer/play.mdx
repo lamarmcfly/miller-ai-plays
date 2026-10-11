@@ -1,0 +1,67 @@
+---
+slug: "case-writer"
+title: "Build a Small-Group Case"
+hook: "A case that unfolds in parts, with a facilitator guide, built around your objectives."
+oneLiner: "Give it your objectives and learners; get a fictional case revealed in stages with reasoning questions after each, and a separate facilitator guide with timing, expected answers and the wrong turns to watch for."
+
+category: "curriculum"
+order: 2
+learners: ["pre-clerkship", "clerkship", "residents"]
+estimatedTime: "20 min"
+difficulty: "intermediate"
+
+prompt: |
+  You are an experienced medical educator who writes cases for small-group, case-based and team-based learning. Help me build one case.
+
+  BEFORE WRITING, ask me in one message (skip anything I have already told you):
+  1. The learners (pre-clerkship students, clerkship students, residents), the group size, and the session length.
+  2. The 2 to 4 learning objectives the case must serve. Paste them.
+  3. The topic and the presentation I have in mind, if any, and anything I want included or avoided.
+  4. The format: a case revealed in parts, a team-based learning application exercise, or a one-page case for discussion.
+  5. Source material the case should follow, if any.
+
+  WRITE THE CASE (the learner handout)
+  - A fictional patient. Include social context only when it serves an objective, and keep it realistic rather than stereotyped.
+  - Usually 3 or 4 parts that release information the way it would arrive in practice: presentation, history and examination, results, then course and management. Do not name the diagnosis until learners have had a chance to reason to it.
+  - After each part, 2 or 3 discussion questions that need reasoning (what is most likely and why, what would change your mind, what next and why), not recall.
+  - Plausible, consistent vital signs, results with units and reference ranges, and timeline.
+
+  THEN WRITE THE FACILITATOR GUIDE
+  - Which objective each part serves, and suggested minutes for each part.
+  - Expected answers with the reasoning, including acceptable alternatives.
+  - Common wrong turns and one question to redirect each.
+  - One stretch question for a strong group and one simplifying prompt for a group that is stuck.
+  - A closing summary of 3 to 5 key points, each linked to an objective.
+
+  FORMAT the learner handout and the facilitator guide as separate sections so I can print them separately, and keep answers out of the handout.
+
+starterPrompts:
+  - label: "Quick case for one session"
+    prompt: "Write a small-group case for [LEARNER LEVEL] learners, [SESSION LENGTH], on [TOPIC], serving these objectives: [OBJECTIVES]. Reveal it in 3 parts with 2 reasoning questions after each. Then write a separate facilitator guide with expected answers, common wrong turns, and a 4-point closing summary."
+
+whenToUse: |
+  When you are preparing a small-group, case-based or team-based session, refreshing
+  a case that has gone stale, or need a parallel case for a second group so the
+  first can't pass on the answers.
+
+successSignal: |
+  The case runs in the time you planned, discussion stays on your objectives,
+  facilitators who didn't write it can run it from the guide, and every value in
+  the case has been checked against a source.
+
+whyItWorks: "Releasing information in stages makes learners commit to a working diagnosis and revise it as new data arrive, which is the reasoning skill the session is for. A facilitator guide with expected wrong turns lets any facilitator run it consistently."
+
+tags: ["cases", "small-group", "case-based-learning", "tbl", "facilitator-guide"]
+relatedPlays: ["learning-objectives", "check-the-draft", "exam-item-writer"]
+
+author: "Lamar Martin"
+publishedAt: "2026-10-11"
+updatedAt: "2026-10-11"
+version: "1.0"
+---
+
+## Before you teach it
+
+- **Check every number.** Vital signs, laboratory values, reference ranges and doses are where AI-written cases most often go wrong. Run **Fact-Check an AI Draft** on the case.
+- **Never base a case on a real patient you can identify.** Invent the details, and change anything distinctive.
+- **Read it as a learner.** Make sure no part gives away the diagnosis before the questions ask for it.

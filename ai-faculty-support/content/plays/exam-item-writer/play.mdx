@@ -1,0 +1,81 @@
+---
+slug: "exam-item-writer"
+title: "Write Original Exam Questions"
+hook: "Single-best-answer vignettes that test application, with every distractor built from a real misconception."
+oneLiner: "Give it your objectives and learners; get original vignette questions written to standard item-writing rules, each with a key, a full explanation, and the misconception behind every wrong option."
+
+category: "assessment"
+order: 1
+learners: ["pre-clerkship", "clerkship", "residents"]
+estimatedTime: "15-30 min per set"
+difficulty: "intermediate"
+worksWithEat: true
+
+prompt: |
+  You are an experienced medical educator and item writer. Help me write original single-best-answer questions for my learners, following widely used item-writing principles for medical examinations.
+
+  BEFORE WRITING, ask me in one message (skip anything I have already told you):
+  1. Purpose: a formative quiz, a course or block exam, practice for licensing or shelf exams, or practice questions for an EAT teaching pearl.
+  2. The learners, and the style to match (for example basic-science mechanism questions in a clinical vignette, diagnosis and next-step management questions, or my course's own style).
+  3. The learning objective each question should test (paste them) and the topic.
+  4. How many questions, and the intended difficulty (most learners should get it right, about half should, or only the strongest should).
+  5. How many options: five, or four if my exams use four.
+  6. Source material to base the questions on, if any. If I paste it, use only that.
+
+  WRITE EACH QUESTION TO THESE RULES
+  - It tests one objective, at the application level or higher unless I ask for recall.
+  - Vignette: age and sex, setting, chief complaint with timing, relevant history, vital signs with units, focused examination, and key results with units. Do not name the diagnosis in the stem. Avoid giveaway buzzwords. Keep vital signs, results and timeline consistent with each other.
+  - Lead-in: one clear question that a prepared learner could answer before reading the options.
+  - Options: homogeneous (all diagnoses, or all drugs, and so on), similar in length and detail, in logical or alphabetical order. No "all of the above", "none of the above", or "except" questions. No absolute words used as clues, and no grammatical or length cues pointing to the key.
+  - Each wrong option is plausible because of one specific misconception. Name it.
+  - No irrelevant difficulty: no trick wording, unnecessary negatives, or rare trivia.
+
+  FOR EACH QUESTION GIVE
+  1. Stem and lead-in.
+  2. Lettered options.
+  3. The correct answer.
+  4. Explanation: why the key is right, and why each wrong option is tempting but wrong.
+  5. The objective tested, the intended difficulty, and the cognitive level.
+
+  IF THE PURPOSE IS PRACTICE QUESTIONS FOR AN EAT PEARL
+  Ask me for the pearl first. A pearl can have up to {{EAT_MAX_TRANSFER_ITEMS}} practice questions, entered one at a time. Each must use the pearl's idea in a new situation rather than restate it, so answering it shows the idea transfers. Keep within EAT's limits: {{EAT_TRANSFER_LIMITS}}. Make sure each explanation says why the most tempting wrong answer fails.
+
+  AFTER THE SET, check it yourself for duplicate concepts, one question giving away another, and the key falling on the same letter too often, and tell me what you found. Then ask whether I want any question made harder or easier.
+
+starterPrompts:
+  - label: "Quick set for one objective"
+    prompt: "Write [NUMBER] original single-best-answer vignette questions for [LEARNER LEVEL] learners on this objective: [OBJECTIVE]. Five options each. For each: stem, lead-in, options, key, why the key is right, and the misconception behind each wrong option. Do not name the diagnosis in the stem."
+  - label: "Practice questions for an EAT pearl"
+    prompt: "Write 2 original practice questions for this teaching pearl, for [LEARNER LEVEL] learners. Each must use the pearl's idea in a new clinical situation, not restate it. Limits: {{EAT_TRANSFER_LIMITS}}. Give stem, options, key, and an explanation that says why the most tempting wrong answer fails.\n\n[PASTE THE PEARL]"
+
+whenToUse: |
+  When you are building a quiz or exam, refreshing a question pool, writing a
+  replacement for a question that performed badly, or adding practice questions to
+  an EAT pearl.
+
+successSignal: |
+  Most questions pass the cover-the-options test, every wrong option is one a real
+  learner would choose and you can say why, and your edits are about the medicine,
+  not about structure. You have checked every key against a source before the
+  questions go live.
+
+whyItWorks: "Questions that can be answered from the stem alone, with distractors that each reflect a known misconception, measure reasoning instead of test-taking skill, and the wrong answers learners choose tell you which misconception to teach to."
+
+tags: ["exam-questions", "item-writing", "vignettes", "assessment", "eat"]
+relatedPlays: ["item-review", "learning-objectives", "pearl-drafter"]
+
+author: "Lamar Martin"
+publishedAt: "2026-10-11"
+updatedAt: "2026-10-11"
+version: "1.0"
+---
+
+## Before questions go on an exam
+
+- **Check every key yourself.** AI writes confident keys that are sometimes wrong, especially for next-step management, thresholds and drug choices. Confirm each against a current source.
+- **Run Find the Flaws in Exam Questions on the set** in a fresh chat. Writing and reviewing in the same conversation tends to approve its own mistakes.
+- **Keep secure items out of AI tools.** Don't paste items from a secure exam pool into a consumer AI tool. Use the tool your school approves for exam material, if any.
+
+## For EAT pearls
+
+EAT holds only practice questions your institution wrote. When you approve a pearl, you attest that its practice questions are original. Never paste, adapt or ask the AI to imitate a question-bank or licensing-exam item.

@@ -1,0 +1,70 @@
+---
+slug: "learning-objectives"
+title: "Measurable Learning Objectives from Your Session"
+hook: "Turn slides or an outline into objectives you can teach to and test."
+oneLiner: "Paste your outline or slide text; get 3 to 6 measurable objectives, each labelled with its level, a way to assess it, and the course objective it maps to, plus the gaps between what you teach and what you test."
+
+category: "curriculum"
+order: 1
+learners: ["pre-clerkship", "clerkship", "residents"]
+estimatedTime: "10 min"
+difficulty: "beginner"
+
+prompt: |
+  You are an experienced medical educator and curriculum designer. Help me write learning objectives for one teaching session.
+
+  BEFORE WRITING, ask me in one message (skip anything I have already told you):
+  1. The session title, format (lecture, small group, lab, clinical skills, bedside teaching, other) and length.
+  2. The learners (pre-clerkship students, clerkship students, residents, or other) and what they already know.
+  3. My material: the outline, slide text or notes. Or a few sentences describing the session.
+  4. Any course or program objectives, competencies or exam blueprint this session must map to. Paste their wording.
+
+  THEN WRITE 3 TO 6 SESSION OBJECTIVES
+  - Each starts "By the end of this session, learners will be able to..."
+  - One observable behaviour per objective, with one measurable verb (for example explain, compare, interpret, calculate, prioritize, demonstrate). Do not use understand, know, learn, appreciate or be familiar with.
+  - Mix the levels on purpose, with at least one above recall. Label each objective with its level: remember, understand, apply, analyze, evaluate or create.
+  - Each must be achievable in the time available and testable.
+  - Stay within what my material covers. If an objective needs content I did not include, mark it GAP.
+
+  FOR EACH OBJECTIVE GIVE
+  - How to assess it (for example a single-best-answer vignette, short answer, OSCE checklist item, or oral question).
+  - The course or program objective it maps to, quoting my wording, or "No match".
+
+  FORMAT the objectives as a table with columns: Objective | Level | How to assess | Maps to.
+
+  THEN
+  - List any part of my material that no objective covers (a candidate to cut, or a missing objective).
+  - Offer to rewrite for a different learner level, or to draft one assessment question per objective.
+
+starterPrompts:
+  - label: "Objectives from my slides"
+    prompt: "Write 4 measurable learning objectives for a [SESSION LENGTH] [SESSION FORMAT] for [LEARNER LEVEL] learners, based only on the material below. Use one action verb each (not 'understand' or 'know'), label each with its level (remember, understand, apply, analyze, evaluate, create), and suggest how to assess each one. Mark GAP if an objective needs content that isn't here.\n\n<<<MATERIAL\n[PASTE YOUR OUTLINE OR SLIDE TEXT]\nMATERIAL>>>"
+  - label: "Fix objectives I already have"
+    prompt: "Rewrite these learning objectives for [LEARNER LEVEL] learners so each has one measurable verb and one observable behaviour. Keep my intent. For each, say what you changed and why, and how it could be assessed.\n\n[PASTE YOUR OBJECTIVES]"
+
+whenToUse: |
+  When you build or revise a session, when a course director asks for objectives,
+  before you write exam questions (each question should test one of these), and
+  before a curriculum mapping or accreditation review.
+
+successSignal: |
+  Every objective names something a learner does that you could observe, at least
+  one goes beyond recall, and each one already has an assessment method next to it.
+  Your exam questions start pointing at specific objectives.
+
+whyItWorks: "Objectives written as observable behaviours line up teaching, practice and assessment. Learners know what they will be asked to do, and you can check that the exam tests what the session taught."
+
+tags: ["learning-objectives", "curriculum", "session-planning", "blooms"]
+relatedPlays: ["exam-item-writer", "case-writer", "check-the-draft"]
+
+author: "Lamar Martin"
+publishedAt: "2026-10-11"
+updatedAt: "2026-10-11"
+version: "1.0"
+---
+
+## Tips
+
+- **Paste your course objectives' exact wording.** The mapping column is only useful if it quotes the real objective, not a paraphrase.
+- **Expect to cut.** If your material covers more than 6 objectives' worth, that's useful information: the session may be trying to do too much.
+- **Remove identifiers before pasting slides.** Slide text can carry patient details in image captions, or student names from a previous year. Remove them first.

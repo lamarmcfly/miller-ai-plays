@@ -1,0 +1,70 @@
+---
+slug: "pearl-check"
+title: "Pre-Check a Pearl Before Review"
+hook: "Run EAT's 20 reviewer questions on your draft before a colleague has to."
+oneLiner: "A critical second reader goes through every question an EAT reviewer attests to, says which ones pass, which need work and which only you can check, and suggests the smallest fix."
+
+category: "pearls"
+order: 2
+learners: ["pre-clerkship", "clerkship", "residents"]
+estimatedTime: "5-10 min per pearl"
+difficulty: "beginner"
+worksWithEat: true
+
+prompt: |
+  You are a careful, critical second reviewer of teaching pearls for a medical school. Your job is to find whatever would make this pearl misleading before a faculty reviewer approves it. Be direct and specific. Do not praise.
+
+  ASK ME FOR, in one message (skip anything I have already given you):
+  1. The pearl: topic, takeaway, why it holds, when it applies, limitations, kind of misunderstanding, sources, review date, and any practice questions. A pasted EAT CSV row is fine.
+  2. The learners: pre-clerkship students, clerkship students, or residents.
+  3. The source passages, if I want the pearl checked against them. Without them you cannot check sources, and you must say so rather than guess.
+
+  THEN ANSWER THESE REVIEWER QUESTIONS, in order:
+  {{EAT_REVIEW_QUESTIONS}}
+
+  For each question give PASS, CONCERN, or ONLY YOU CAN CHECK, then one sentence saying why, and for every CONCERN a specific suggested fix.
+  - You cannot open links or read a source I have not pasted. For questions about sources, answer ONLY YOU CAN CHECK unless I pasted the passage; if I did, quote the words that do or do not support the claim.
+  - Skip questions {{EAT_PRACTICE_QUESTIONS_FROM}} to {{EAT_PRACTICE_QUESTIONS_TO}} if the pearl has no practice questions, and say that you skipped them.
+  - For question 9, write the misunderstanding in one sentence yourself if the pearl does not name one.
+  - For question 6, list the specific exceptions you considered.
+  - For question 11, you cannot see the institution's other pearls; mark it ONLY YOU CAN CHECK and say what to look for.
+
+  FINISH WITH:
+  - Verdict: READY FOR REVIEW, REVISE FIRST, or NOT A PEARL (accurate but corrects no specific misunderstanding).
+  - A revised pearl with only the changes you recommended, and one line on why for each change.
+  - Your BEFORE YOU USE THIS list: every ONLY YOU CAN CHECK item, most important first.
+
+starterPrompts:
+  - label: "Quick check of one pearl"
+    prompt: "Check this teaching pearl for [LEARNER LEVEL] learners before I submit it for review. Look for: wording stronger than the evidence, missing exceptions, a 'why' that is only a rule, a source that may not support the specific claim, and whether it corrects a specific misunderstanding. Give each problem with a suggested fix.\n\n[PASTE THE PEARL]"
+
+whenToUse: |
+  After drafting a pearl (by hand or with AI) and before you approve it or send it
+  to a colleague for approval. Also when a learner reports a pearl as inaccurate,
+  unclear or outdated in EAT, as a first look before you revise it.
+
+successSignal: |
+  Your pearls reach review with the exceptions thought through, the wording matched
+  to the evidence, and a short list of the things only you can check. The reviewer
+  spends their time on the medicine, not on fixing structure.
+
+whyItWorks: "Reviewers tend to ask \"is it true?\" and skip the questions that make a true pearl misleading: wording stronger than the evidence, exceptions nobody listed, a source on the right subject that doesn't support the sentence. Going through every question in order, before review, catches those while they are cheap to fix."
+
+tags: ["pearls", "eat", "review", "quality"]
+relatedPlays: ["pearl-drafter", "check-the-draft", "exam-item-writer"]
+
+author: "Lamar Martin"
+publishedAt: "2026-10-11"
+updatedAt: "2026-10-11"
+version: "1.0"
+---
+
+## What this does not replace
+
+The pre-check is a second pair of eyes, not the approval. When you press **Approve** in EAT you attest that **you** answered these questions for the pearl: that you opened each source, checked the claim against it, and thought through the exceptions. The AI cannot open your sources and can be wrong about the medicine. Treat every PASS as "nothing obvious," not as "verified."
+
+## Tips
+
+- **Paste the source passages.** With them, the AI can quote the words that do or don't support the takeaway, which is the check most often skipped.
+- **Pre-check a pearl in a fresh chat.** If you drafted it in the same conversation, the AI tends to approve its own work.
+- **Learner reports.** When EAT shows reports against a pearl, paste the pearl and the report reason (inaccurate, outdated, unclear, not relevant). Never paste anything about the learner who reported it; EAT doesn't show you who that was, by design.

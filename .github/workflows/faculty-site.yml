@@ -1,0 +1,34 @@
+name: Faculty site
+
+on:
+  pull_request:
+    paths:
+      - "ai-faculty-support/**"
+      - ".github/workflows/faculty-site.yml"
+  push:
+    branches: [main]
+    paths:
+      - "ai-faculty-support/**"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ai-faculty-support
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: ai-faculty-support/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm validate
+      - run: pnpm check:start
+      - run: pnpm check:eat
+      - run: pnpm lint
+      - run: pnpm build

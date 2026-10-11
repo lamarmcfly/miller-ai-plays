@@ -1,0 +1,93 @@
+---
+slug: "pearl-drafter"
+title: "Draft Teaching Pearls"
+hook: "Takeaways that explain why, say where they stop, and import straight into EAT."
+oneLiner: "Turn the mistakes you see learners make into teaching pearls with a reason, limits and your own sources, plus an EAT import file that creates them as drafts for review."
+
+category: "pearls"
+order: 1
+learners: ["pre-clerkship", "clerkship", "residents"]
+estimatedTime: "15 min for 3 pearls"
+difficulty: "intermediate"
+worksWithEat: true
+
+prompt: |
+  You are an experienced clinical educator helping me write teaching pearls: short takeaways that each correct one specific misunderstanding learners commonly have. A pearl must explain why it holds and say when it does not apply. A slogan without a reason is not a pearl.
+
+  BEFORE WRITING, ask me in one message (skip anything I have already told you):
+  1. The topic, worded exactly as it appears in my curriculum mapping, and the system ID if my mapping uses one (for example cardiovascular). This exact wording is what links a pearl to the course objective.
+  2. The learners: pre-clerkship students, clerkship students, or residents.
+  3. The mistakes or wrong beliefs I see learners make on this topic. If I am not sure, suggest five common ones and let me choose.
+  4. My sources: the guideline, review, textbook chapter or course material each pearl rests on, with year and https link if there is one. I may paste the relevant passages; if I do, work only from them.
+  5. How many pearls (1 to 5), the date they should start being shown, and when they should be reviewed again (within {{EAT_REVIEW_HORIZON}}, and sooner for fast-moving areas).
+
+  FOR EACH PEARL, write these parts in this order:
+  - Misunderstanding it corrects: one sentence naming the wrong belief or wrong answer.
+  - Takeaway: one sentence, {{EAT_TAKEAWAY_LIMIT}}.
+  - Why it holds: the mechanism or reasoning, so a learner could work the pearl out again, {{EAT_WHY_LIMIT}}.
+  - Applies when: {{EAT_APPLIES_WHEN_LIMIT}}.
+  - Limitations: when it does not apply, considering children, pregnancy, older adults, kidney or liver disease, immune suppression, other settings and regional guidance, {{EAT_LIMITATIONS_LIMIT}}. Write "None known" only if you considered all of these and found none, and say so in the review list.
+  - Kind of misunderstanding: one or more of {{EAT_MECHANISMS}}. Do not use a pearl for slips, misreads or guesses; those are process problems a teaching point does not fix.
+  - Source: one of my sources that supports this specific claim, not just the topic, with its kind: {{EAT_SOURCE_KINDS}}. If none of my sources supports the claim, write SOURCE NEEDED. You may suggest where I could look, marked VERIFY, but never put a suggestion in the source field.
+  - Keep the wording as strong as the evidence and no stronger. "Usually" stays "usually".
+
+  THEN GIVE THE EAT IMPORT FILE: a CSV in a code block with exactly this header row and one row per pearl:
+  {{EAT_PEARL_CSV_HEADER}}
+
+  CSV rules:
+  - topic is my exact wording. system_id is empty if I did not give one. concept_label repeats the topic unless I asked for a different display name.
+  - Put every text value in double quotes, and double any quote mark inside a value.
+  - mechanisms: the kinds separated by semicolons, for example APPLICATION;DISCRIMINATION.
+  - One source per row, from my sources only. If a pearl has SOURCE NEEDED, leave source_citation and source_kind empty, so EAT refuses the row until I add a real source.
+  - source_url is an https link or empty. source_year is four digits or empty.
+  - Dates are YYYY-MM-DD. review_due_on is after effective_from and no more than {{EAT_REVIEW_HORIZON}} later.
+  - ai_assisted is always true.
+  - Practice questions do not go in this file. EAT adds them one at a time.
+
+starterPrompts:
+  - label: "One pearl from a mistake I keep seeing"
+    prompt: "My learners are [LEARNER LEVEL]. On [TOPIC] they keep making this mistake: [THE MISTAKE]. Write one teaching pearl that corrects it, using only this source: [SOURCE CITATION AND PASTED PASSAGE]. Give the misunderstanding, takeaway, why it holds, when it applies, limitations, and the kind of misunderstanding ({{EAT_MECHANISMS}})."
+  - label: "Pearls from my teaching notes"
+    prompt: "From the notes below, find the 3 points [LEARNER LEVEL] learners most often get wrong on [TOPIC] and draft a teaching pearl for each: misunderstanding, takeaway, why it holds, when it applies, limitations, and source. Use only these notes as the source (kind COURSE_MATERIAL). Then give the EAT import CSV with this header: {{EAT_PEARL_CSV_HEADER}}. Quote every text value, separate mechanisms with semicolons, and set ai_assisted to true.\n\n<<<NOTES\n[PASTE YOUR NOTES]\nNOTES>>>"
+
+whenToUse: |
+  When you notice the same wrong answer or wrong belief coming up again: in small
+  groups, on exam item analysis, on the wards, or in EAT's learning loop. Also when
+  you are setting up pearls for a course in EAT and want a consistent first draft
+  for every topic.
+
+successSignal: |
+  Each pearl names the misunderstanding it fixes, its "why" would let a learner
+  rebuild it, its limitations are specific, and every source is one you have opened.
+  The CSV passes EAT's "Check the file" step on the first or second try, and the
+  pre-check finds little to change.
+
+whyItWorks: "Learners remember a rule longer, and misapply it less, when they know why it holds and where it stops. Tying each pearl to one named misunderstanding keeps it from becoming trivia, and it is what lets EAT show the pearl only to learners whose own account of a miss matches it."
+
+tags: ["pearls", "eat", "teaching-points", "misconceptions"]
+relatedPlays: ["pearl-check", "exam-item-writer", "check-the-draft"]
+
+author: "Lamar Martin"
+publishedAt: "2026-10-11"
+updatedAt: "2026-10-11"
+version: "1.0"
+---
+
+## Getting the pearls into EAT
+
+1. Copy the CSV the AI gives you, including the header row.
+2. In EAT, open **Teaching pearls** from the menu and find **Import from CSV**.
+3. Paste it into **Paste CSV, or choose a file**, then press **Check the file**. EAT lists every problem by row and imports nothing until every row is valid.
+4. Fix any row it rejects (usually a missing source or a field that is too long) and check again.
+5. Press **Import as drafts** (the button shows how many rows passed). Learners see nothing yet.
+6. Add practice questions to each draft one at a time, if you want them (use **Write Original Exam Questions**).
+7. Run **Pre-Check a Pearl Before Review**, then approve, or ask a colleague to approve if your school requires a separate approver.
+
+The imported pearls are marked as drafted with AI help, and learners are told so. Leave that on.
+
+## Pitfalls
+
+- **Topic wording that doesn't match your mapping.** EAT links a pearl to your course objective through the exact topic text. "Heart failure" and "Heart failure (HFrEF)" are different topics to EAT. Copy the wording from your curriculum mapping.
+- **A source on the right subject that doesn't support the sentence.** Open each source and find the line that supports the takeaway. If you can't, the pearl needs a different source or a weaker claim.
+- **"None known" as a shortcut.** Most harm from a pearl comes from applying it to a group it was never true for. Ask the AI to list the exceptions it considered.
+- **Pearls without a misunderstanding.** If neither you nor the AI can name the wrong belief a pearl corrects, it's interesting trivia, not a pearl.

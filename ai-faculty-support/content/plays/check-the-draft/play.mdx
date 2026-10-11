@@ -1,0 +1,61 @@
+---
+slug: "check-the-draft"
+title: "Fact-Check an AI Draft"
+hook: "Before anything AI-drafted reaches learners, turn it into a list of claims to check."
+oneLiner: "Paste a handout, case, pearl or question set; get every checkable claim numbered and ranked by risk, the kind of source that would confirm each, references that may not exist, and wording stronger than the evidence."
+
+category: "quality"
+order: 1
+learners: ["pre-clerkship", "clerkship", "residents"]
+estimatedTime: "10 min, plus your checking"
+difficulty: "beginner"
+
+prompt: |
+  You are a skeptical fact-checker for medical teaching material. I will paste a draft that an AI tool or I wrote: a handout, slide text, pearl, case, or question set. Your job is not to rewrite it. Your job is to show me exactly what I have to verify before learners see it.
+
+  ASK ME FOR, in one message (skip anything I have already given you):
+  1. The draft.
+  2. The learners and where it will be used.
+  3. Any source documents I want it checked against. Paste the relevant passages.
+
+  THEN:
+  1. List every checkable claim in the draft: facts, numbers, thresholds, doses, drug names, guideline recommendations, statistics and references. Number them.
+  2. For each claim give its RISK (HIGH if an error could teach something unsafe, or something that is wrong on an exam; otherwise MEDIUM or LOW), the kind of source that would confirm it (for example the current guideline from the relevant professional body, a drug reference, or my course material), and, if I pasted a source, whether that source SUPPORTS, CONTRADICTS or DOES NOT ADDRESS the claim, quoting its words.
+  3. List every reference in the draft and say whether you can confirm it exists. Treat any reference you cannot confirm as possibly invented and mark it CHECK IT EXISTS.
+  4. Flag wording stronger than the evidence (always, never, pathognomonic, diagnostic of, rules out), outdated terms or guidance, and places where guidance differs by region or professional body.
+  5. Flag anything that reads as an instruction for treating a real patient rather than a teaching point.
+
+  FINISH WITH your BEFORE YOU USE THIS list: the HIGH-risk claims and the CHECK IT EXISTS references, in the order to check them, and a rough estimate of how long checking will take.
+
+starterPrompts:
+  - label: "What do I need to check?"
+    prompt: "List every fact, number, dose, threshold, guideline claim and reference in the draft below that I need to verify before [LEARNER LEVEL] learners see it. Rank each HIGH, MEDIUM or LOW risk and say what kind of source would confirm it. Don't rewrite the draft.\n\n[PASTE THE DRAFT]"
+
+whenToUse: |
+  Every time AI helped write something learners will see: handouts, slides, cases,
+  pearls, questions, feedback templates. Use a fresh chat, not the one that wrote
+  the draft. It is the last step of every path on this site.
+
+successSignal: |
+  You check the HIGH-risk items every time, you have caught at least one wrong
+  number or invented reference before it reached learners, and you note when
+  AI helped draft the material.
+
+whyItWorks: "AI text is fluent whether or not it is right, so reading it through rarely catches errors. A numbered list of claims, ranked by how much harm an error would do, turns \"check it\" into a short task you can actually finish."
+
+tags: ["verification", "fact-check", "quality", "references"]
+relatedPlays: ["pearl-check", "item-review", "first-ai-session"]
+
+author: "Lamar Martin"
+publishedAt: "2026-10-11"
+updatedAt: "2026-10-11"
+version: "1.0"
+---
+
+## Why a fresh chat
+
+An AI checking its own draft in the same conversation tends to agree with itself. Paste the draft into a new chat, or a different AI tool, so the check starts from the text alone.
+
+## What the AI can't do for you
+
+It may not be able to open your sources or a paywalled guideline, and it doesn't know your course's local protocols. It can tell you what to check and where to look. The checking is yours, and so is the decision to use the material.
