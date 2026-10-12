@@ -129,10 +129,12 @@ export default function Phase2Page() {
       />
 
       <section className="rounded-xl border-l-4 border-brand bg-muted p-5 space-y-2">
-        <h3 className="font-semibold">Scores plateauing?</h3>
+        <h3 className="font-semibold">Dedicated study period</h3>
         <p className="text-sm text-muted-foreground">
-          Talk to your school&apos;s learning specialist or academic support
-          office about an individualized plan.
+          After your clerkships, the dedicated period before Phase 3 is for
+          Step prep. Use Error Engine and Deficit Tracker above to guide it. If
+          your scores are plateauing, talk to your school&apos;s learning
+          specialist or academic support office about an individualized plan.
         </p>
       </section>
 
