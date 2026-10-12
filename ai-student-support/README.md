@@ -54,10 +54,11 @@ pnpm validate          # Validate all Play frontmatter against the schema
 pnpm check:questions   # Check the Question Builder's prompt logic
 pnpm check:start       # Check every Start Here answer combination yields a valid path
 pnpm check:analytics   # Check analytics redaction and allowed categories
+pnpm check:community   # Check anonymous submission and feedback intake
 pnpm build             # Production build
 ```
 
-CI runs the four checks on pull requests that touch Plays, `apps/web/src/lib/`, `scripts/`, or dependencies (`.github/workflows/student-site.yml` at the repository root).
+CI runs the five checks on pull requests that touch Plays, `apps/web/src/lib/`, `scripts/`, or dependencies (`.github/workflows/student-site.yml` at the repository root).
 
 ## Adding a Play
 
@@ -68,7 +69,9 @@ Create `content/plays/<slug>/play.mdx` with the frontmatter shown in any existin
 | Variable | Purpose |
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | Canonical site URL for social previews, the sitemap, and robots. Defaults to the Vercel URL; set it when you add a custom domain. |
-| `NEXT_PUBLIC_COMMUNITY_FORM_URL` | Optional. Endpoint (for example a Tally form) that receives Community Board submissions. If unset, the form opens a pre-filled GitHub issue on this repo, so submissions work with no setup. |
+| `NEXT_PUBLIC_COMMUNITY_FORM_URL` | Optional. Endpoint (for example a Tally form) that receives Community Board submissions. If unset, the form opens a pre-filled GitHub issue on this repo, which needs a GitHub account. |
+| `NEXT_PUBLIC_FEEDBACK_FORM_URL` | Optional. Hosted form for "did it work?" feedback until the site's own intake is on. If unset, feedback links open GitHub issues. |
+| `NEXT_PUBLIC_COMMUNITY_BACKEND` | Set to `inline` to collect submissions and feedback on the site itself, with no GitHub account. Needs `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (server only). See [COMMUNITY.md](COMMUNITY.md). |
 
 ## Community submissions
 

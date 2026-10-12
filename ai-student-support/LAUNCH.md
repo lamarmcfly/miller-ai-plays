@@ -54,11 +54,11 @@ Vercel Analytics (enabled once you deploy) shows page views per page. Look at:
 | Which Plays get opened? | `/plays/*` views |
 | Do exam pages bring in new visitors? | `/exams/*` views and referrers |
 | Is anyone sharing? | Referrers, and visits to `/start?goal=...` links |
-| What is missing? | Issues labeled `community-submission`, `play-feedback`, `community-feedback` |
+| What is missing? | Issues labeled `community-submission`, `play-feedback`, `community-feedback`, or the `play_feedback_summary` view and pending `community_submissions` if anonymous intake is on (see [COMMUNITY.md](COMMUNITY.md)) |
 
 ## Maintainer routine (10 minutes a week)
 
-1. Read new GitHub issues with the labels above.
+1. Read new GitHub issues with the labels above, and any pending rows in Supabase if anonymous intake is on.
 2. For community submissions: check for patient identifiers and licensed exam content, then add an `.mdx` file to `content/community/` (copy an existing post's frontmatter).
 3. When a community idea is good enough to become a Play, write the Play and set `promotedToPlay: "<slug>"` on the post.
 4. For `play-feedback`, fix the prompt, bump the Play's `version` and `updatedAt`.

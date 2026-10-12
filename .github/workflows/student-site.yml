@@ -5,6 +5,8 @@ on:
     paths:
       - "ai-student-support/content/plays/**"
       - "ai-student-support/apps/web/src/lib/**"
+      - "ai-student-support/apps/web/src/app/api/**"
+      - "ai-student-support/supabase/**"
       - "ai-student-support/scripts/**"
       - "ai-student-support/package.json"
       - "ai-student-support/pnpm-lock.yaml"
@@ -35,3 +37,4 @@ jobs:
       - run: pnpm check:questions
       - run: pnpm check:start
       - run: pnpm check:analytics
+      - run: pnpm check:community
