@@ -9,7 +9,7 @@ import { StarterPrompts } from "@/components/StarterPrompts";
 import { getAllSlugs, getPlayBySlug } from "@/lib/plays";
 import { audienceLabels, difficultyColors } from "@/lib/schema";
 import { ShareButton } from "@/components/ShareButton";
-import { newIssueUrl } from "@/lib/community-submit";
+import { FeedbackPrompt } from "@/components/FeedbackPrompt";
 
 const bodyComponents = {
   h2: (props: React.ComponentProps<"h2">) => (
@@ -249,18 +249,7 @@ export default async function PlayPage({
           path={`/plays/${play.slug}`}
           label="Share this Play"
         />
-        <a
-          href={newIssueUrl(
-            `[Play feedback] ${play.title}`,
-            `About the Play "${play.title}" (${play.slug}, v${play.version}):\n\n**What didn't work, or what would make it better?**\n\n`,
-            "play-feedback"
-          )}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-highlight hover:underline font-medium"
-        >
-          This didn&apos;t work for me
-        </a>
+        <FeedbackPrompt kind="play" targetId={play.slug} title={play.title} legacyLabel="This didn't work for me" />
         <Link href="/community" className="text-highlight hover:underline font-medium">
           Share your version
         </Link>

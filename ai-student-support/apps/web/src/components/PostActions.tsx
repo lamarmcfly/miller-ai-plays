@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { newIssueUrl } from "@/lib/community-submit";
+import { FeedbackPrompt } from "./FeedbackPrompt";
 
 const KEY = "med-ai-plays:tried-posts:v1";
 
@@ -17,7 +17,7 @@ function readTried(): string[] {
 /**
  * "I tried this" is saved on this device only (no accounts, no tracking), so
  * students can keep their own list of what they've tested. Real feedback goes
- * to the maintainers through a pre-filled GitHub issue.
+ * to the maintainers anonymously through FeedbackPrompt.
  */
 export function PostActions({ id, title }: { id: string; title: string }) {
   const [tried, setTried] = useState(false);
@@ -39,12 +39,6 @@ export function PostActions({ id, title }: { id: string; title: string }) {
     setTried(next.includes(id));
   }
 
-  const reportUrl = newIssueUrl(
-    `[Community feedback] ${title}`,
-    `About the post "${title}" (${id}):\n\n**What happened when you tried it?**\n\n`,
-    "community-feedback"
-  );
-
   return (
     <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
       <button
@@ -57,14 +51,7 @@ export function PostActions({ id, title }: { id: string; title: string }) {
       >
         {tried ? "Tried it (saved on this device)" : "I tried this"}
       </button>
-      <a
-        href={reportUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-highlight hover:underline"
-      >
-        Tell us how it went
-      </a>
+      <FeedbackPrompt kind="post" targetId={id} title={title} legacyLabel="Tell us how it went" />
     </div>
   );
 }
