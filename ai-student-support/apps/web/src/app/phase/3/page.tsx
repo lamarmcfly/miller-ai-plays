@@ -29,16 +29,10 @@ const corePlaybooks = [
     tag: "Research",
   },
   {
-    slug: "deficit-tracker",
-    title: "Deficit Tracker",
-    why: "If you're still prepping for boards or remediating, track your persistent weak spots.",
-    tag: "Score gains",
-  },
-  {
-    slug: "concept-coach",
-    title: "Concept Coach",
-    why: "Specialty topics are deep and narrow. Use Socratic drilling for subspecialty concepts.",
-    tag: "Deep learning",
+    slug: "residency-application-coach",
+    title: "Residency Application Coach",
+    why: "Get feedback on your own personal statement and experience descriptions, and practice interviews. It never writes the application for you.",
+    tag: "Residency",
   },
 ];
 
@@ -98,8 +92,6 @@ export default function Phase3Page() {
         <ul className="text-sm text-muted-foreground space-y-1.5">
           <li>Adapt Rounds Prep prompts to your specialty&apos;s question style</li>
           <li>Use Research Speed Read before every journal club and research meeting</li>
-          <li>Share your specialty-specific prompts on the Community Board</li>
-          <li>If you develop a workflow that works, submit it as a new Workflow proposal</li>
         </ul>
       </section>
 

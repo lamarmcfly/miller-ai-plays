@@ -22,11 +22,6 @@ const plays = [
     title: "Shelf Review Notebook",
     why: "Build a source-grounded IM notebook. Load Step Up to Medicine, your IM handbook, and OnlineMedEd transcripts.",
   },
-  {
-    slug: "osce-encounter-sim",
-    title: "OSCE Encounter Sim",
-    why: "Practice IM-specific encounters: chest pain, dyspnea, new-onset diabetes, altered mental status.",
-  },
 ];
 
 const rotationPrompts = [
@@ -57,7 +52,6 @@ export default function InternalMedicinePage() {
           "Before rounds: Rounds Prep with today's patient list (5 min)",
           "After each patient: Clinical Note draft (3 min per note)",
           "Evening: Shelf Review Notebook for topics from today (15 min)",
-          "After practice blocks: Error Engine for IM-specific misses",
         ],
       }}
     />

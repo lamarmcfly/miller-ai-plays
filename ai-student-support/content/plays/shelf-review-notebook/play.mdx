@@ -36,8 +36,8 @@ artifact:
     PATTERN 4 - Practice question generation
     "Generate 5 NBME-style shelf practice questions on [topic]. Use only content from my sources. Include answer rationales."
 
-    PATTERN 5 - Pre-rounding prep
-    "Tomorrow I'm seeing patients with [condition]. From my sources, give me the 5 things I need to know to look prepared on rounds: presentation, key labs, first-line workup, first-line treatment, and what attendings love to pimp on."
+    PATTERN 5 - Management ladder
+    "From my sources, lay out the management of [condition] step by step: first test, first-line treatment, what to do if that fails, and the next-best-step traps the shelf likes to test."
 
     PATTERN 6 - Gap identification
     "I just missed this UWorld question: [paste question + your answer + correct answer]. Based on my sources, what concept did I misunderstand?"
@@ -46,9 +46,8 @@ artifact:
 
 whenToUse: |
   Three weeks before a shelf exam: build the notebook and load sources. Daily
-  15-min sessions using the prompt patterns. Also use Pattern 5 the night before
-  rounds, and Pattern 6 after every UWorld block to get source-grounded gap analysis
-  instead of AI hallucinations.
+  15-min sessions using the prompt patterns. Use Pattern 6 after every UWorld block
+  to get source-grounded gap analysis instead of AI hallucinations.
 
 successSignal: |
   Two weeks in, you're getting grounded, source-backed answers from your own
@@ -63,11 +62,11 @@ starterPrompts:
     prompt: "Based on my sources, give me a high-yield summary of [TOPIC] for the [SUBJECT] shelf exam. Include: mechanism, presentation, diagnosis, treatment, and 3 board-favorite associations."
   - label: "Differential builder"
     prompt: "A patient presents with [CHIEF COMPLAINT]. Based on my sources, what's the differential and how do I narrow it down clinically? I'm an MS3 on my [ROTATION] rotation."
-  - label: "Pre-rounds prep"
-    prompt: "Tomorrow I'm seeing patients with [CONDITION] on my [ROTATION] clerkship. From my sources, give me the 5 things I need to know to look prepared on rounds: presentation, key labs, first-line workup, first-line treatment, and what attendings love to pimp on."
+  - label: "Management ladder"
+    prompt: "From my sources, lay out the management of [CONDITION] step by step for the [SUBJECT] shelf: first test, first-line treatment, what to do if that fails, and the next-best-step traps the shelf likes to test."
 
 tags: ["notebooklm", "shelf", "clerkship", "source-grounded", "review"]
-relatedPlays: ["error-engine", "lecture-compressor", "osce-encounter-sim", "custom-practice-questions"]
+relatedPlays: ["custom-practice-questions", "error-engine", "lecture-compressor"]
 
 author: "Lamar Martin"
 publishedAt: "2026-06-01"

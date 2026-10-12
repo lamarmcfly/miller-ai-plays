@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getAllPlays } from "@/lib/plays";
-import { goals, recommend, type GoalId } from "@/lib/start-path";
+import { goals, builderHrefFor, goalSteps, type GoalId } from "@/lib/start-path";
 
 const intro: Record<GoalId, { h1: string; body: string; guardrails?: { title: string; items: string[] } }> = {
   coursework: {
@@ -31,11 +31,11 @@ const intro: Record<GoalId, { h1: string; body: string; guardrails?: { title: st
   },
   osce: {
     h1: "AI study workflows for OSCEs and clinical skills exams",
-    body: "Rehearse standardized-patient encounters, practice your case presentations, and drill differentials out loud.",
+    body: "Rehearse standardized-patient encounters and drill the differential and next steps you will be asked for afterward.",
   },
   wards: {
     h1: "AI study workflows for the wards",
-    body: "Prepare for rounds, draft notes faster, rehearse presentations, and decide quickly which papers are worth reading.",
+    body: "Prepare for rounds, draft notes faster, and rehearse your presentations.",
   },
   residency: {
     h1: "Using AI on your residency application, without losing your voice",
@@ -69,7 +69,8 @@ export default async function ExamPage({ params }: { params: Promise<{ goal: str
   const g = goals.find((x) => x.id === goal);
   if (!g) notFound();
 
-  const path = recommend(g.id, "some", []);
+  const steps = goalSteps(g.id);
+  const builderHref = builderHrefFor(g.id);
   const plays = new Map(getAllPlays().map((p) => [p.slug, p]));
 
   return (
@@ -92,7 +93,7 @@ export default async function ExamPage({ params }: { params: Promise<{ goal: str
       )}
 
       <ol className="space-y-3">
-        {path.steps
+        {steps
           .filter((s) => plays.has(s.slug))
           .map((s, i) => (
             <li key={s.slug}>
@@ -111,9 +112,9 @@ export default async function ExamPage({ params }: { params: Promise<{ goal: str
       </ol>
 
       <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-        {path.builderHref && (
+        {builderHref && (
           <Link
-            href={path.builderHref}
+            href={builderHref}
             className="inline-flex items-center bg-brand text-white hover:bg-brand-light px-5 py-3 text-sm font-semibold transition-colors"
           >
             Build practice questions for this exam

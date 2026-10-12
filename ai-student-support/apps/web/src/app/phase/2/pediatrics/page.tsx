@@ -10,7 +10,6 @@ const plays = [
   { slug: "rounds-prep", title: "Rounds Prep", why: "Peds attendings test developmental milestones, weight-based dosing, and age-specific differentials." },
   { slug: "clinical-note", title: "Clinical Note Writer", why: "Peds notes need growth charts context, vaccination status, and developmental screening. Draft them fast." },
   { slug: "shelf-review-notebook", title: "Shelf Review Notebook", why: "Load BRS Pediatrics, your peds handbook, and OnlineMedEd for source-grounded review." },
-  { slug: "osce-encounter-sim", title: "OSCE Encounter Sim", why: "Practice pediatric encounters: well-child visits, acute presentations, parent communication." },
 ];
 
 const rotationPrompts = [

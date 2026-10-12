@@ -51,10 +51,15 @@ const goalPlays: Record<GoalId, Record<string, number>> = {
   step2: { "error-engine": 6, "custom-practice-questions": 5, "deficit-tracker": 4, "exam-countdown-planner": 4, "shelf-review-notebook": 3 },
   step3: { "custom-practice-questions": 6, "differential-drills": 5, "biostats-translator": 4, "error-engine": 4, "exam-countdown-planner": 3 },
   shelf: { "shelf-review-notebook": 6, "custom-practice-questions": 5, "error-engine": 4, "differential-drills": 3 },
-  osce: { "osce-encounter-sim": 6, "case-presentation-coach": 5, "differential-drills": 4 },
-  wards: { "rounds-prep": 6, "case-presentation-coach": 5, "clinical-note": 4, "research-speed-read": 2 },
-  residency: { "residency-application-coach": 6, "case-presentation-coach": 2, "research-speed-read": 1 },
+  osce: { "osce-encounter-sim": 6, "differential-drills": 4 },
+  wards: { "rounds-prep": 6, "case-presentation-coach": 5, "clinical-note": 4 },
+  residency: { "residency-application-coach": 6 },
 };
+
+// Skills-and-career goals are not exam-study goals. Study-skill needs
+// ("too much to memorize", "missing questions") would only pull unrelated
+// Plays onto these paths, so their Plays come from the goal alone.
+const focusedGoals: ReadonlySet<GoalId> = new Set(["osce", "wards", "residency"]);
 
 const needPlays: Record<NeedId, Record<string, number>> = {
   memorize: { "lecture-compressor": 4, "spaced-review-planner": 3 },
@@ -95,15 +100,26 @@ const goalReasons: Partial<Record<GoalId, Record<string, string>>> = {
       "AI is often confidently wrong about deadlines, requirements, and what programs want. Check anything it tells you about the application against the official source.",
     "residency-application-coach":
       "Use AI as a second reader and mock interviewer for your own draft. It gives feedback and questions, never replacement sentences.",
-    "case-presentation-coach":
-      "Interviews and sub-internships ask you to talk through patients out loud. Rehearse that with a de-identified or fictional case.",
-    "research-speed-read":
-      "Be ready to discuss your research and the papers behind it accurately in interviews.",
+  },
+  osce: {
+    "differential-drills":
+      "Stations ask for your differential and next steps after the encounter. Drill ranking and justifying them.",
   },
 };
 
 export function reasonFor(slug: string, goal?: GoalId): string {
   return (goal && goalReasons[goal]?.[slug]) ?? reasons[slug] ?? "";
+}
+
+/**
+ * The Plays that belong to one goal, best first. The by-exam pages show only
+ * these; the generic on-ramp Plays (first session, verification) are added by
+ * recommend() for the personalized Start Here path.
+ */
+export function goalSteps(goal: GoalId): PathStep[] {
+  return Object.entries(goalPlays[goal])
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([slug]) => ({ slug, reason: reasonFor(slug, goal) }));
 }
 
 export function allReferencedSlugs(): string[] {
@@ -123,6 +139,11 @@ const builderExam: Partial<Record<GoalId, { exam: string; phase: "1" | "2" | "3"
   osce: { exam: "osce", phase: "2" },
 };
 
+export function builderHrefFor(goal: GoalId): string | null {
+  const be = builderExam[goal];
+  return be ? `/question-builder?exam=${be.exam}&phase=${be.phase}` : null;
+}
+
 export type PathStep = { slug: string; reason: string };
 
 export type StartPath = {
@@ -133,13 +154,19 @@ export type StartPath = {
 
 const PATH_LENGTH = 5;
 
+const focusedToolJob: Partial<Record<GoalId, string>> = {
+  osce: "roleplay",
+  wards: "rounds",
+  residency: "feedback",
+};
+
 export function recommend(goal: GoalId, xp: ExperienceId, picked: NeedId[]): StartPath {
   const score = new Map<string, number>();
   const add = (m: Record<string, number>) => {
     for (const [slug, w] of Object.entries(m)) score.set(slug, (score.get(slug) ?? 0) + w);
   };
   add(goalPlays[goal]);
-  picked.forEach((n) => add(needPlays[n]));
+  if (!focusedGoals.has(goal)) picked.forEach((n) => add(needPlays[n]));
 
   // Fixed entries come first for newer users and last for experienced ones.
   const lead: string[] = [];
@@ -157,14 +184,13 @@ export function recommend(goal: GoalId, xp: ExperienceId, picked: NeedId[]): Sta
   const room = PATH_LENGTH - lead.length - tail.length;
   const slugs = [...lead, ...ranked.slice(0, room), ...tail];
 
-  const be = builderExam[goal];
-  const builderHref = be ? `/question-builder?exam=${be.exam}&phase=${be.phase}` : null;
+  const builderHref = builderHrefFor(goal);
 
-  const toolJobIds = ["quiz"];
+  // Each goal lists only the tool jobs that match what it actually does.
+  const toolJobIds = [focusedToolJob[goal] ?? "quiz"];
   if (goal === "coursework" || goal === "shelf" || goal === "step2") toolJobIds.push("own-notes");
   if (goal === "practical") toolJobIds.push("images");
-  if (goal === "residency" || goal === "wards") toolJobIds.push("paper");
-  if (picked.includes("plan")) toolJobIds.push("schedule");
+  if (!focusedGoals.has(goal) && picked.includes("plan")) toolJobIds.push("schedule");
 
   return {
     steps: slugs.map((slug) => ({ slug, reason: reasonFor(slug, goal) })),
