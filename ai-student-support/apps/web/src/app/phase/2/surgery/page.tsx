@@ -10,7 +10,6 @@ const plays = [
   { slug: "rounds-prep", title: "Rounds Prep", why: "Surgery attendings test anatomy, indications, and complications. Know the answers before pre-rounds." },
   { slug: "clinical-note", title: "Clinical Note Writer", why: "Surgery notes are terse. Get a focused post-op or progress note draft in bullet-point format." },
   { slug: "shelf-review-notebook", title: "Shelf Review Notebook", why: "Build a surgery shelf notebook. Load Pestana, your surgical recall notes, and OnlineMedEd." },
-  { slug: "concept-coach", title: "Concept Coach", why: "Drill surgical anatomy and operative indications Socratically when Netter alone doesn't cut it." },
 ];
 
 const rotationPrompts = [

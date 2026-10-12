@@ -10,7 +10,6 @@ const plays = [
   { slug: "rounds-prep", title: "Rounds Prep", why: "FM attendings test preventive medicine, chronic disease management, and screening guidelines." },
   { slug: "clinical-note", title: "Clinical Note Writer", why: "FM notes cover broad complaints. Draft comprehensive outpatient notes with appropriate assessments." },
   { slug: "shelf-review-notebook", title: "Shelf Review Notebook", why: "FM shelf is broad. Build a notebook with Case Files FM, AAFP guidelines, and your clinic notes." },
-  { slug: "concept-coach", title: "Concept Coach", why: "Drill preventive care guidelines, screening intervals, and chronic disease management algorithms." },
 ];
 
 const rotationPrompts = [

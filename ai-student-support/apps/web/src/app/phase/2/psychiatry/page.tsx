@@ -10,7 +10,6 @@ const plays = [
   { slug: "rounds-prep", title: "Rounds Prep", why: "Psychiatry attendings test diagnostic criteria, medication mechanisms, and therapeutic approaches." },
   { slug: "clinical-note", title: "Clinical Note Writer", why: "Psych notes emphasize mental status exam and safety assessments. Get the structure right." },
   { slug: "shelf-review-notebook", title: "Shelf Review Notebook", why: "Build a psych shelf notebook with First Aid Psychiatry, your clerkship guide, and DSM criteria summaries." },
-  { slug: "osce-encounter-sim", title: "OSCE Encounter Sim", why: "Practice sensitive encounters: suicidal ideation assessment, substance use history, psychosis interviews." },
 ];
 
 const rotationPrompts = [

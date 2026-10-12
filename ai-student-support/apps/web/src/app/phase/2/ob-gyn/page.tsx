@@ -10,7 +10,6 @@ const plays = [
   { slug: "rounds-prep", title: "Rounds Prep", why: "OB/GYN attendings test timing, contraindications, and labor management. Know the key decision points." },
   { slug: "clinical-note", title: "Clinical Note Writer", why: "OB notes have unique structure: G/P status, gestational age, fetal monitoring. Get the format right fast." },
   { slug: "shelf-review-notebook", title: "Shelf Review Notebook", why: "Build a source-grounded OB/GYN notebook with Beckmann, your clerkship guide, and review materials." },
-  { slug: "osce-encounter-sim", title: "OSCE Encounter Sim", why: "Practice sensitive conversations: contraception counseling, abnormal pap results, pregnancy loss." },
 ];
 
 const rotationPrompts = [
