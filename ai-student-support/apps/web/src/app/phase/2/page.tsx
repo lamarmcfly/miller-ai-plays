@@ -47,7 +47,7 @@ const corePlaybooks = [
   {
     slug: "deficit-tracker",
     title: "Track Weak Spots Across Tests",
-    why: "Before Step 1 and 2: identify which content areas are dragging your score down.",
+    why: "After each NBME practice test: identify which content areas are dragging your score down.",
     tag: "Step prep",
   },
   {
@@ -129,13 +129,10 @@ export default function Phase2Page() {
       />
 
       <section className="rounded-xl border-l-4 border-brand bg-muted p-5 space-y-2">
-        <h3 className="font-semibold">Dedicated study: Step prep rhythm</h3>
+        <h3 className="font-semibold">Scores plateauing?</h3>
         <p className="text-sm text-muted-foreground">
-          During dedicated study, your daily rhythm should include Error Engine
-          (after every practice block), Deficit Tracker (after every NBME
-          practice test), and Concept Coach (for topics that won&apos;t stick). If
-          your scores are plateauing, talk to your school&apos;s learning
-          specialist or academic support office about an individualized plan.
+          Talk to your school&apos;s learning specialist or academic support
+          office about an individualized plan.
         </p>
       </section>
 
