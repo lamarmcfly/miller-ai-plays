@@ -73,6 +73,27 @@ export const toolJobs: ToolJob[] = [
     playSlug: "exam-countdown-planner",
   },
   {
+    id: "roleplay",
+    job: "Play a standardized patient, then score my encounter",
+    tool: "chatbot",
+    why: "Role-play needs back-and-forth conversation, and you can run a new case each time.",
+    playSlug: "osce-encounter-sim",
+  },
+  {
+    id: "rounds",
+    job: "Prep for rounds, rehearse presentations, and draft notes",
+    tool: "chatbot",
+    why: "These are short conversations you repeat daily. Use fictional or fully de-identified details only.",
+    playSlug: "rounds-prep",
+  },
+  {
+    id: "feedback",
+    job: "Get feedback on my own writing and practice interview answers",
+    tool: "chatbot",
+    why: "Paste a draft or an answer and follow up on the feedback. Check your school's and program's AI-use rules first.",
+    playSlug: "residency-application-coach",
+  },
+  {
     id: "documents",
     job: "Work inside a Word, PowerPoint, or Outlook file",
     tool: "copilot",
