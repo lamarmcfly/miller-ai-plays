@@ -15,7 +15,16 @@ Students can share a workflow, and tell you whether a Play worked, without a Git
 1. Create a Tally form with these **hidden fields**, named exactly: `cohort`, `category`, `examContext`, `title`, `tool`, `prompt`, `outcome`, `usefulness`. Tally fills hidden fields from URL parameters with the same names. Preview the form with `?title=test` to confirm before you publish.
 2. Add a visible required checkbox: "This describes a real use case and contains no patient identifying information or licensed exam content."
 3. In Vercel, set `NEXT_PUBLIC_COMMUNITY_FORM_URL` to the form's public link (Production), then redeploy.
-4. Optional feedback form: add hidden fields `kind`, `target`, `title`, a "Did it work? (worked / partly / didn't)" question, and a short note. Set its link as `NEXT_PUBLIC_FEEDBACK_FORM_URL`. Without it, the feedback links still open GitHub issues.
+4. Feedback and testimonial form: a second Tally form with hidden fields `kind`, `target`, `title`, then these visible questions:
+   - "Did it work for you?" (Worked / Partly / Didn't work)
+   - "What happened when you used it?" (long answer)
+   - "Who are you?" (MS1 / MS2 / MS3 / MS4 / Resident / Faculty or staff / Other)
+   - "May we quote this as a testimonial?" (Yes, with my name and role / Yes, anonymously / No)
+   - "Your name" (optional; only needed if you chose to be quoted by name)
+   - "Count me as a Med AI Plays user" (optional checkbox, so you can see who is using the site)
+   - Required checkbox: "This contains no patient information, grades or scores."
+
+   Set its link as `NEXT_PUBLIC_FEEDBACK_FORM_URL`. Every Play's and post's feedback link opens it with `kind=play` or `kind=post`, and the "Tell us how Med AI Plays helped you" links in the footer and on the Community Board open it with `kind=site`. Filter on `kind = site` in Tally to find testimonials. Without this variable, the feedback links still open GitHub issues and the testimonial links stay hidden.
 
 The site's form sends answers in the URL, so a very long prompt can be cut off by the browser. That is one reason to move to `inline`.
 
