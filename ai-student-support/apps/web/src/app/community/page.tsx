@@ -4,6 +4,7 @@ import { getAllCommunityPosts } from "@/lib/community";
 import { CommunityPostCard } from "@/components/CommunityPostCard";
 import { CommunitySubmitForm } from "@/components/CommunitySubmitForm";
 import { CommunityFilter } from "./community-filter";
+import { TestimonialLink } from "@/components/TestimonialLink";
 
 export const metadata: Metadata = {
   title: "Community Board",
@@ -23,6 +24,9 @@ export default function CommunityPage() {
           using AI well. Borrow what works, and add your own. Every post is
           reviewed for safety before it goes live.
         </p>
+        <TestimonialLink className="inline-block text-sm text-highlight hover:underline font-medium">
+          Has Med AI Plays helped you? Tell us how
+        </TestimonialLink>
       </header>
 
       <CommunityFilter posts={posts} />

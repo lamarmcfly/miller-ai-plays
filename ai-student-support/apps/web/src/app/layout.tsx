@@ -3,6 +3,7 @@ import { Newsreader, Instrument_Sans, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { SiteNav } from "@/components/SiteNav";
 import { UsageAnalytics } from "@/components/UsageAnalytics";
+import { TestimonialLink } from "@/components/TestimonialLink";
 import { navLinks } from "@/lib/nav";
 import { goals } from "@/lib/start-path";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
@@ -109,6 +110,9 @@ export default function RootLayout({
               <p>
                 Created by <span className="text-stone-200">Lamar Martin</span>
               </p>
+              <TestimonialLink className="text-stone-300 hover:text-marker underline-offset-4 hover:underline">
+                Tell us how Med AI Plays helped you
+              </TestimonialLink>
             </div>
           </div>
         </footer>
