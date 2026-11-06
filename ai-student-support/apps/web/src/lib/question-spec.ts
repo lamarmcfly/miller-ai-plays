@@ -6,6 +6,8 @@
  * Plays, rotation pages and presets.
  */
 
+import { SITE, stageTag } from "./site";
+
 export type PhaseId = "1" | "2" | "3";
 
 export type ExamId =
@@ -70,19 +72,19 @@ export interface QuestionConfig {
 export const phases: { id: PhaseId; label: string; short: string; blurb: string }[] = [
   {
     id: "1",
-    label: "Phase 1",
+    label: SITE.stages["1"].name,
     short: "Pre-clerkship",
     blurb: "Classroom and lab-based learning; basic science and foundations of clinical medicine.",
   },
   {
     id: "2",
-    label: "Phase 2",
+    label: SITE.stages["2"].name,
     short: "Clerkships",
     blurb: "Core clinical rotations, shelf exams and (at many schools) Step prep.",
   },
   {
     id: "3",
-    label: "Phase 3",
+    label: SITE.stages["3"].name,
     short: "Advanced clinical",
     blurb: "Sub-internships, electives, research and residency preparation.",
   },
@@ -91,8 +93,8 @@ export const phases: { id: PhaseId; label: string; short: string; blurb: string 
 export const depths: { id: DepthId; label: string; blurb: string }[] = [
   {
     id: "auto",
-    label: "Match my phase",
-    blurb: "Sensible default for your phase and exam.",
+    label: `Match my ${SITE.stageWord}`,
+    blurb: `Sensible default for your ${SITE.stageWord} and exam.`,
   },
   {
     id: "foundational",
@@ -635,11 +637,11 @@ const depthRules: Record<
 
 const phaseDescriptions: Record<PhaseId, string> = {
   "1":
-    "a pre-clerkship (Phase 1) student whose knowledge comes from coursework so far. Do not assume clerkship experience. Stay within the scope I name and use only commonly taught terms.",
+    `a pre-clerkship${stageTag("1")} student whose knowledge comes from coursework so far. Do not assume clerkship experience. Stay within the scope I name and use only commonly taught terms.`,
   "2":
-    "a clerkship (Phase 2) student comfortable with histories, exams, and basic workups. Focus on diagnosis, next best step, and management at the level expected on the rotation.",
+    `a clerkship${stageTag("2")} student comfortable with histories, exams, and basic workups. Focus on diagnosis, next best step, and management at the level expected on the rotation.`,
   "3":
-    "an advanced clinical (Phase 3) student preparing for residency. Expect reasoning under uncertainty, prioritization, risk-benefit tradeoffs, and sub-internship-level management.",
+    `an advanced clinical${stageTag("3")} student preparing for residency. Expect reasoning under uncertainty, prioritization, risk-benefit tradeoffs, and sub-internship-level management.`,
 };
 
 /* -------------------------------------------------------------------------- */

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPlays } from "@/lib/plays";
-import { SITE_URL } from "@/lib/site";
+import { SITE, SITE_URL } from "@/lib/site";
 import { goals } from "@/lib/start-path";
 
 const staticPaths = [
@@ -20,6 +20,8 @@ const staticPaths = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // A private site lists nothing for search engines.
+  if (SITE.private) return [];
   const plays = getAllPlays().map((p) => ({
     url: `${SITE_URL}/plays/${p.slug}`,
     lastModified: p.updatedAt,

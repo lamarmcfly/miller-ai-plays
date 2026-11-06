@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE } from "@/lib/site";
 import { Separator } from "@/components/ui/separator";
 import { FillablePrompt } from "@/components/FillablePrompt";
 
@@ -37,7 +38,7 @@ export function RotationPage({
       <header className="space-y-3">
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm">
           <Link href="/phase/2" className="text-muted-foreground hover:underline">
-            Phase 2
+            {SITE.stages["2"].name}
           </Link>
           <span aria-hidden="true" className="text-muted-foreground">
             /

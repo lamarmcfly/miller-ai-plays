@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { FillablePrompt } from "./FillablePrompt";
+import { SITE, stageLabel } from "@/lib/site";
 import { promptCategories, promptLibrary } from "@/lib/prompt-library";
 import { phases, type PhaseId } from "@/lib/question-spec";
 
@@ -39,8 +40,8 @@ export function PromptLibrary() {
             className="w-full max-w-sm rounded-md border border-border bg-card px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ring"
           />
         </div>
-        <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Filter by phase">
-          <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Phase</span>
+        <div className="flex flex-wrap items-center gap-2" role="group" aria-label={`Filter by ${SITE.stageWord}`}>
+          <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{SITE.stageWord}</span>
           <button type="button" aria-pressed={phase === "all"} onClick={() => setPhase("all")} className={chipClass}>
             All
           </button>
@@ -52,7 +53,7 @@ export function PromptLibrary() {
               onClick={() => setPhase(p.id)}
               className={chipClass}
             >
-              {p.label}: {p.short}
+              {stageLabel(p.id)}
             </button>
           ))}
         </div>

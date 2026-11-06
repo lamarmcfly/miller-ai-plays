@@ -1,4 +1,6 @@
-# Med AI Plays
+# Med AI Plays and Miller AI Plays
+
+This codebase runs two sites: **Med AI Plays**, open to medical students at any school, and **Miller AI Plays**, for Miller students only. They share every Play and tool; what differs lives in one file. See [SITES.md](SITES.md) to set up and run each one.
 
 **AI study workflows and custom practice questions for medical students. 90 seconds to learn. 5 minutes to use.**
 
@@ -57,10 +59,12 @@ pnpm check:questions   # Check the Question Builder's prompt logic
 pnpm check:start       # Check every Start Here answer combination yields a valid path
 pnpm check:analytics   # Check analytics redaction and allowed categories
 pnpm check:community   # Check anonymous submission and feedback intake
+pnpm check:sites       # Check the Miller and Med sites stay separate
+pnpm dev:miller        # Run the Miller site locally
 pnpm build             # Production build
 ```
 
-CI runs the five checks on pull requests that touch Plays, `apps/web/src/lib/`, `scripts/`, or dependencies (`.github/workflows/student-site.yml` at the repository root).
+CI runs these checks on pull requests that touch Plays, `apps/web/src/lib/`, `scripts/`, or dependencies (`.github/workflows/student-site.yml` at the repository root).
 
 ## Adding a Play
 
@@ -70,6 +74,8 @@ Create `content/plays/<slug>/play.mdx` with the frontmatter shown in any existin
 
 | Variable | Purpose |
 |---|---|
+| `NEXT_PUBLIC_SITE_ID` | `med` (default) or `miller`. Picks the site. See [SITES.md](SITES.md). |
+| `SITE_ACCESS_CODE` | Miller only, server only. The access code students enter once per device. At least 12 characters. |
 | `NEXT_PUBLIC_SITE_URL` | Canonical site URL for social previews, the sitemap, and robots. Defaults to the Vercel URL; set it when you add a custom domain. |
 | `NEXT_PUBLIC_COMMUNITY_FORM_URL` | Optional. Endpoint (for example a Tally form) that receives Community Board submissions. If unset, the form opens a pre-filled GitHub issue on this repo, which needs a GitHub account. |
 | `NEXT_PUBLIC_FEEDBACK_FORM_URL` | Optional. Hosted form for "did it work?" feedback until the site's own intake is on. If unset, feedback links open GitHub issues. |

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE } from "@/lib/site";
 import Link from "next/link";
 import { PrintButton } from "@/components/PrintButton";
 import { ShareButton } from "@/components/ShareButton";
@@ -47,7 +48,7 @@ export default function CheatSheetPage() {
       <div className="flex flex-wrap items-center gap-3 print:hidden">
         <PrintButton />
         <ShareButton
-          title="Med AI Plays one-page cheat sheet"
+          title={`${SITE.name} one-page cheat sheet`}
           text="A printable one-page guide to studying with AI:"
           path="/cheat-sheet"
         />
@@ -55,7 +56,7 @@ export default function CheatSheetPage() {
 
       <header className="space-y-1 border-b border-brand pb-3">
         <h1 className="text-3xl font-medium">Study with AI: one page</h1>
-        <p className="text-sm text-muted-foreground">Med AI Plays &middot; works in Claude, ChatGPT, Gemini, Copilot, NotebookLM</p>
+        <p className="text-sm text-muted-foreground">{SITE.name} &middot; works in Claude, ChatGPT, Gemini, Copilot, NotebookLM</p>
       </header>
 
       <section className="space-y-2">

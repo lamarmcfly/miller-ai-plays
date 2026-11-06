@@ -6,6 +6,9 @@ on:
       - "ai-student-support/content/plays/**"
       - "ai-student-support/apps/web/src/lib/**"
       - "ai-student-support/apps/web/src/app/api/**"
+      - "ai-student-support/apps/web/src/proxy.ts"
+      - "ai-student-support/prompts/**"
+      - "ai-student-support/content/community/**"
       - "ai-student-support/supabase/**"
       - "ai-student-support/scripts/**"
       - "ai-student-support/package.json"
@@ -38,3 +41,8 @@ jobs:
       - run: pnpm check:start
       - run: pnpm check:analytics
       - run: pnpm check:community
+      - run: pnpm check:sites
+      - name: Question Builder as the Miller site
+        run: pnpm check:questions
+        env:
+          NEXT_PUBLIC_SITE_ID: miller

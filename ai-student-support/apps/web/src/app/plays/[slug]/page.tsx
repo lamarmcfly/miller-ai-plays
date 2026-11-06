@@ -8,6 +8,7 @@ import { getAllSlugs, getPlayBySlug, hasVideo } from "@/lib/plays";
 import { audienceLabels } from "@/lib/schema";
 import { ShareButton } from "@/components/ShareButton";
 import { FeedbackPrompt } from "@/components/FeedbackPrompt";
+import { SITE } from "@/lib/site";
 
 const bodyComponents = {
   h2: (props: React.ComponentProps<"h2">) => (
@@ -213,7 +214,7 @@ export default async function PlayPage({
       >
         <ShareButton
           title={play.title}
-          text={`${play.title} (Med AI Plays):`}
+          text={`${play.title} (${SITE.name}):`}
           path={`/plays/${play.slug}`}
           label="Share this Play"
         />

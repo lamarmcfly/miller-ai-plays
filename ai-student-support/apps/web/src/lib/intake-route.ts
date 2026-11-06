@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import type { z } from "zod";
 import { createRateLimiter, findIdentifiers, identifierMessage, sameOrigin } from "./community-intake";
 import { insertRow } from "./supabase-rest";
+import { requestHasAccess } from "./site-access";
 
 const MAX_BODY_BYTES = 20_000;
 
@@ -25,6 +26,8 @@ export function createIntakeHandler<S extends z.ZodType>(opts: {
     if (!sameOrigin(req.headers.get("origin"), req.headers.get("host"))) {
       return fail(403, "forbidden", "This request was not allowed.");
     }
+    // On a private site, src/proxy.ts already requires access; check again here.
+    if (!(await requestHasAccess(req))) return fail(401, "forbidden", "Enter the access code first.");
     const length = Number(req.headers.get("content-length") ?? 0);
     if (length > MAX_BODY_BYTES) return fail(413, "too_large", "That is too long. Please shorten it.");
 

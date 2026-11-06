@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { playSchema, type Play } from "./schema";
+import { SITE, type SiteId } from "./site";
 
 // In monorepo: process.cwd() is apps/web, content is at ../../content/plays
 // On Vercel with root directory set: process.cwd() may vary
@@ -13,6 +14,11 @@ const CONTENT_DIR = (() => {
   if (fs.existsSync(fromRoot)) return fromRoot;
   return fromCwd;
 })();
+
+/** Whether a Play shows on a site. Untagged Plays show on both. */
+export function availableOn(play: Pick<Play, "sites">, site: SiteId = SITE.id): boolean {
+  return !play.sites || play.sites.includes(site);
+}
 
 export function getAllPlays(): (Play & { content: string })[] {
   const slugs = fs
@@ -32,7 +38,7 @@ export function getAllPlays(): (Play & { content: string })[] {
       }
       return { ...parsed.data, content };
     })
-    .filter(Boolean) as (Play & { content: string })[];
+    .filter((p): p is Play & { content: string } => p !== null && availableOn(p));
 }
 
 export function getPlayBySlug(slug: string): (Play & { content: string }) | null {
@@ -45,7 +51,7 @@ export function getPlayBySlug(slug: string): (Play & { content: string }) | null
     console.warn(`Schema validation failed for ${slug}:`, parsed.error.issues);
     return null;
   }
-  return { ...parsed.data, content };
+  return availableOn(parsed.data) ? { ...parsed.data, content } : null;
 }
 
 /** True once a Play's demo video file has been added under public/. */
@@ -58,10 +64,5 @@ export function hasVideo(play: Play): boolean {
 }
 
 export function getAllSlugs(): string[] {
-  return fs
-    .readdirSync(CONTENT_DIR)
-    .filter((dir) => {
-      const mdxPath = path.join(CONTENT_DIR, dir, "play.mdx");
-      return fs.statSync(path.join(CONTENT_DIR, dir)).isDirectory() && fs.existsSync(mdxPath);
-    });
+  return getAllPlays().map((p) => p.slug);
 }

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { SITE } from "@/lib/site";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { PhasePractice } from "@/components/PhasePractice";
 
 export const metadata: Metadata = {
-  title: "Phase 3 - Specialties + Advanced Clinical",
+  title: `${SITE.stages["3"].name} - Specialties + Advanced Clinical`,
   description: "AI workflows and practice questions for advanced clinical students: electives, sub-internships, research, Step 3 readiness, and residency prep.",
 };
 
@@ -25,7 +26,7 @@ const corePlaybooks = [
   {
     slug: "research-speed-read",
     title: "Research Speed Read",
-    why: "Phase 3 research requirements mean more papers to screen. Read smart, not more.",
+    why: "Research requirements late in school mean more papers to screen. Read smart, not more.",
     tag: "Research",
   },
   {
@@ -40,13 +41,12 @@ export default function Phase3Page() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 space-y-10">
       <header className="space-y-3">
-        <Badge className="bg-muted text-brand">Phase 3</Badge>
+        <Badge className="bg-muted text-brand">{SITE.stages["3"].name}</Badge>
         <h1 className="text-3xl font-bold tracking-tight">
           Specialties + Advanced Clinical
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          Phase 3 (advanced clinical, also called post-clerkship or the final
-          year) is about going deeper. You&apos;re in electives and
+          {SITE.stages["3"].intro}{" "}is about going deeper. You&apos;re in electives and
           sub-internships, doing research, and preparing for residency. The Plays you use shift from
           broad shelf prep to targeted specialty knowledge, efficient
           documentation, and research productivity.
@@ -56,7 +56,7 @@ export default function Phase3Page() {
       <Separator />
 
       <section className="space-y-4">
-        <h2 className="text-xl font-bold">Your Phase 3 Plays</h2>
+        <h2 className="text-xl font-bold">Your {SITE.stages["3"].name} Plays</h2>
         <div className="space-y-3">
           {corePlaybooks.map((play) => (
             <Link key={play.slug} href={`/plays/${play.slug}`}>
@@ -88,7 +88,7 @@ export default function Phase3Page() {
       />
 
       <section className="rounded-xl border-l-4 border-flag bg-muted p-5 space-y-2">
-        <h3 className="font-semibold">Phase 3 pro tips</h3>
+        <h3 className="font-semibold">{SITE.stages["3"].name} pro tips</h3>
         <ul className="text-sm text-muted-foreground space-y-1.5">
           <li>Adapt Rounds Prep prompts to your specialty&apos;s question style</li>
           <li>Use Research Speed Read before every journal club and research meeting</li>
@@ -100,7 +100,7 @@ export default function Phase3Page() {
           href="/phase/2"
           className="text-sm text-muted-foreground hover:underline"
         >
-          &larr; Phase 2
+          &larr; {SITE.stages["2"].name}
         </Link>
         <Link
           href="/plays"

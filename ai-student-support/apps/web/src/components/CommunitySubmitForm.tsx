@@ -95,6 +95,17 @@ export function CommunitySubmitForm() {
     form.reset();
   }
 
+  if (communityMode === "off") {
+    return (
+      <section className="rounded-xl border border-border bg-muted/30 p-6 space-y-1">
+        <h2 className="text-lg font-semibold">Share your AI workflow</h2>
+        <p className="text-sm text-muted-foreground">
+          Sharing with the group opens soon. Posts here will stay on this site.
+        </p>
+      </section>
+    );
+  }
+
   return (
     <section className="rounded-xl border border-border bg-muted/30 p-6 space-y-4">
       <div className="space-y-1">

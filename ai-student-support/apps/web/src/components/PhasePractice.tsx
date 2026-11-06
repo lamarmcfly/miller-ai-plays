@@ -1,3 +1,4 @@
+import { SITE } from "@/lib/site";
 import Link from "next/link";
 
 export interface PracticeLink {
@@ -7,7 +8,7 @@ export interface PracticeLink {
 }
 
 export function PhasePractice({
-  heading = "Practice questions for this phase",
+  heading = `Practice questions for this ${SITE.stageWord}`,
   intro,
   links,
 }: {

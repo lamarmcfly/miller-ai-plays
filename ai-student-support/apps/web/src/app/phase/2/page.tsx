@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { SITE } from "@/lib/site";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { PhasePractice } from "@/components/PhasePractice";
 
 export const metadata: Metadata = {
-  title: "Phase 2 - Clerkships + Step Prep",
+  title: `${SITE.stages["2"].name} - Clerkships + Step Prep`,
   description:
     "AI workflows and practice questions for clerkship students: rotations, shelf exams, OSCEs, and Step 2 CK or Level 2 prep.",
 };
@@ -62,13 +63,12 @@ export default function Phase2Page() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 space-y-10">
       <header className="space-y-3">
-        <Badge className="bg-muted text-brand">Phase 2</Badge>
+        <Badge className="bg-muted text-brand">{SITE.stages["2"].name}</Badge>
         <h1 className="text-3xl font-bold tracking-tight">
           Clerkships + Step Prep
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          Phase 2 (core clinical rotations, also called clerkships or clinical
-          years) is where AI goes from &ldquo;nice to have&rdquo; to a daily
+          {SITE.stages["2"].intro}{" "}is where AI goes from &ldquo;nice to have&rdquo; to a daily
           tool. Between rotations, shelf exams, and Step prep, you need
           workflows that save time and sharpen performance. Step 1 timing
           differs by school; use the Step 1 plays wherever it falls for you.
@@ -97,7 +97,7 @@ export default function Phase2Page() {
       <Separator />
 
       <section className="space-y-4">
-        <h2 className="text-xl font-bold">Core Phase 2 Plays</h2>
+        <h2 className="text-xl font-bold">Core {SITE.stages["2"].name} Plays</h2>
         <div className="space-y-3">
           {corePlaybooks.map((play) => (
             <Link key={play.slug} href={`/plays/${play.slug}`}>
@@ -131,8 +131,8 @@ export default function Phase2Page() {
       <section className="rounded-xl border-l-4 border-brand bg-muted p-5 space-y-2">
         <h3 className="font-semibold">Dedicated study period</h3>
         <p className="text-sm text-muted-foreground">
-          After your clerkships, the dedicated period before Phase 3 is for
-          Step prep. Use Error Engine and Deficit Tracker above to guide it. If
+          After your clerkships, the dedicated period before{" "}
+          {SITE.localStageNames ? SITE.stages["3"].name : "your advanced clinical year"}{" "}is for Step prep. Use Error Engine and Deficit Tracker above to guide it. If
           your scores are plateauing, talk to your school&apos;s learning
           specialist or academic support office about an individualized plan.
         </p>
@@ -143,13 +143,13 @@ export default function Phase2Page() {
           href="/phase/1"
           className="text-sm text-muted-foreground hover:underline"
         >
-          &larr; Phase 1
+          &larr; {SITE.stages["1"].name}
         </Link>
         <Link
           href="/phase/3"
           className="text-sm text-highlight hover:underline font-medium"
         >
-          Phase 3 &rarr;
+          {SITE.stages["3"].name} &rarr;
         </Link>
       </div>
     </div>
