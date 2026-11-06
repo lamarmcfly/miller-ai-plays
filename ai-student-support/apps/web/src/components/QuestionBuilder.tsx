@@ -1,5 +1,6 @@
 "use client";
 
+import { SITE, stageLabel } from "@/lib/site";
 import { useEffect, useId, useMemo, useState } from "react";
 import { CopyButton } from "./CopyButton";
 import {
@@ -312,7 +313,7 @@ export function QuestionBuilder() {
         <Step
           n={2}
           title="Where are you in training?"
-          hint="Phases are labeled differently at different schools. Pick the closest match."
+          hint={SITE.localStageNames ? undefined : "Schools name these stages differently. Pick the closest match."}
         >
           <div className="grid gap-2 sm:grid-cols-3">
             {phases.map((p) => (
@@ -322,7 +323,7 @@ export function QuestionBuilder() {
                 value={p.id}
                 checked={cfg.phase === p.id}
                 onChange={() => set("phase", p.id as PhaseId)}
-                title={`${p.label}: ${p.short}`}
+                title={stageLabel(p.id)}
                 blurb={p.blurb}
               />
             ))}

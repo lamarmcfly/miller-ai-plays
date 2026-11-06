@@ -45,6 +45,9 @@ const playSchema = z.object({
   starterPrompts: z.array(z.object({ label: z.string(), prompt: z.string() })).optional(),
   tags: z.array(z.string()),
   relatedPlays: z.array(z.string()),
+
+  // Which sites show this Play. Leave it out to show it on both.
+  sites: z.array(z.enum(["med", "miller"])).min(1).optional(),
   author: z.string(),
   publishedAt: z.string(),
   updatedAt: z.string(),

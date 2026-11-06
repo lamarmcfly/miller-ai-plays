@@ -8,7 +8,9 @@
     "check:questions": "tsx scripts/check-question-spec.ts",
     "check:start": "tsx scripts/check-start-path.ts",
     "check:analytics": "tsx scripts/check-analytics.ts",
-    "check:community": "tsx scripts/check-community.ts"
+    "check:community": "tsx scripts/check-community.ts",
+    "check:sites": "tsx scripts/check-sites.ts",
+    "dev:miller": "NEXT_PUBLIC_SITE_ID=miller pnpm --filter web dev"
   },
   "dependencies": {
     "next": "16.2.6"

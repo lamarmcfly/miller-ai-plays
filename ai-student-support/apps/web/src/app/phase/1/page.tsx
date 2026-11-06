@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { SITE, stageLabel } from "@/lib/site";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { PhasePractice } from "@/components/PhasePractice";
 
 export const metadata: Metadata = {
-  title: "Phase 1 - Classroom Foundations",
+  title: `${SITE.stages["1"].name} - Classroom Foundations`,
   description:
     "AI workflows and practice questions for pre-clerkship students: lectures, course exams, anatomy practicals, and Step 1 or Level 1 prep.",
 };
@@ -41,13 +42,12 @@ export default function Phase1Page() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 space-y-10">
       <header className="space-y-3">
-        <Badge className="bg-muted text-brand">Phase 1</Badge>
+        <Badge className="bg-muted text-brand">{SITE.stages["1"].name}</Badge>
         <h1 className="text-3xl font-bold tracking-tight">
           Classroom Foundations
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          Phase 1 (also called pre-clerkship, foundations, or the first two
-          years) is about building the study systems that carry you through the
+          {SITE.stages["1"].intro}{" "}is about building the study systems that carry you through the
           rest of medical school. These Plays help you turn lectures into lasting
           knowledge, build Anki decks efficiently, and develop the kind of
           conceptual understanding that survives board exams.
@@ -57,7 +57,7 @@ export default function Phase1Page() {
       <Separator />
 
       <section className="space-y-4">
-        <h2 className="text-xl font-bold">Your Phase 1 Plays</h2>
+        <h2 className="text-xl font-bold">Your {SITE.stages["1"].name} Plays</h2>
         <div className="space-y-3">
           {corePlaybooks.map((play) => (
             <Link key={play.slug} href={`/plays/${play.slug}`}>
@@ -89,7 +89,7 @@ export default function Phase1Page() {
       />
 
       <section className="rounded-xl border-l-4 border-brand bg-muted p-5 space-y-2">
-        <h3 className="font-semibold">Phase 1 study rhythm</h3>
+        <h3 className="font-semibold">{SITE.stages["1"].name} study rhythm</h3>
         <ul className="text-sm text-muted-foreground space-y-1.5">
           <li>After every lecture: run Lecture Compressor (5 min)</li>
           <li>When a concept won&apos;t stick: open Concept Coach (10 min)</li>
@@ -104,7 +104,7 @@ export default function Phase1Page() {
           href="/phase/2"
           className="text-sm text-highlight hover:underline font-medium"
         >
-          Phase 2: Clerkships &rarr;
+          {stageLabel("2")} &rarr;
         </Link>
         <Link
           href="/plays"

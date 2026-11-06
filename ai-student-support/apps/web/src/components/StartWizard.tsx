@@ -16,6 +16,7 @@ import {
 import { toolJobs, toolLabels } from "@/lib/tool-chooser";
 import { trackUsage } from "@/lib/analytics";
 import { ShareButton } from "@/components/ShareButton";
+import { SITE } from "@/lib/site";
 
 export type PlayInfo = { slug: string; title: string; oneLiner: string; estimatedTime: string };
 
@@ -147,8 +148,8 @@ export function StartWizard({ plays }: { plays: PlayInfo[] }) {
 
         <div className="flex flex-wrap items-center gap-4 border-t border-border pt-5">
           <ShareButton
-            title="My Med AI Plays study path"
-            text="Here's the AI study path I got from Med AI Plays:"
+            title={`My ${SITE.name} study path`}
+            text={`Here's the AI study path I got from ${SITE.name}:`}
             path={`/start?${encodeAnswers(goal, xp, picked)}`}
             label="Share my path"
           />

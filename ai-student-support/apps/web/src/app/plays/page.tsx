@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPlays } from "@/lib/plays";
 import { stageLinks } from "@/lib/nav";
+import { SITE } from "@/lib/site";
 import { PlayGrid } from "@/components/PlayGrid";
 
 export const metadata: Metadata = {
   title: "All Plays",
   description:
-    "Every Med AI Plays workflow in one place: copy-paste AI prompts for lectures, Qbanks, shelf exams, clerkships, and residency prep.",
+    `Every ${SITE.name} workflow in one place: copy-paste AI prompts for lectures, Qbanks, shelf exams, clerkships, and residency prep.`,
 };
 
 const difficultyOrder = { beginner: 0, intermediate: 1, advanced: 2 } as const;

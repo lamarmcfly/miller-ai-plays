@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -20,8 +21,8 @@ export default function AboutPage() {
       <header className="space-y-2">
         <h1 className="text-3xl font-bold tracking-tight">About</h1>
         <p className="text-lg text-muted-foreground">
-          Med AI Plays is built so medical students at any level, even those brand new to AI, can use it at a high
-          level. It is a free library of AI study workflows and practice-question prompts for any school.
+          {SITE.name} is built so medical students at any level, even those brand new to AI, can use it at a high
+          level. It is a free library of AI study workflows and practice-question prompts.
         </p>
       </header>
 
@@ -35,13 +36,13 @@ export default function AboutPage() {
           myself coaching that again and again.
         </p>
         <p className="text-muted-foreground leading-relaxed">
-          I built Med AI Plays to put that support in one place. Whatever your level, even if you are brand new to
+          I built {SITE.name} to put that support in one place. Whatever your level, even if you are brand new to
           AI, you get the prompts, the structure, and the habits to use it the way an advanced user does. No
           technical background, no paid plan, no one to sit down with you required.
         </p>
         <p className="text-muted-foreground leading-relaxed">
           Few students will read a 20-page guide on prompt engineering, but many will adopt a workflow they can
-          master in five minutes. So Med AI Plays is bite-sized: short workflows (&ldquo;Plays&rdquo;) that meet you
+          master in five minutes. So {SITE.name}{" "}is bite-sized: short workflows (&ldquo;Plays&rdquo;) that meet you
           where you are, on mobile and between other things. Each Play is a copy-paste prompt with the steps to use
           it. The{" "}
           <Link href="/question-builder" className="text-highlight hover:underline">
@@ -51,7 +52,7 @@ export default function AboutPage() {
           <Link href="/prompts" className="text-highlight hover:underline">
             Prompt Templates
           </Link>{" "}
-          let you customize prompts to your exam, phase, and weak spots.
+          let you customize prompts to your exam, {SITE.stageWord}, and weak spots.
         </p>
       </section>
 
@@ -71,9 +72,7 @@ export default function AboutPage() {
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">Who it&apos;s for</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Any medical student, at any school, in any phase: pre-clerkship coursework, clerkships and shelf exams,
-          advanced clinical rotations, and licensing exams such as USMLE Steps 1, 2 CK and 3 and COMLEX-USA. Phases are
-          labeled differently from school to school, so each page explains what it means by Phase 1, 2, and 3.
+          {SITE.aboutWhoFor}
         </p>
       </section>
 
@@ -97,13 +96,14 @@ export default function AboutPage() {
           study difficulties, or URL query strings as analytics data. We do not track individual participation.
           Builder settings are saved in your browser. When you open an AI tool with a prompt, submit a community
           post, or send feedback, the content you choose to send goes to that service.
+          {SITE.private && " This site sets one cookie to remember that you entered the access code."}
         </p>
       </section>
 
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">Who makes this</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Med AI Plays was created by{" "}
+          {SITE.name} was created by{" "}
           <span className="font-medium text-foreground">Lamar Martin</span>. Names of exams and tools are used only to
           describe what a Play is for.
         </p>

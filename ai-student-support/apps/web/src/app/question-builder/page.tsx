@@ -1,3 +1,4 @@
+import { SITE } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { QuestionBuilder } from "@/components/QuestionBuilder";
@@ -7,7 +8,7 @@ import { Separator } from "@/components/ui/separator";
 export const metadata: Metadata = {
   title: "Question Builder",
   description:
-    "Build a custom, exam-realistic practice-question prompt for your phase, exam, subject, and weak spots. Works with any AI tool.",
+    `Build a custom, exam-realistic practice-question prompt for your ${SITE.stageWord}, exam, subject, and weak spots. Works with any AI tool.`,
 };
 
 const followUps = [
@@ -55,7 +56,7 @@ export default function QuestionBuilderPage() {
         <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">Practice questions</p>
         <h1 className="text-4xl font-medium leading-tight">Question Builder</h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          Build a custom practice-question prompt for your phase, exam, subject, and weak spots. Copy it into any AI
+          Build a custom practice-question prompt for your {SITE.stageWord}, exam, subject, and weak spots. Copy it into any AI
           tool and get questions written the way real exams are written.
         </p>
         <p className="text-sm text-muted-foreground">

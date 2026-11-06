@@ -10,6 +10,8 @@ Students can share a workflow, and tell you whether a Play worked, without a Git
 
 `inline` wins if it is set. Use `form` until the Supabase project is ready.
 
+**On Miller AI Plays** the `github` fallback is off: Miller posts must stay in the group, so with neither `inline` nor `form` set, sharing shows "opens soon". Give Miller its own Supabase project or Tally form, and publish a Miller post by approving it in Supabase rather than adding a file here. See [SITES.md](SITES.md).
+
 ## Step 1: Tally (works today)
 
 1. Create a Tally form with these **hidden fields**, named exactly: `cohort`, `category`, `examContext`, `title`, `tool`, `prompt`, `outcome`, `usefulness`. Tally fills hidden fields from URL parameters with the same names. Preview the form with `?title=test` to confirm before you publish.

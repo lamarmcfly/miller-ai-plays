@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getAllPlays } from "@/lib/plays";
-import { stageLinks } from "@/lib/nav";
+import { SITE, stageLabel, type StageId } from "@/lib/site";
 
 // One chooser replaces the four overlapping "where do I start" sections the
 // home page used to have. Each situation leads to one best first step, plus
@@ -84,7 +84,7 @@ export default function HomePage() {
       href: "/plays",
       title: "Plays",
       body: `${plays.length} step-by-step AI workflows for lectures, Qbanks, clerkships, and more. The heart of the site.`,
-      shortcuts: stageLinks.map((s) => ({ href: s.href, label: `${s.label}: ${s.blurb}` })),
+      shortcuts: (Object.keys(SITE.stages) as StageId[]).map((id) => ({ href: `/phase/${id}`, label: stageLabel(id) })),
     },
     {
       href: "/question-builder",
@@ -115,7 +115,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-4 py-14 sm:py-20 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div className="space-y-6">
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
-              For medical students at any school
+              {SITE.audience}
             </p>
             <h1 className="text-5xl sm:text-6xl font-medium leading-[1.02]">
               AI can do{" "}
@@ -150,7 +150,7 @@ export default function HomePage() {
             <div className="border border-brand bg-card p-6 sm:p-7 space-y-4">
               <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
                 <span>Question 1 of 10</span>
-                <span>Phase 2 &middot; foundational</span>
+                <span>{SITE.stages["2"].name} &middot; foundational</span>
               </div>
               <p className="text-[15px] leading-relaxed">
                 A 24-year-old woman presents with 3 days of dysuria and urinary frequency. She has no fever or flank

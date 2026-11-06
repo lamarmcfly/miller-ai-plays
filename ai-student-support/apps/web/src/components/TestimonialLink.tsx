@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { SITE } from "@/lib/site";
 
 // Site-wide "how has this helped you?" link. Opens the hosted feedback form
 // (NEXT_PUBLIC_FEEDBACK_FORM_URL) with kind=site so testimonials land with the
@@ -8,7 +9,7 @@ const FEEDBACK_FORM_URL = process.env.NEXT_PUBLIC_FEEDBACK_FORM_URL;
 
 export function testimonialUrl(): string | null {
   if (!FEEDBACK_FORM_URL) return null;
-  const params = new URLSearchParams({ kind: "site", target: "med-ai-plays", title: "Med AI Plays" });
+  const params = new URLSearchParams({ kind: "site", target: `${SITE.id}-ai-plays`, title: SITE.name });
   return `${FEEDBACK_FORM_URL}${FEEDBACK_FORM_URL.includes("?") ? "&" : "?"}${params}`;
 }
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { communityMode } from "@/lib/community-mode";
+import { communityMode, FEEDBACK_FORM_URL } from "@/lib/community-mode";
 import { newIssueUrl } from "@/lib/community-submit";
 
 type Result = "worked" | "partly" | "didnt";
@@ -14,8 +14,6 @@ const options: { id: Result; label: string }[] = [
 
 const KEY = "med-ai-plays:feedback:v1";
 
-// Optional hosted feedback form used until the site's own intake is set up.
-const FEEDBACK_FORM_URL = process.env.NEXT_PUBLIC_FEEDBACK_FORM_URL;
 
 function remembered(id: string): boolean {
   try {
@@ -65,6 +63,8 @@ export function FeedbackPrompt({
   }, [kind, targetId]);
 
   if (communityMode !== "inline") {
+    // A private site never sends feedback to public GitHub issues.
+    if (!FEEDBACK_FORM_URL && communityMode !== "github") return null;
     const label = kind === "play" ? "Play feedback" : "Community feedback";
     // A hosted feedback form (e.g., Tally) avoids needing a GitHub account.
     const url = FEEDBACK_FORM_URL
