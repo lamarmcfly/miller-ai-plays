@@ -35,15 +35,20 @@ export function FillablePrompt({
   description,
   prompt,
   defaultOpen = false,
+  hidePreview = false,
 }: {
   label: string;
   description?: string;
   prompt: string;
   defaultOpen?: boolean;
+  /** Start with the prompt text hidden, for long lists of templates. */
+  hidePreview?: boolean;
 }) {
   const fields = useMemo(() => extractFields(prompt), [prompt]);
   const [values, setValues] = useState<Record<string, string>>({});
   const [open, setOpen] = useState(defaultOpen);
+  const [preview, setPreview] = useState(!hidePreview);
+  const showPreview = preview || open;
 
   const filled = fillPrompt(prompt, values);
   const remaining = extractFields(filled).length;
@@ -61,20 +66,33 @@ export function FillablePrompt({
         <CopyButton text={filled} label="Copy" />
       </div>
 
-      {fields.length > 0 && (
-        <div>
-          <button
-            type="button"
-            onClick={() => setOpen((o) => !o)}
-            aria-expanded={open}
-            aria-controls={`${id}-fields`}
-            className="text-xs font-medium text-highlight hover:text-highlight-dark cursor-pointer rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-          >
-            {open ? "Hide" : "Fill in"} {fields.length} {fields.length === 1 ? "blank" : "blanks"}
-            {remaining > 0 && !open ? ` (${remaining} still empty)` : ""}
-          </button>
+      {(fields.length > 0 || hidePreview) && (
+        <div className="flex flex-wrap gap-x-4 gap-y-1">
+          {fields.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setOpen((o) => !o)}
+              aria-expanded={open}
+              aria-controls={`${id}-fields`}
+              className="text-xs font-medium text-highlight hover:text-highlight-dark cursor-pointer rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            >
+              {open ? "Hide" : "Fill in"} {fields.length} {fields.length === 1 ? "blank" : "blanks"}
+              {remaining > 0 && !open ? ` (${remaining} still empty)` : ""}
+            </button>
+          )}
+          {hidePreview && !open && (
+            <button
+              type="button"
+              onClick={() => setPreview((p) => !p)}
+              aria-expanded={preview}
+              aria-controls={`${id}-preview`}
+              className="text-xs font-medium text-muted-foreground hover:text-brand cursor-pointer rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            >
+              {preview ? "Hide prompt" : "Show prompt"}
+            </button>
+          )}
           {open && (
-            <div id={`${id}-fields`} className="mt-3 grid gap-3 sm:grid-cols-2">
+            <div id={`${id}-fields`} className="mt-3 grid w-full gap-3 sm:grid-cols-2">
               {fields.map((f, i) => {
                 const fieldId = `${id}-f${i}`;
                 const long = LONG_FIELD.test(f);
@@ -108,9 +126,14 @@ export function FillablePrompt({
         </div>
       )}
 
-      <pre className="text-xs text-muted-foreground whitespace-pre-wrap font-mono leading-relaxed bg-muted/50 rounded-lg p-3">
-        {filled}
-      </pre>
+      {showPreview && (
+        <pre
+          id={`${id}-preview`}
+          className="text-xs text-muted-foreground whitespace-pre-wrap font-mono leading-relaxed bg-muted/50 rounded-lg p-3"
+        >
+          {filled}
+        </pre>
+      )}
     </div>
   );
 }

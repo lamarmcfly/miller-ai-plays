@@ -49,7 +49,7 @@ export default function AboutPage() {
           </Link>{" "}
           and{" "}
           <Link href="/prompts" className="text-highlight hover:underline">
-            Prompt Library
+            Prompt Templates
           </Link>{" "}
           let you customize prompts to your exam, phase, and weak spots.
         </p>

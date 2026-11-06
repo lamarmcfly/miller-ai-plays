@@ -103,7 +103,7 @@ export default function Phase3Page() {
           &larr; Phase 2
         </Link>
         <Link
-          href="/"
+          href="/plays"
           className="text-sm text-muted-foreground hover:underline"
         >
           Browse all Plays

@@ -36,7 +36,9 @@ function buildItems(): SearchItem[] {
   }
   items.push(
     { href: "/start", title: "Start Here: get a personal path", kind: "Page", text: "recommended order beginner first session exam" },
-    { href: "/toolkit", title: "AI Toolkit: which tool for which job", kind: "Page", text: "Claude ChatGPT Gemini Copilot NotebookLM privacy" },
+    { href: "/plays", title: "All Plays: browse the library", kind: "Page", text: "workflows library browse filter year exam phase" },
+    { href: "/prompts", title: "Prompt Templates: fill-in-the-blank prompts", kind: "Page", text: "templates study plan flashcards explain" },
+    { href: "/toolkit", title: "AI Tools: which tool for which job", kind: "Page", text: "Claude ChatGPT Gemini Copilot NotebookLM privacy" },
     { href: "/cheat-sheet", title: "One-page cheat sheet", kind: "Page", text: "printable five-part prompt verify never paste" }
   );
   return items;

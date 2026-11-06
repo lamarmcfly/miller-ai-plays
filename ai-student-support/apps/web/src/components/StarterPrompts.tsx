@@ -26,7 +26,7 @@ export function StarterPrompts({ prompts }: { prompts: StarterPrompt[] }) {
         >
           &#9654;
         </span>
-        {open ? "Hide starter prompts" : "New to this? Try a starter prompt instead"}
+        {open ? "Hide starter prompts" : "New to AI? Start with a simpler starter prompt"}
       </button>
 
       {open && (

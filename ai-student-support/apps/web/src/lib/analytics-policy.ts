@@ -2,6 +2,7 @@
 // Add new published routes here; unknown paths are grouped as /other.
 const publicPaths = new Set([
   "/",
+  "/plays",
   "/about",
   "/cheat-sheet",
   "/community",

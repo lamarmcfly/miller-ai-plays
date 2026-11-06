@@ -48,6 +48,15 @@ export function getPlayBySlug(slug: string): (Play & { content: string }) | null
   return { ...parsed.data, content };
 }
 
+/** True once a Play's demo video file has been added under public/. */
+export function hasVideo(play: Play): boolean {
+  const url = play.video.url;
+  if (!url.startsWith("/")) return /^https:\/\//.test(url);
+  return [path.join(process.cwd(), "public"), path.join(process.cwd(), "apps", "web", "public")].some((dir) =>
+    fs.existsSync(path.join(dir, url))
+  );
+}
+
 export function getAllSlugs(): string[] {
   return fs
     .readdirSync(CONTENT_DIR)

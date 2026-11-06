@@ -52,7 +52,8 @@ export default function QuestionBuilderPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 space-y-10">
       <header className="space-y-3 max-w-3xl">
-        <h1 className="text-3xl font-bold tracking-tight">Question Builder</h1>
+        <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">Practice questions</p>
+        <h1 className="text-4xl font-medium leading-tight">Question Builder</h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
           Build a custom practice-question prompt for your phase, exam, subject, and weak spots. Copy it into any AI
           tool and get questions written the way real exams are written.
@@ -135,7 +136,7 @@ export default function QuestionBuilderPage() {
         , then bring your weak spots back here. Want more templates (study plans, concept coaching, flashcards)? Browse
         the{" "}
         <Link href="/prompts" className="text-highlight hover:underline font-medium">
-          Prompt Library
+          Prompt Templates
         </Link>
         .
       </section>

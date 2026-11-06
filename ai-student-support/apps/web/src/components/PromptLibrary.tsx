@@ -82,7 +82,7 @@ export function PromptLibrary() {
             </div>
             <div className="space-y-3">
               {items.map((p) => (
-                <FillablePrompt key={p.id} label={p.title} description={p.description} prompt={p.prompt} />
+                <FillablePrompt key={p.id} label={p.title} description={p.description} prompt={p.prompt} hidePreview />
               ))}
             </div>
           </section>
