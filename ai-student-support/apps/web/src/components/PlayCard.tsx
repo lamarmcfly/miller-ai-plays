@@ -11,10 +11,11 @@ export function PlayCard({ play }: { play: Play }) {
         <h3 className="text-lg font-semibold leading-snug group-hover:underline decoration-marker decoration-4 underline-offset-4">
           {play.title}
         </h3>
+        <p className="text-sm italic text-muted-foreground leading-snug">{play.hook}</p>
         <p className="text-sm text-muted-foreground leading-relaxed">{play.oneLiner}</p>
       </div>
       <p className="font-mono text-xs text-muted-foreground">
-        {play.estimatedTime} &middot; {play.difficulty}
+        {play.estimatedTime} &middot; {play.difficulty} &middot; {play.year.join(" ")}
       </p>
     </Link>
   );

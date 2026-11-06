@@ -1,24 +1,56 @@
 import Link from "next/link";
 import { getAllPlays } from "@/lib/plays";
+import { stageLinks } from "@/lib/nav";
 
 // One chooser replaces the four overlapping "where do I start" sections the
-// home page used to have. Each situation goes to exactly one place.
-const needs: { situation: string; slug?: string; href?: string; title?: string; detail?: string }[] = [
-  { situation: "I've never used AI to study.", slug: "first-ai-session" },
+// home page used to have. Each situation leads to one best first step, plus
+// one "also try" so none of those sections' recommendations are lost.
+type Dest = { slug: string } | { href: string; title: string; detail?: string };
+const needs: { situation: string; first: Dest; also: Dest }[] = [
+  {
+    situation: "I've never used AI to study.",
+    first: { slug: "first-ai-session" },
+    also: { slug: "verify-the-ai" },
+  },
   {
     situation: "I need practice questions on a topic.",
-    href: "/question-builder",
-    title: "Build practice questions",
-    detail: "Pick your exam and topic",
+    first: { href: "/question-builder", title: "Build practice questions", detail: "Pick your exam and topic" },
+    also: { slug: "custom-practice-questions" },
   },
-  { situation: "I keep missing the same kinds of Qbank questions.", slug: "error-engine" },
-  { situation: "I just sat through a lecture.", slug: "lecture-compressor" },
-  { situation: "My exam is a few weeks away.", slug: "exam-countdown-planner" },
   {
-    situation: "I'm starting a clerkship rotation.",
-    href: "/phase/2",
-    title: "Clerkship guides",
-    detail: "Plays and prompts for each rotation",
+    situation: "I bombed a Qbank block.",
+    first: { slug: "error-engine" },
+    also: { slug: "deficit-tracker" },
+  },
+  {
+    situation: "I just sat through a lecture.",
+    first: { slug: "lecture-compressor" },
+    also: { slug: "concept-coach" },
+  },
+  {
+    situation: "I'm forgetting what I studied.",
+    first: { slug: "spaced-review-planner" },
+    also: { href: "/question-builder?exam=flashcards", title: "Flashcards from my notes" },
+  },
+  {
+    situation: "My shelf or Step exam is coming up.",
+    first: { slug: "exam-countdown-planner" },
+    also: { slug: "shelf-review-notebook" },
+  },
+  {
+    situation: "I'm on the wards and short on time.",
+    first: { slug: "rounds-prep" },
+    also: { slug: "clinical-note" },
+  },
+  {
+    situation: "I have an OSCE coming up.",
+    first: { slug: "osce-encounter-sim" },
+    also: { slug: "case-presentation-coach" },
+  },
+  {
+    situation: "I have a paper to read for journal club.",
+    first: { slug: "research-speed-read" },
+    also: { slug: "biostats-translator" },
   },
 ];
 
@@ -41,16 +73,28 @@ export default function HomePage() {
   const plays = getAllPlays();
   const bySlug = new Map(plays.map((p) => [p.slug, p]));
 
-  const sections = [
+  const resolve = (d: Dest) => {
+    if ("href" in d) return d;
+    const play = bySlug.get(d.slug);
+    return play ? { href: `/plays/${d.slug}`, title: play.title, detail: play.estimatedTime } : null;
+  };
+
+  const sections: { href: string; title: string; body: string; shortcuts?: { href: string; label: string }[] }[] = [
     {
       href: "/plays",
       title: "Plays",
       body: `${plays.length} step-by-step AI workflows for lectures, Qbanks, clerkships, and more. The heart of the site.`,
+      shortcuts: stageLinks.map((s) => ({ href: s.href, label: `${s.label}: ${s.blurb}` })),
     },
     {
       href: "/question-builder",
       title: "Practice Questions",
       body: "Choose your exam, subject, and difficulty. Get one prompt that makes any AI tool write realistic questions.",
+      shortcuts: [
+        { href: "/question-builder?preset=step1-pharm", label: "Step 1 pharmacology" },
+        { href: "/question-builder?preset=shelf-im", label: "Internal medicine shelf" },
+        { href: "/question-builder?preset=step3-sequential", label: "Step 3 cases" },
+      ],
     },
     {
       href: "/prompts",
@@ -133,7 +177,7 @@ export default function HomePage() {
               <Link href="/question-builder" className="underline underline-offset-2 hover:text-brand">
                 practice question builder
               </Link>{" "}
-              gets an AI tool to write: no named diagnosis, one clear lead-in, and five believable options.
+              gets an AI tool to write: no named diagnosis, one clear lead-in, five homogeneous options, and a reason each wrong answer tempts.
             </figcaption>
           </figure>
         </div>
@@ -169,27 +213,37 @@ export default function HomePage() {
           </div>
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {needs.map((n) => {
-              const play = n.slug ? bySlug.get(n.slug) : undefined;
-              const href = n.href ?? `/plays/${n.slug}`;
-              const title = n.title ?? play?.title;
-              const detail = n.detail ?? play?.estimatedTime;
-              if (!title) return null;
+              const first = resolve(n.first);
+              const also = resolve(n.also);
+              if (!first) return null;
               return (
-                <li key={n.situation}>
-                  <Link
-                    href={href}
-                    className="group flex h-full flex-col justify-between gap-4 border border-border bg-card p-5 transition-colors hover:border-brand hover:bg-marker/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                  >
-                    <span className="font-[family-name:var(--font-display)] text-lg leading-snug">
-                      &ldquo;{n.situation}&rdquo;
-                    </span>
-                    <span className="space-y-0.5">
-                      <span className="block text-sm font-semibold text-brand group-hover:underline decoration-marker decoration-2 underline-offset-4">
-                        {title} &rarr;
-                      </span>
-                      {detail && <span className="block font-mono text-xs text-muted-foreground">{detail}</span>}
-                    </span>
-                  </Link>
+                <li
+                  key={n.situation}
+                  className="group relative flex h-full flex-col justify-between gap-4 border border-border bg-card p-5 transition-colors hover:border-brand hover:bg-marker/30"
+                >
+                  <p className="font-[family-name:var(--font-display)] text-lg leading-snug">
+                    &ldquo;{n.situation}&rdquo;
+                  </p>
+                  <div className="space-y-2">
+                    <div className="space-y-0.5">
+                      {/* The whole card opens the first step. */}
+                      <Link
+                        href={first.href}
+                        className="block text-sm font-semibold text-brand group-hover:underline decoration-marker decoration-2 underline-offset-4 outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-ring"
+                      >
+                        {first.title} &rarr;
+                      </Link>
+                      {first.detail && <p className="font-mono text-xs text-muted-foreground">{first.detail}</p>}
+                    </div>
+                    {also && (
+                      <p className="relative z-10 text-xs text-muted-foreground">
+                        Also try:{" "}
+                        <Link href={also.href} className="font-medium text-highlight hover:underline">
+                          {also.title}
+                        </Link>
+                      </p>
+                    )}
+                  </div>
                 </li>
               );
             })}
@@ -216,19 +270,39 @@ export default function HomePage() {
           </div>
           <ul className="grid gap-3 sm:grid-cols-2">
             {sections.map((s) => (
-              <li key={s.href}>
-                <Link
-                  href={s.href}
-                  className="group block h-full border border-border p-5 space-y-1.5 transition-colors hover:border-brand hover:bg-marker/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                >
-                  <h3 className="text-xl font-semibold group-hover:underline decoration-marker decoration-4 underline-offset-4">
+              <li
+                key={s.href}
+                className="group relative h-full border border-border p-5 space-y-1.5 transition-colors hover:border-brand hover:bg-marker/30"
+              >
+                <h3 className="text-xl font-semibold">
+                  <Link
+                    href={s.href}
+                    className="group-hover:underline decoration-marker decoration-4 underline-offset-4 outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-ring"
+                  >
                     {s.title} &rarr;
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{s.body}</p>
-                </Link>
+                  </Link>
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.body}</p>
+                {s.shortcuts && (
+                  <p className="relative z-10 flex flex-wrap gap-x-3 gap-y-1 pt-1 text-xs">
+                    <span className="text-muted-foreground">Jump to:</span>
+                    {s.shortcuts.map((sc) => (
+                      <Link key={sc.href} href={sc.href} className="font-medium text-highlight hover:underline">
+                        {sc.label}
+                      </Link>
+                    ))}
+                  </p>
+                )}
               </li>
             ))}
           </ul>
+          <p className="text-sm text-muted-foreground">
+            Have a workflow that works for you?{" "}
+            <Link href="/community" className="font-medium text-highlight hover:underline">
+              Share it on the Community Board
+            </Link>
+            .
+          </p>
         </section>
       </div>
     </div>

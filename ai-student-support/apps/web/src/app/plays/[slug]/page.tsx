@@ -103,16 +103,22 @@ export default async function PlayPage({
           <h1 className="text-4xl font-medium leading-tight">{play.title}</h1>
           <p className="text-lg italic text-muted-foreground">{play.hook}</p>
           <p className="leading-relaxed">{play.oneLiner}</p>
-          <p className="font-mono text-xs text-muted-foreground">
-            {play.estimatedTime} &middot; {play.difficulty} &middot; {formatYears(play.year)} &middot;{" "}
-            {anyTool ? (
-              toolText
-            ) : (
-              <a href={tool.url} target="_blank" rel="noopener noreferrer" className="text-highlight hover:underline">
-                {toolText}
-              </a>
+          <div className="space-y-1 font-mono text-xs text-muted-foreground">
+            <p>
+              {play.estimatedTime} &middot; {play.difficulty} &middot; {formatYears(play.year)} &middot;{" "}
+              {anyTool ? (
+                toolText
+              ) : (
+                <a href={tool.url} target="_blank" rel="noopener noreferrer" className="text-highlight hover:underline">
+                  {toolText}
+                </a>
+              )}
+              {tool?.plan === "free" && ", free plan works"}
+            </p>
+            {play.audience.length > 0 && (
+              <p>For {play.audience.map((a) => audienceLabels[a] || a).join(", ")}</p>
             )}
-          </p>
+          </div>
         </header>
       </div>
 
@@ -219,7 +225,7 @@ export default async function PlayPage({
 
       <footer className="text-xs text-muted-foreground space-y-1 pt-4 border-t border-border">
         <p>
-          For {play.audience.map((a) => audienceLabels[a] || a).join(", ")}. Authored by {play.author}. Version{" "}
+          Authored by {play.author}. Version{" "}
           {play.version}, updated {play.updatedAt}.
         </p>
         <p>
