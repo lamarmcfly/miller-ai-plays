@@ -5,9 +5,11 @@
 Med AI Plays is a free library for medical students at any school. It has these parts:
 
 - **Start Here** (`/start`): three questions (your goal, your AI experience, your biggest struggle) produce a personal, ordered path of Plays, a Question Builder preset for your exam, and the right AI tool for each job. Results are shareable links.
-- **Plays**: short, copy-paste AI workflows (error analysis, lecture-to-Anki, Socratic tutoring, OSCE practice, and more). Each pairs a demo video with a prompt.
+- **Plays** (`/plays`): short, copy-paste AI workflows (error analysis, lecture-to-Anki, Socratic tutoring, OSCE practice, and more). Each Play page leads with how to use it and the prompt; a demo video appears automatically once its file is added under `apps/web/public/videos/`.
 - **Question Builder**: choose your exam, phase, subject, difficulty, and weak spots, and get a prompt that makes any AI tool write original, exam-realistic practice questions.
-- **Prompt Library**: fill-in-the-blank templates for study plans, concept explanations, clinical reasoning, flashcards, and more.
+- **Prompt Templates** (`/prompts`): fill-in-the-blank templates for study plans, concept explanations, clinical reasoning, flashcards, and more.
+
+The header shows one **Start here** button and five destinations (Plays, Practice Questions, Prompt Templates, AI Tools, Community); the structure lives in `apps/web/src/lib/nav.ts`. The home page explains what a Play is and offers one "What do you need right now?" chooser.
 
 Also included: a printable one-page **cheat sheet** (`/cheat-sheet`), site-wide **search** (`/search`), per-exam landing pages (`/exams/step1`, `/exams/shelf`, and so on), and an installable mobile site (web app manifest).
 
@@ -36,9 +38,9 @@ Deep links preset the builder, for example `/question-builder?preset=shelf-im` o
 ai-student-support/
 ├── apps/web/            # Next.js site (App Router, Tailwind, shadcn/ui)
 │   └── src/
-│       ├── app/         # Pages: home, plays, phases, question-builder, prompts, toolkit, community, about
-│       ├── components/  # UI, including QuestionBuilder, FillablePrompt, PromptLibrary
-│       └── lib/         # question-spec.ts, prompt-library.ts, schemas, content loaders
+│       ├── app/         # Pages: home, plays (library + each Play), phases, question-builder, prompts, toolkit, community, about
+│       ├── components/  # UI, including SiteNav, QuestionBuilder, FillablePrompt, PromptLibrary
+│       └── lib/         # nav.ts (site structure), question-spec.ts, prompt-library.ts, schemas, content loaders
 ├── content/plays/       # MDX for each Play (source of truth)
 ├── content/community/   # Approved community posts
 ├── prompts/             # Standalone .txt prompt files for easy copy-paste

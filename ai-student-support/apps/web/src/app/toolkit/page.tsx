@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { toolJobs, toolLabels, toolTips } from "@/lib/tool-chooser";
 
 export const metadata: Metadata = {
-  title: "AI Toolkit",
+  title: "AI Tools",
   description:
     "Free AI tools for medical students, plus how they fit your existing study stack.",
 };
@@ -82,7 +82,8 @@ export default function ToolkitPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 space-y-10">
       <header className="space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">AI Toolkit</h1>
+        <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">AI tools</p>
+        <h1 className="text-4xl font-medium leading-tight">Which AI tool for which job</h1>
         <p className="text-lg text-muted-foreground">
           Free AI tools you can use for studying, plus how they connect to the
           study tools you already use.
@@ -243,7 +244,7 @@ export default function ToolkitPage() {
       {/* Browse plays CTA */}
       <div className="text-center pt-4">
         <Link
-          href="/"
+          href="/plays"
           className="text-sm text-highlight hover:underline font-medium"
         >
           &larr; Browse all Plays

@@ -5,6 +5,7 @@ import { goals } from "@/lib/start-path";
 
 const staticPaths = [
   "/",
+  "/plays",
   "/start",
   "/question-builder",
   "/prompts",

@@ -107,7 +107,7 @@ export default function Phase1Page() {
           Phase 2: Clerkships &rarr;
         </Link>
         <Link
-          href="/"
+          href="/plays"
           className="text-sm text-muted-foreground hover:underline"
         >
           Browse all Plays

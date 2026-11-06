@@ -1,48 +1,22 @@
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
-import { difficultyColors, type Play } from "@/lib/schema";
+import type { Play } from "@/lib/schema";
 
 export function PlayCard({ play }: { play: Play }) {
   return (
-    <Link href={`/plays/${play.slug}`} className="group block h-full">
-      <div className="h-full rounded-xl border border-border bg-card p-5 space-y-3 transition-all group-hover:bg-marker/30 group-hover:border-brand">
-        <div className="space-y-1.5">
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="text-base font-semibold leading-snug group-hover:text-brand transition-colors">
-              {play.title}
-            </h3>
-            <Badge
-              variant="outline"
-              className={`shrink-0 text-[10px] ${difficultyColors[play.difficulty]}`}
-            >
-              {play.difficulty}
-            </Badge>
-          </div>
-          <p className="text-sm text-muted-foreground italic leading-snug">
-            {play.hook}
-          </p>
-        </div>
-
-        <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
-          {play.oneLiner}
-        </p>
-
-        <div className="flex items-center justify-between pt-1">
-          <div className="flex flex-wrap gap-1">
-            {play.year.map((y) => (
-              <span
-                key={y}
-                className="text-[10px] font-medium text-muted-foreground bg-muted px-1.5 py-0.5 rounded"
-              >
-                {y}
-              </span>
-            ))}
-          </div>
-          <span className="text-xs text-muted-foreground">
-            {play.estimatedTime}
-          </span>
-        </div>
+    <Link
+      href={`/plays/${play.slug}`}
+      className="group flex h-full flex-col justify-between gap-4 border border-border bg-card p-5 transition-colors hover:border-brand hover:bg-marker/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+    >
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold leading-snug group-hover:underline decoration-marker decoration-4 underline-offset-4">
+          {play.title}
+        </h3>
+        <p className="text-sm italic text-muted-foreground leading-snug">{play.hook}</p>
+        <p className="text-sm text-muted-foreground leading-relaxed">{play.oneLiner}</p>
       </div>
+      <p className="font-mono text-xs text-muted-foreground">
+        {play.estimatedTime} &middot; {play.difficulty} &middot; {play.year.join(" ")}
+      </p>
     </Link>
   );
 }

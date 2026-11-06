@@ -63,26 +63,35 @@ export function PlayGrid({ plays }: { plays: Play[] }) {
     });
   }
 
+  const filtering = search.trim() !== "" || selectedYears.size > 0 || selectedAudience.size > 0;
+
+  function clearAll() {
+    setSearch("");
+    setSelectedYears(new Set());
+    setSelectedAudience(new Set());
+  }
+
   return (
     <div className="space-y-6">
       <SearchBar value={search} onChange={setSearch} />
 
-      <div className="space-y-2">
-        <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Year
-        </p>
-        <TagFilter
-          options={allYears}
-          selected={selectedYears}
-          onToggle={toggleYear}
-        />
-      </div>
+      <div className="grid gap-4 md:grid-cols-[auto_1fr] md:items-start md:gap-x-6">
+        <div className="space-y-2">
+          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+            Year
+          </p>
+          <TagFilter
+            options={allYears}
+            selected={selectedYears}
+            onToggle={toggleYear}
+          />
+        </div>
 
-      <div className="space-y-2">
-        <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Audience
-        </p>
-        <TagFilter
+        <div className="space-y-2">
+          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+            Exam or setting
+          </p>
+          <TagFilter
           options={allAudience.map((a) => audienceLabels[a] || a)}
           selected={
             new Set(
@@ -95,7 +104,25 @@ export function PlayGrid({ plays }: { plays: Play[] }) {
             )?.[0];
             if (key) toggleAudience(key);
           }}
-        />
+          />
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between gap-4 border-t border-border pt-4 text-sm">
+        <p aria-live="polite" className="text-muted-foreground">
+          {filtering
+            ? `Showing ${filtered.length} of ${plays.length} Plays`
+            : `${plays.length} Plays`}
+        </p>
+        {filtering && (
+          <button
+            type="button"
+            onClick={clearAll}
+            className="font-medium underline decoration-marker decoration-4 underline-offset-[6px] hover:bg-marker/50 cursor-pointer"
+          >
+            Clear filters
+          </button>
+        )}
       </div>
 
       {filtered.length === 0 ? (

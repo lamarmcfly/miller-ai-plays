@@ -42,7 +42,7 @@ export function PhasePractice({
         </Link>{" "}
         or browse the{" "}
         <Link href="/prompts" className="text-highlight hover:underline">
-          Prompt Library
+          Prompt Templates
         </Link>
         .
       </p>

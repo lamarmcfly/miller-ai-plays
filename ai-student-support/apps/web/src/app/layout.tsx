@@ -4,10 +4,17 @@ import Link from "next/link";
 import { SiteNav } from "@/components/SiteNav";
 import { UsageAnalytics } from "@/components/UsageAnalytics";
 import { TestimonialLink } from "@/components/TestimonialLink";
-import { navLinks } from "@/lib/nav";
+import { moreLinks, navLinks, stageLinks, startLink } from "@/lib/nav";
 import { goals } from "@/lib/start-path";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 import "./globals.css";
+
+const footerGroups = [
+  { title: "Use the site", links: [startLink, ...navLinks] },
+  { title: "By stage", links: stageLinks.map((s) => ({ href: s.href, label: `${s.label}: ${s.blurb}` })) },
+  { title: "By exam", links: goals.map((g) => ({ href: `/exams/${g.id}`, label: g.label })) },
+  { title: "More", links: moreLinks },
+];
 
 const display = Newsreader({
   variable: "--font-display-face",
@@ -76,36 +83,34 @@ export default function RootLayout({
         </main>
 
         <footer className="bg-brand text-stone-300 mt-auto print:hidden">
-          <div className="mx-auto max-w-6xl px-4 py-10 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <div>
+          <div className="mx-auto max-w-6xl px-4 py-10 space-y-8">
+            <div className="grid gap-8 grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr_0.8fr]">
+              <div className="col-span-2 lg:col-span-1">
                 <p className="font-[family-name:var(--font-display)] text-2xl text-white leading-none">
                   Med AI Plays
                 </p>
-                <p className="text-xs mt-2 text-stone-400">
-                  A free study resource for medical students at any school
+                <p className="text-xs mt-2 text-stone-400 max-w-xs">
+                  Free, copy-paste AI study workflows for medical students at any school. Works in any AI tool.
                 </p>
               </div>
-              <nav aria-label="Footer" className="flex flex-wrap gap-x-5 gap-y-1 text-sm">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-stone-300 hover:text-marker underline-offset-4 hover:underline"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
-            </div>
-            <nav aria-label="Study guides by exam" className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-stone-400">
-              <span className="text-stone-500">By exam:</span>
-              {goals.map((g) => (
-                <Link key={g.id} href={`/exams/${g.id}`} className="hover:text-marker underline-offset-4 hover:underline">
-                  {g.label}
-                </Link>
+              {footerGroups.map((group) => (
+                <nav key={group.title} aria-label={group.title} className="space-y-2">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-stone-500">{group.title}</p>
+                  <ul className="space-y-1.5 text-sm">
+                    {group.links.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="text-stone-300 hover:text-marker underline-offset-4 hover:underline"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
               ))}
-            </nav>
+            </div>
             <div className="border-t border-stone-700 pt-4 flex flex-col sm:flex-row sm:justify-between gap-2 text-xs text-stone-400">
               <p>
                 Created by <span className="text-stone-200">Lamar Martin</span>
